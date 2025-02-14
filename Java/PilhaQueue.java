@@ -2,10 +2,10 @@ package projeto;
 
 import java.util.Stack;
 
-public class PilhaQueue {
+public class PilhaStack {
     private Stack<Integer> pilha;
 
-    public PilhaQueue() {
+    public PilhaStack() {
         pilha = new Stack<>();
     }
 
