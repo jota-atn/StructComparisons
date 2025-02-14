@@ -3,10 +3,10 @@ package projeto;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class FilaStack {
+public class FilaQueue {
     private Queue<String> fila;
 
-    public FilaStack() {
+    public FilaQueue() {
         fila = new LinkedList<>();
     }
 
