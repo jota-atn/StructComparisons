@@ -3,7 +3,7 @@ package projeto;
 public class Main {
     public static void main(String[] args) {
        
-        PilhaQueue pilha = new PilhaQueue();
+        PilhaStack pilha = new PilhaStack();
         pilha.push(10);
         pilha.push(20);
         pilha.push(30);
@@ -14,7 +14,7 @@ public class Main {
         System.out.println("A pilha está vazia? " + pilha.isEmpty());
         System.out.println();
 
-        FilaStack fila = new FilaStack();
+        FilaQueue fila = new FilaQueue();
         fila.offer("Alice");
         fila.offer("Bob");
         fila.offer("Charlie");
