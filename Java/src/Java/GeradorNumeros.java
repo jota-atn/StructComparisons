@@ -52,7 +52,7 @@ public class GeradorNumeros {
         long tempoExecucao5 = tempoFinal5 - tempoInicial5;
         System.out.println("Tempo de execução LinkedList: " + tempoExecucao5 + " nanosegundos" + "\n");
         long tempoInicial6 = System.nanoTime();
-        System.out.println("Valor Meio Hash: " + hash.getIndex(valorMeio));
+        System.out.println("Valor Meio Hash: " + hash.getKey(valorMeio));
         long tempoFinal6 = System.nanoTime();
         long tempoExecucao6 = tempoFinal6 - tempoInicial6;
         System.out.println("Tempo de execução HashMap: " + tempoExecucao6 + " nanosegundos" + "\n");
