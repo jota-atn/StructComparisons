@@ -17,8 +17,8 @@ public class Hash {
 		this.indice++;
 	}
 	
-	public int getIndex(int index) {
-		return this.hash.get(index);
+	public int getKey(int key) {
+		return this.hash.get(key);
 	}
 	
 	public void remove(int meio) {
