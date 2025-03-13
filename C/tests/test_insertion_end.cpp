@@ -26,6 +26,18 @@ auto test_insertion_end(ArrayList& array_list, const string& filename) {
     return duration.count();
 }
 
+void gerar_saida(const double tempo_medio, const string& size, const string& caminho) {
+    ofstream arquivo(caminho, ios::app);
+
+    if (!arquivo) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    arquivo << size << ";" << tempo_medio << "\n";
+
+}
+
 void test_dataset_insertion(ArrayList& array_list, string size) {
     const string filename = "C:/Users/jamqu/Projects/StructComparisons/scripts/inputs/dataset_" + size + ".txt"; 
     long long tempo_total = 0;
@@ -36,6 +48,11 @@ void test_dataset_insertion(ArrayList& array_list, string size) {
     }
 
     double tempo_medio = static_cast<double> (tempo_total) / num_execucoes;
+
+    string saida = "C:/Users/jamqu/Projects/StructComparisons/C/out/insertion_end.csv";
+    gerar_saida(tempo_medio, size, saida);
+
     cout << "Tempo medio de insercao para um Data Set de tamanho " << size
          << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microsegundos" << endl;
 }
+

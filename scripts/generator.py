@@ -1,7 +1,7 @@
 import random
 import os
 
-def generate_large_data(filename, size, mode="random", num_range=(0, 1000000)):
+def generate_large_data(filename: str, size: int, mode="random", num_range=(0, 1000000)):
     """
     Gera um arquivo de teste contendo apenas números inteiros aleatórios.
     :param filename: Nome do arquivo a ser gerado.
