@@ -18,7 +18,7 @@ class HashMap:
             self.hashmap[key] = value
             self._size += 1
 
-    def pop(self, key):
+    def remove(self, key):
         if self.is_empty():
             return 'Empty HashMap!'
 
