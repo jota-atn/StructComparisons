@@ -22,9 +22,11 @@ class LinkedList:
 
         if self.is_empty():
             self.first = node
-        self.last.next = node
-        node.prev = self.last
-        self.last = node
+            self.last = node
+        else:
+            self.last.next = node
+            node.prev = self.last
+            self.last = node
         self._size += 1
 
     def remove(self):
@@ -44,7 +46,9 @@ class LinkedList:
             return "Index out of bounds"
 
         aux = self.first
-        for i in range(index - 1):
+        cont = 0
+        while cont < index:
             aux = aux.next
+            cont += 1
 
         return aux.value
