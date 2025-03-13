@@ -21,11 +21,11 @@ def generate_large_data(filename, size, mode="random", num_range=(0, 1000000)):
             f.write(f"{num}\n")
 
 if __name__ == "__main__":
-    os.makedirs("test_data", exist_ok=True)
+    os.makedirs("inputs", exist_ok=True)
     
     sizes = [1000, 10000, 100000, 1000000, 10000000]
     for size in sizes:
-        filename = f"test_data/dataset_{size}.txt"
+        filename = f"inputs/dataset_{size}.txt"
         generate_large_data(filename, size, "random", (0, 1000000))
         print(f"Arquivo de teste gerado: {filename}")
 
