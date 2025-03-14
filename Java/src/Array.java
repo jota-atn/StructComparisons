@@ -18,15 +18,15 @@ public class Array {
 	public void remove(int meio) {
 		this.array.remove(meio);
 	}
-	
+
+	@Override
 	public String toString() {
-		String saida = "";
-		
-		for(Integer numero: this.array) {
-			saida += numero.toString() + " ";
+		StringBuilder saida = new StringBuilder();
+		for (Integer numero : this.array) {
+			saida.append(numero).append(" ");
 		}
-		
-		return saida;
+		return saida.toString().trim();
 	}
-	
+
+
 }
