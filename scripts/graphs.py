@@ -30,8 +30,8 @@ def read_arquivo(caminho):
     print(sizes)
     return sizes, times
 
-def generate_insertion_comparison():
-    languages = ["C", "Java", "Python"]
+def plotar_grafico():
+    languages = ["C", "Java", "Python", "Go", "Kotlin"]
     
     plot.figure(figsize=(10, 6))
     
@@ -51,4 +51,4 @@ def generate_insertion_comparison():
     plot.show()
 
 if __name__ == "__main__":
-    generate_insertion_comparison()
+    plotar_grafico()
