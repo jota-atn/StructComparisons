@@ -4,11 +4,12 @@
 #include <chrono>
 #include <string>
 #include "../include/cpp/array_list.hpp"
+#include "../include/cpp/output.hpp"
 
 using namespace std;
 using namespace chrono;
 
-auto test_insertion_end(ArrayList& array_list, const string& filename) {
+auto test_add(ArrayList& array_list, const string& filename) {
     ifstream file(filename);
     int valor;
 
@@ -26,25 +27,13 @@ auto test_insertion_end(ArrayList& array_list, const string& filename) {
     return duration.count();
 }
 
-void gerar_saida(const double tempo_medio, const string& size, const string& caminho) {
-    ofstream arquivo(caminho, ios::app);
-
-    if (!arquivo) {
-        printf("Erro ao abrir o arquivo.\n");
-        return;
-    }
-
-    arquivo << size << ";" << tempo_medio << "\n";
-
-}
-
 void test_dataset_insertion(ArrayList& array_list, string size) {
     const string filename = "C:/Users/jamqu/Projects/StructComparisons/scripts/inputs/dataset_" + size + ".txt"; 
     long long tempo_total = 0;
     
     int num_execucoes = 500;
     for (int i = 0; i < num_execucoes; ++i) {
-       tempo_total += test_insertion_end(array_list, filename);
+       tempo_total += test_add(array_list, filename);
     }
 
     double tempo_medio = static_cast<double> (tempo_total) / num_execucoes;
