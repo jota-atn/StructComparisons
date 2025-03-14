@@ -3,6 +3,7 @@ data class Node<T>(var value: T, var next: Node<T>? = null)
 class LinkedList<T> {
     private var head: Node<T>? = null
 
+    //*Criação da função add */
     fun add(value: T) {
         val newNode = Node(value)
         if (head == null) {
@@ -16,12 +17,14 @@ class LinkedList<T> {
         }
     }
 
+    //*Criação da função remove */
     fun remove() {
         if (head != null) {
             head = head?.next
         }
     }
 
+    //*criação da representação da linkedList em String */
     fun printList() {
         var current = head
         while (current != null) {
