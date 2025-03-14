@@ -18,14 +18,15 @@ public class Linked {
 	public void remove(int meio) {
 		this.linked.remove(meio);
 	}
-	
+
+	@Override
 	public String toString() {
-		String saida = "";
-		
-		for(Integer numero: this.linked) {
-			saida += numero.toString() + " ";
+		StringBuilder saida = new StringBuilder();
+		for (Integer numero : this.linked) {
+			saida.append(numero).append(" ");
 		}
-		return saida;
+		return saida.toString().trim();
 	}
+
 
 }

@@ -22,14 +22,15 @@ public class Hash {
 	public void remove(int meio) {
 		this.hash.remove(meio);
 	}
-	
+
+	@Override
 	public String toString() {
-		String saida = "";
-		
-		for(Map.Entry<Integer, Integer> numero : this.hash.entrySet()) {
-			saida += numero.getValue() + " ";
+		StringBuilder saida = new StringBuilder();
+		for (Map.Entry<Integer, Integer> entry : this.hash.entrySet()) {
+			saida.append(entry.getValue()).append(" ");
 		}
-		return saida;
+		return saida.toString().trim();
 	}
+
 
 }
