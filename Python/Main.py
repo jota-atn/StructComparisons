@@ -3,55 +3,28 @@ from BST import BST
 from HashMap import HashMap
 from LinkedList import LinkedList
 
-arraylist = ArrayList(5)
-bst = BST()
-hashmap = HashMap()
-linkedlist = LinkedList()
+import time
+import sys
 
-arraylist.add(8)
-assert len(arraylist) == 1
-arraylist.remove()
-assert len(arraylist) == 0
-arraylist.add(1)
-arraylist.add(2)
-arraylist.add(3)
-arraylist.add(4)
-assert arraylist.get(0) == 1
-assert arraylist.get(1) == 2
-assert arraylist.get(2) == 3
-assert arraylist.get(3) == 4
-assert len(arraylist) == 4
+#arraylist = ArrayList(5)
+#bst = BST()
+#hashmap = HashMap()
+#linkedlist = LinkedList()
 
-print('---' + '\n' + '---' + '\n' + '---')
-       
-linkedlist.add(1)
-assert len(linkedlist) == 1
-linkedlist.remove()
-assert len(linkedlist) == 0
-linkedlist.add(1)
-linkedlist.add(2)
-linkedlist.add(3)
-linkedlist.add(4)
-assert linkedlist.get(0) == 1
-assert linkedlist.get(1) == 2
-assert linkedlist.get(2) == 3
-assert linkedlist.get(3) == 4
-assert len(linkedlist) == 4
+arraylist = ArrayList(20)
 
-print('---' + '\n' + '---' + '\n' + '---')
+input_1000 = "../scripts/inputs/dataset_1000.txt"
+#total_time = 0
 
-hashmap.put(1234, 1)
-assert len(hashmap) == 1
-hashmap.remove(1234)
-assert len(hashmap) == 0
-hashmap.put(12345, 25)
-hashmap.put(12345, 35)
-assert len(hashmap) == 1
-assert hashmap.get(12345) == 35
+with open(input_1000, "r") as archive:
+    #for i in range(500):
+    total_time = 0
+    inicio = time.time()
+    for line in archive:
+        data = int(line.strip())
+        arraylist.add(data)
+    fim = time.time()
+    total_time += fim - inicio
+    #media = total_time / 500
+    print(f"ArrayList com inserção de 1000 elementos: {total_time} segundos de execução")
 
-print('---' + '\n' + '---' + '\n' + '---')
-
-bst.add(89)
-assert len(bst) == 1
-bst.add(3)
-assert len(bst) == 2
