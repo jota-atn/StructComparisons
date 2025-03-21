@@ -25,4 +25,4 @@ for size in sizes:
             
     total_time = (total_time) / len(linhas)
 
-    print(f"tempo total para adicao no arraylist de tamanho {size}: {total_time}")
+    print(f"{size};{total_time}")
