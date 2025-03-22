@@ -31,6 +31,9 @@ class ArrayList:
         self.array.insert(index, valor)
         self._size += 1
     
+    def insert_middle(self, valor):
+        insert(len(self), valor)
+
     def remove_first(self):
         removed = self.array[0]
         self.array.pop(0)
