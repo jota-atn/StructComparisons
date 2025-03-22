@@ -28,6 +28,45 @@ class LinkedList:
             node.prev = self.last
             self.last = node
         self._size += 1
+    
+    def add_first(self, value):
+       node = NodeLinkedList(value)
+
+       if self.is_empty():
+           this.first = node
+           this.last = node
+        else:
+            this.first.prev = node
+            node.next = this.first
+            this.first = node
+
+        this._size += 1
+
+    def insert(self, index, value):
+        node = NodeLinkedList(value)
+
+        if self.is_empty():
+            this.first = node
+            this.last = node
+            this._size += 1
+        else if index == 0:
+            self.add_first(value)
+            return
+        else if index > 0:
+            aux = this.first
+            for i in range(index):
+                aux = aux.next
+            if aux is None:
+                self.add(value)
+                return
+            else:
+                node.next = aux
+                aux.prev.next = node
+                aux.prev = node
+                this._size += 1
+
+    def insert_middle(self, value):
+        self.insert(len(self) // 2, value)
 
     def remove(self):
         removed = self.last
