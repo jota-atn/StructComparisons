@@ -33,27 +33,27 @@ class LinkedList:
        node = NodeLinkedList(value)
 
        if self.is_empty():
-           this.first = node
-           this.last = node
-        else:
-            this.first.prev = node
-            node.next = this.first
-            this.first = node
+           self.first = node
+           self.last = node
+       else:
+           self.first.prev = node
+           node.next = self.first
+           self.first = node
 
-        this._size += 1
+       self._size += 1
 
     def insert(self, index, value):
         node = NodeLinkedList(value)
 
         if self.is_empty():
-            this.first = node
-            this.last = node
-            this._size += 1
+            self.first = node
+            self.last = node
+            self._size += 1
         else if index == 0:
             self.add_first(value)
             return
         else if index > 0:
-            aux = this.first
+            aux = self.first
             for i in range(index):
                 aux = aux.next
             if aux is None:
@@ -63,7 +63,7 @@ class LinkedList:
                 node.next = aux
                 aux.prev.next = node
                 aux.prev = node
-                this._size += 1
+                self._size += 1
 
     def insert_middle(self, value):
         self.insert(len(self) // 2, value)

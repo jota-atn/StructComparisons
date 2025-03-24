@@ -10,7 +10,7 @@ int main() {
     vector <int> values = {1000, 10000, 100000, 1000000, 10000000};
 
     for (int value : values) {
-        test_dataset_get(arrayList, to_string(value));
+        test_dataset_insertion(arrayList, to_string(value));
     }
 
     return 0;

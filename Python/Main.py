@@ -1,7 +1,6 @@
 from ArrayList import ArrayList
 from BST import BST
 from HashMap import HashMap
-from LinkedList import LinkedList
 
 import time
 import sys
@@ -17,11 +16,10 @@ for size in sizes:
     total_time = 0
 
     for linha in linhas:
-        inicio = time.time()    
+        inicio = time.perf_counter()    
         arraylist.add(linha)
-        fim = time.time()
-        total_time += (fim - inicio)
-        
+        fim = time.perf_counter()
+        total_time += (fim - inicio) * 1000
             
     total_time = (total_time) / len(linhas)
 

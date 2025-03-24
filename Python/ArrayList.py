@@ -32,7 +32,7 @@ class ArrayList:
         self._size += 1
     
     def insert_middle(self, valor):
-        insert(len(self), valor)
+        self.insert(len(self), valor)
 
     def remove_first(self):
         removed = self.array[0]
