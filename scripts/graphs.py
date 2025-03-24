@@ -28,7 +28,6 @@ def read_arquivo(caminho):
     except FileNotFoundError:
         print(f"Arquivo não encontrado: {caminho}")
     
-    print(sizes, times)
     return sizes, times
 
 def formatar_eixo_x(x, pos):
@@ -47,7 +46,7 @@ def plotar_grafico():
 
     plot.figure(figsize=(10, 6))
 
-   
+
     for language, cor in zip(languages, cores_linguagens):    
         caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/insertion_last.txt"
 
@@ -59,6 +58,10 @@ def plotar_grafico():
             for i in range(len(sizes)):
                 plot.scatter(sizes[i], times[i], color=cores_pontos[i ], s=20, alpha=1.0, zorder=2)
 
+            legend_pontos = []
+            for i in range(0, len(sizes), len(sizes)//5):
+                legend_pontos.append(plot.Line2D([0], [0], marker='o', color='w', markerfacecolor=cores_pontos[i], markersize=8, label=f'Ponto {sizes[i]}'))
+
 
         plot.title("Comparação de Inserção entre Linguagens")
         plot.ylabel("Tempo de Execução (microsegundos)")
@@ -66,7 +69,12 @@ def plotar_grafico():
 
         plot.gca().xaxis.set_major_formatter(FuncFormatter(formatar_eixo_x))
 
-        plot.legend(title="Linguagens", loc='best', fontsize='8')
+        legenda_linguagens = plot.legend(title="Linguagens", loc='best', fontsize='8')
+        legenda_pontos = plot.legend(handles=legend_pontos, title="Pontos", loc='upper left', fontsize='8', bbox_to_anchor=(0.125, 1))
+
+        plot.gca().add_artist(legenda_linguagens)
+        plot.gca().add_artist(legenda_pontos)
+
         plot.grid(True, alpha=0.5)
 
     plot.show()
