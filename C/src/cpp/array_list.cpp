@@ -4,6 +4,12 @@ void ArrayList::add(int valor) {
     array_list.push_back(valor);
 }
 
+void ArrayList::insert(int index, int valor) {
+    if (index >= 0 && index <= array_list.size()) {
+        array_list.insert(array_list.begin() + index, valor);
+    }
+}
+
 void ArrayList::remove(int index) {
     if (index >= 0 && index < array_list.size()) {
         array_list.erase(array_list.begin() + index);

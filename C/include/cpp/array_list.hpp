@@ -14,6 +14,7 @@ private:
 
 public:
     void add(int valor);
+    void insert(int index, int valor);
     void remove(int index);
     int get(int index);
     void reserve(size_t capacity);
