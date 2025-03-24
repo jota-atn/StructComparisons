@@ -6,6 +6,7 @@ import time
 import sys
 
 arraylist = ArrayList(20)
+out_path = "out/insertion_last.txt"
 
 sizes = [1000, 10000, 100000, 1000000, 10000000]
 
@@ -22,5 +23,6 @@ for size in sizes:
         total_time += (fim - inicio) * 1000
             
     total_time = (total_time) / len(linhas)
-
-    print(f"{size};{total_time}")
+    
+    with open(out_path, "a") as archive:   
+        archive.write(f"{size};{total_time} \n")
