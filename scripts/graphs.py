@@ -1,6 +1,6 @@
 import os
 import matplotlib.pyplot as plot
-import matplotlib.lines as mlines
+from matplotlib.ticker import FuncFormatter
 
 def read_arquivo(caminho):
     
@@ -31,6 +31,14 @@ def read_arquivo(caminho):
     print(sizes, times)
     return sizes, times
 
+def formatar_eixo_x(x, pos):
+    if x >= 1_000_000:
+        return f'{x / 1_000_000}M'
+    elif x >= 1_000:
+        return f'{x / 1_000}k'
+    else:
+        return f'{int(x)}'
+
 def plotar_grafico():
     languages = ["C", "Java", "Python", "Go", "Kotlin"]
     
@@ -55,8 +63,10 @@ def plotar_grafico():
         plot.title("Comparação de Inserção entre Linguagens")
         plot.ylabel("Tempo de Execução (microsegundos)")
         plot.xlabel("Tamanho do Dataset")
+
+        plot.gca().xaxis.set_major_formatter(FuncFormatter(formatar_eixo_x))
+
         plot.legend(title="Linguagens", loc='best', fontsize='8')
-     
         plot.grid(True, alpha=0.5)
 
     plot.show()
