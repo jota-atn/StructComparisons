@@ -29,12 +29,28 @@ bool ArrayList::contains(int elemento) {
     return find(array_list.begin(), array_list.end(), elemento) != array_list.end();
 }
 
-size_t ArrayList::size() {
-    return array_list.size();
-}
-
 void ArrayList::clear() {
     array_list.clear();
+}
+
+void ArrayList::fill_array(string value) {
+
+    array_list.clear();
+
+    const string filename = "C:/Users/jamqu/Projects/StructComparisons/scripts/inputs/dataset_" + value + ".txt"; 
+    
+    ifstream file(filename);
+    int valor;
+        while (file >> valor) {
+        ArrayList::add(valor);
+    }
+    
+    file.close();
+
+}
+
+size_t ArrayList::size() {
+    return array_list.size();
 }
 
 void ArrayList::show() {

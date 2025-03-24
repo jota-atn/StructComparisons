@@ -6,5 +6,6 @@
 using namespace std;
 
 void gerar_saida(const double tempo_medio, const string& size, const string& caminho);
+void limpar_arquivo(const string& caminho);
 
 #endif

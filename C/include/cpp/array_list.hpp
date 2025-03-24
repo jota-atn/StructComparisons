@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <fstream>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ public:
     void reserve(size_t capacity);
     bool is_empty();
     bool contains(int elemento);
+    void fill_array(string value);
     size_t size();
     void clear();
     void show();

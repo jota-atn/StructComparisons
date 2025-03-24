@@ -17,3 +17,11 @@ void gerar_saida(const double tempo_medio, const string& size, const string& cam
 
     arquivo.close();
 }
+
+void limpar_arquivo(const string& caminho) {
+    ofstream arquivo(caminho, ios::trunc);
+    if (!arquivo) {
+        cout << "Erro ao tentar limpar o arquivo." << endl;
+    }
+    arquivo.close();
+}
