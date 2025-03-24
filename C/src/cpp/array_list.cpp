@@ -10,6 +10,10 @@ void ArrayList::remove(int index) {
     }
 }
 
+void ArrayList::reserve(size_t capacity) {
+    array_list.reserve(capacity);
+}
+
 int ArrayList::get(int index) {
     if (index >= 0 && index < array_list.size()) {
         return array_list[index];

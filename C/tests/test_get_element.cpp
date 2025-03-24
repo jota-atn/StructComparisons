@@ -3,9 +3,8 @@
 #include <vector>
 #include <chrono>
 #include <random>
-#include "../../include/cpp/array_list.hpp"
+#include "../include/cpp/array_list.hpp"
 #include "../include/cpp/output.hpp"
-
 
 using namespace std;
 using namespace chrono;

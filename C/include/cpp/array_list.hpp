@@ -15,6 +15,7 @@ public:
     void add(int valor);
     void remove(int index);
     int get(int index);
+    void reserve(size_t capacity);
     bool is_empty();
     bool contains(int elemento);
     size_t size();

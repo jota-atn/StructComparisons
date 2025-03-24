@@ -9,16 +9,17 @@
 using namespace std;
 using namespace chrono;
 
-auto test_add(ArrayList& array_list, const string& filename) {
-    ifstream file(filename);
-    int valor;
-
-    array_list.clear();
+auto test_add(ArrayList& array_list, int n, bool use_reserve) {
     
+    if (use_reserve) {
+        array_list.reserve(n);
+    }
+    
+
     auto inicio = high_resolution_clock::now();
     
-    while (file >> valor) {
-        array_list.add(valor);
+    for (int i = 0; i < n; i++) {
+        array_list.add(i);
     }
     
     auto fim = high_resolution_clock::now();
@@ -27,13 +28,13 @@ auto test_add(ArrayList& array_list, const string& filename) {
     return duration.count();
 }
 
-void test_dataset_insertion(ArrayList& array_list, string size) {
-    const string filename = "C:/Users/jamqu/Projects/StructComparisons/scripts/inputs/dataset_" + size + ".txt"; 
+void test_dataset_insertion(ArrayList& array_list, string size, int num_elementos) {
+
     long long tempo_total = 0;
     
-    int num_execucoes = 50;
+    int num_execucoes = 500;
     for (int i = 0; i < num_execucoes; ++i) {
-       tempo_total += test_add(array_list, filename);
+       tempo_total += test_add(array_list, num_elementos, true);
     }
 
     double tempo_medio = static_cast<double> (tempo_total) / num_execucoes;
@@ -41,7 +42,8 @@ void test_dataset_insertion(ArrayList& array_list, string size) {
     string saida = "C:/Users/jamqu/Projects/StructComparisons/C/out/insertion_last.txt";
     gerar_saida(tempo_medio, size, saida);
 
-    cout << "Tempo medio de insercao para um Data Set de tamanho " << size
-         << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microsegundos" << endl;
+    cout << "Tempo medio de insercao de " << num_elementos
+         << " para um Data Set de tamanho " << size
+         << " apos " << num_execucoes << " execucoes: " << tempo_medio << " milissegundos" << endl;
 }
 
