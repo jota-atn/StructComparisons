@@ -48,7 +48,7 @@ def plotar_grafico():
 
 
     for language, cor in zip(languages, cores_linguagens):    
-        caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/insertion_last.txt"
+        caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/insertion_first.txt"
 
         sizes, times = read_arquivo(caminho)
 

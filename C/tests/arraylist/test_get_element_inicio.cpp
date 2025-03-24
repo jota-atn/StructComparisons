@@ -22,7 +22,7 @@ auto test_get_inicio(ArrayList& array_list, int n) {
     return duration.count();
 }
 
-void test_dataset_get_inicio(ArrayList& array_list, int num_elementos) {
+void test_dataset_get_inicio(ArrayList& array_list) {
     vector<int> values = {1000, 10000, 100000, 1000000, 10000000};
     
     string saida = "C:/Users/jamqu/Projects/StructComparisons/C/out/get_inicio.txt";

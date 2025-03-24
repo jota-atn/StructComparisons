@@ -24,7 +24,7 @@ auto test_get_fim(ArrayList& array_list, int n) {
 
 }
 
-void test_dataset_get_fim(ArrayList& array_list, int num_elementos) {
+void test_dataset_get_fim(ArrayList& array_list) {
 
     vector<int> values = {1000, 10000, 100000, 1000000, 10000000};
 
