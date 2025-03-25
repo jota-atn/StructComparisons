@@ -42,13 +42,13 @@ def plotar_grafico():
     languages = ["C", "Java", "Python", "Go", "Kotlin"]
     
     cores_linguagens = ['black', 'orange', 'cyan', 'navy', 'olive']
-    cores_pontos = ['green', 'blue', 'red', 'pink', 'purple']
+    cores_pontos = ['red', 'orange', 'gold', 'yellow', 'green', 'turquoise', 'cyan', 'blue', 'purple', 'magenta']
 
     plot.figure(figsize=(10, 6))
 
 
     for language, cor in zip(languages, cores_linguagens):    
-        caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/insertion_first.txt"
+        caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/insertion_first_elemento_unico.txt"
 
         sizes, times = read_arquivo(caminho)
 
@@ -56,7 +56,7 @@ def plotar_grafico():
             plot.plot(sizes, times, linestyle='-', label=f"{language}", linewidth=1.5, zorder=1, color=cor)
 
             for i in range(len(sizes)):
-                plot.scatter(sizes[i], times[i], color=cores_pontos[i ], s=20, alpha=1.0, zorder=2)
+                plot.scatter(sizes[i], times[i], color=cores_pontos[i], s=20, alpha=1.0, zorder=2)
 
             legend_pontos = []
             for i in range(0, len(sizes), len(sizes)//5):
