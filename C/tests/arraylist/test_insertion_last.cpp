@@ -28,7 +28,7 @@ auto test_add(ArrayList& array_list, int n, bool use_reserve) {
     return duration.count();
 }
 
-void test_dataset_insertion(ArrayList& array_list, int num_elementos) {
+void test_dataset_insertion(ArrayList& array_list, int num_execucoes, int num_elementos) {
 
     vector <int> values = {1000, 10000, 100000, 1000000, 10000000};
     
@@ -41,7 +41,6 @@ void test_dataset_insertion(ArrayList& array_list, int num_elementos) {
 
         long long tempo_total = 0;
         
-        int num_execucoes = 500;
         for (int i = 0; i < num_execucoes; ++i) {
         tempo_total += test_add(array_list, num_elementos, true);
         }

@@ -9,7 +9,7 @@
 using namespace std;
 using namespace chrono;
 
-auto test_insert_first(ArrayList& array_list, int n, bool use_reserve) {
+auto test_insert_first_one_element(ArrayList& array_list, int n, bool use_reserve) {
     
     if (use_reserve) {
         array_list.reserve(n);
@@ -17,9 +17,7 @@ auto test_insert_first(ArrayList& array_list, int n, bool use_reserve) {
     
     auto inicio = high_resolution_clock::now();
     
-    for (int i = 0; i < n; i++) {
-        array_list.insert(0, i);
-    }
+    array_list.insert(0, n);
     
     auto fim = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(fim - inicio);
@@ -27,11 +25,11 @@ auto test_insert_first(ArrayList& array_list, int n, bool use_reserve) {
     return duration.count();
 }
 
-void test_dataset_insertion_first(ArrayList& array_list, int num_execucoes) {
+void test_dataset_insertion_first_one_element(ArrayList& array_list, int num_execucoes) {
 
-    vector <int> values = {1000, 10000, 100000, 1000000, 10000000};
+    vector <int> values = {1000, 10000, 100000, 500000, 1000000, 5000000, 10000000};
     
-    string saida = "C:/Users/jamqu/Projects/StructComparisons/C/out/insertion_first.txt";
+    string saida = "C:/Users/jamqu/Projects/StructComparisons/C/out/insertion_first_elemento_unico.txt";
     
     limpar_arquivo(saida);
 
@@ -40,16 +38,16 @@ void test_dataset_insertion_first(ArrayList& array_list, int num_execucoes) {
 
         long long tempo_total = 0;
         
-        int num_elementos = valor / 100; 
+        int elemento = 50; 
         for (int i = 0; i < num_execucoes; ++i) {
-            tempo_total += test_insert_first(array_list, num_elementos, true);
+            tempo_total += test_insert_first_one_element(array_list, elemento, true);
         }
 
         double tempo_medio = static_cast<double> (tempo_total) / num_execucoes;
 
         gerar_saida(tempo_medio, to_string(valor), saida);
 
-        cout << "Tempo medio de insercao sempre no inicio de " << num_elementos
+        cout << "Tempo medio de insercao sempre no inicio de um unico elemento, " << elemento
             << " para um Data Set de tamanho " << to_string(valor)
             << " apos " << num_execucoes << " execucoes: " << tempo_medio << " milissegundos" << endl;
     }
