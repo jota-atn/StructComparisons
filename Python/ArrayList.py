@@ -34,11 +34,30 @@ class ArrayList:
     def insert_middle(self, valor):
         self.insert(len(self), valor)
 
+    def insert_first(self, valor):
+        self.insert(0, valor)
+
     def remove_first(self):
         removed = self.array[0]
         self.array.pop(0)
         self._size -= 1
         return removed
+
+    def search(self, value):
+        for i in range(len(self)):
+            if self.array[i] == value:
+                return i
+        return -1
+
+    def get_first(self):
+        return self.get(0)
+
+    def get_middle(self):
+        middle = len(self) // 2
+        return self.get(middle)
+
+    def get_last(self):
+        return self.get(len(self)-1)
 
     def get(self, index):
         if self.is_empty() or index < 0 or index >= len(self):
