@@ -10,7 +10,7 @@ class ArrayList:
     def is_empty(self):
         return len(self) == 0
 
-    def add(self, valor):
+    def add_last(self, valor):
         self.array.append(valor)
         self._size += 1
     
@@ -18,9 +18,16 @@ class ArrayList:
         self.array.insert(0, valor)
         self._size += 1
 
-    def remove(self):
+    def remove_first(self):
         removed = self.array[-1]
         self.array.pop()
+        self._size -= 1
+        return removed
+
+    def remove_middle(self):
+        middle = len(self) // 2
+        removed = self.array[middle]
+        self.array.pop(middle)
         self._size -= 1
         return removed
 
@@ -34,12 +41,9 @@ class ArrayList:
     def insert_middle(self, valor):
         self.insert(len(self), valor)
 
-    def insert_first(self, valor):
-        self.insert(0, valor)
-
-    def remove_first(self):
-        removed = self.array[0]
-        self.array.pop(0)
+    def remove_last(self):
+        removed = self.array[-1]
+        self.array.pop()
         self._size -= 1
         return removed
 
