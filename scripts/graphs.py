@@ -44,12 +44,12 @@ def plotar_grafico():
     cores_linguagens = ['black', 'orange', 'cyan', 'navy', 'olive']
     cores_pontos = ['red', 'orangered', 'orange', 'gold', 'yellow', 'greenyellow', 'limegreen', 'green', 'turquoise', 'cyan', 'deepskyblue', 'blue', 'slateblue', 'purple', 'magenta', 'deeppink']
 
-
     plot.figure(figsize=(10, 6))
 
+    legend_pontos = []
 
     for language, cor in zip(languages, cores_linguagens):    
-        caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/insertion_first_elemento_unico.txt"
+        caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/insertion_last_one_element.txt"
 
         sizes, times = read_arquivo(caminho)
 
@@ -65,7 +65,7 @@ def plotar_grafico():
 
 
         plot.title("Comparação de Inserção entre Linguagens")
-        plot.ylabel("Tempo de Execução (microsegundos)")
+        plot.ylabel("Tempo de Execução (milisegundos)")
         plot.xlabel("Tamanho do Dataset")
 
         plot.gca().xaxis.set_major_formatter(FuncFormatter(formatar_eixo_x))

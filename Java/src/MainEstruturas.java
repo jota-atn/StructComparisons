@@ -6,11 +6,11 @@ public class MainEstruturas {
 
     public static void main(String[] args) throws FileNotFoundException {
         String[] arquivos = {
-                "scripts/inputs/dataset_1000.txt",
-                "scripts/inputs/dataset_10000.txt",
-                "scripts/inputs/dataset_100000.txt",
-                "scripts/inputs/dataset_1000000.txt",
-                "scripts/inputs/dataset_10000000.txt"
+                "/scripts/inputs/dataset_1000.txt",
+                "../scripts/inputs/dataset_10000.txt",
+                "/scripts/inputs/dataset_100000.txt",
+                "/scripts/inputs/dataset_1000000.txt",
+                "/scripts/inputs/dataset_10000000.txt"
         };
         int[] cargas = {0, 1000, 10000, 100000, 1000000, 10000000};
         int repeticoes = 30;
