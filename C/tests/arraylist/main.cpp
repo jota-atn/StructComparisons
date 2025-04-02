@@ -11,9 +11,9 @@
 int main() {
     ArrayList array_list;
 
-    test_dataset_insertion(array_list, 50, 10000);
-    test_dataset_insertion_first_one_element(array_list, 500);
-    //test_dataset_insertion_first(array_list, 50);
+    test_dataset_insertion(array_list, 50000, 1);
+    test_dataset_insertion_first_one_element(array_list, 5000);
+    //test_dataset_insertion_first(array_list, 25);
     //test_dataset_insertion_middle(array_list, 50);
     //test_dataset_removal(array_list, 10000);
     //test_dataset_get_inicio(array_list);

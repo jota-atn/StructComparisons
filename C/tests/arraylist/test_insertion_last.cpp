@@ -42,7 +42,7 @@ void test_dataset_insertion(ArrayList& array_list, int num_execucoes, int num_el
         long long tempo_total = 0;
         
         for (int i = 0; i < num_execucoes; ++i) {
-        tempo_total += test_add(array_list, num_elementos, true);
+            tempo_total += test_add(array_list, num_elementos, true);
         }
 
         double tempo_medio = static_cast<double> (tempo_total) / num_execucoes;
