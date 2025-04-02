@@ -42,7 +42,8 @@ def plotar_grafico():
     languages = ["C", "Java", "Python", "Go", "Kotlin"]
     
     cores_linguagens = ['black', 'orange', 'cyan', 'navy', 'olive']
-    cores_pontos = ['red', 'orange', 'gold', 'yellow', 'green', 'turquoise', 'cyan', 'blue', 'purple', 'magenta']
+    cores_pontos = ['red', 'orangered', 'orange', 'gold', 'yellow', 'greenyellow', 'limegreen', 'green', 'turquoise', 'cyan', 'deepskyblue', 'blue', 'slateblue', 'purple', 'magenta', 'deeppink']
+
 
     plot.figure(figsize=(10, 6))
 
@@ -59,7 +60,7 @@ def plotar_grafico():
                 plot.scatter(sizes[i], times[i], color=cores_pontos[i], s=20, alpha=1.0, zorder=2)
 
             legend_pontos = []
-            for i in range(0, len(sizes), len(sizes)//5):
+            for i in range(0, len(sizes)):
                 legend_pontos.append(plot.Line2D([0], [0], marker='o', color='w', markerfacecolor=cores_pontos[i], markersize=8, label=f'Ponto {sizes[i]}'))
 
 
