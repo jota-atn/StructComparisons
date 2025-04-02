@@ -10,6 +10,12 @@ public class Array {
 	public void add(int numero) {
 		this.array.add(numero);
 	}
+
+	public void addFirst(int numero){ this.array.add(0, numero);}
+
+	public void addMeio(int index, int numero){ this.array.add(index, numero);}
+
+	public void addLast(int numero){ this.array.add(numero);}
 	
 	public int getIndex(int index) {
 		return this.array.get(index);
