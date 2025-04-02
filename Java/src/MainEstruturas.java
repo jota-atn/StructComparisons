@@ -4,20 +4,15 @@ import java.util.Scanner;
 
 public class MainEstruturas {
     public static void main(String[] args) throws FileNotFoundException {
-        String[] arquivos = {
-                "../../scripts/inputs/dataset_1000.txt",
-                "../../scripts/inputs/dataset_10000.txt",
-                "../../scripts/inputs/dataset_100000.txt",
-                "../../scripts/inputs/dataset_1000000.txt",
-                "../../scripts/inputs/dataset_10000000.txt"
-        };
-        int[] cargas = {0, 1000, 10000, 100000, 1000000, 10000000};
+
+        int[] tamanhos = {1000, 10000, 100000, 1000000, 10000000};
         int repeticoes = 30;
 
-        for (String caminho : arquivos) {
-            cargas = shiftLeft(cargas);
-            int meio = Math.max(cargas[0] / 2, 1);
-            int n = Math.max((int) (cargas[0] * 0.001), 1);
+        for (int tamanho : tamanhos) {
+            String caminho = "../../scripts/inputs/dataset_" + tamanho + ".txt";
+
+            int meio = tamanho / 2;
+            int n = (int) (tamanho * 0.001);
             
             Array array = new Array();
             double tempoAddAll = calcularMedia(repeticoes, () -> carregarArray(array, caminho));
