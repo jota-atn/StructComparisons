@@ -1,36 +1,29 @@
-data class Node<T>(var value: T, var next: Node<T>? = null)
+import java.util.LinkedList
 
-class LinkedList<T> {
-    private var head: Node<T>? = null
+class Linked {
+    private val linked: LinkedList<Int> = LinkedList()
 
-    //*Criação da função add */
-    fun add(value: T) {
-        val newNode = Node(value)
-        if (head == null) {
-            head = newNode
-        } else {
-            var current = head
-            while (current?.next != null) {
-                current = current.next
-            }
-            current?.next = newNode
-        }
+    fun add(num: Int) {
+        linked.add(num)
     }
 
-    //*Criação da função remove */
-    fun remove() {
-        if (head != null) {
-            head = head?.next
-        }
+    fun addFirst(num: Int) {
+        linked.addFirst(num)
     }
 
-    //*criação da representação da linkedList em String */
-    fun printList() {
-        var current = head
-        while (current != null) {
-            print("${current.value} ")
-            current = current.next
-        }
-        println("null")
+    fun addMeio(ind: Int, num: Int) {
+        linked.add(ind, num)
+    }
+
+    fun addLast(num: Int) {
+        linked.addLast(num)
+    }
+
+    fun getIndex(ind: Int): Int {
+        return linked[ind]
+    }
+
+    fun remove(meio: Int) {
+        linked.removeAt(meio)
     }
 }

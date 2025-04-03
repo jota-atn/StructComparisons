@@ -11,7 +11,7 @@ class Hash {
 
     //*criação da função put */
     fun put(numero: Int) {
-        this.hash[indice] = numero
+        this.hash[ind] = numero
         this.ind++
     }
 
