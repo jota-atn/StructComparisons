@@ -1,6 +1,6 @@
 class ArrayList:
 
-    def __init__(self, size):
+    def __init__(self):
         self.array = []
         self._size = 0
 
