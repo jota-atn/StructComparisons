@@ -31,21 +31,27 @@ class ArrayList:
         self._size -= 1
         return removed
 
+    def remove_last(self):
+        removed = self.array[-1]
+        self.array.pop()
+        self._size -= 1
+        return removed
+
     def insert(self, index, valor):
         if index < 0 or index >= len(self):
             return 'index out of bounds'
 
         self.array.insert(index, valor)
         self._size += 1
+
+    def insert_first(self, valor):
+        self.insert(0, valor)
+
+    def insert_last(self, valor):
+        self.add_last(valor)
     
     def insert_middle(self, valor):
-        self.insert(len(self), valor)
-
-    def remove_last(self):
-        removed = self.array[-1]
-        self.array.pop()
-        self._size -= 1
-        return removed
+        self.insert(len(self) / 2, valor)
 
     def search(self, value):
         for i in range(len(self)):
