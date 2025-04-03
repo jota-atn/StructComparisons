@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <list>
+#include <fstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -18,9 +20,9 @@ class LinkedList {
         void remove_last();
         bool contains(int elemento);
         int index_of(int elemento);
-        int size();
         bool is_empty();
         void clear();
+        void fill_list(string value);
         ~LinkedList();
 };
 

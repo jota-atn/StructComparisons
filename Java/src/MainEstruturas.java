@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class MainEstruturas {
     public static void main(String[] args) throws FileNotFoundException {
 
-        int[] tamanhos = {1000, 10000, 100000, 1000000, 10000000};
+        int[] tamanhos = {1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
         int repeticoes = 30;
 
         for (int tamanho : tamanhos) {
@@ -48,13 +48,6 @@ public class MainEstruturas {
             } catch (Exception ignored) {}
         }
         return execucoesValidas > 0 ? (soma / execucoesValidas) / 1000.0 : 0;
-    }
-
-    private static int[] shiftLeft(int[] arr) {
-        int[] novoArray = new int[arr.length];
-        System.arraycopy(arr, 1, novoArray, 0, arr.length - 1);
-        novoArray[arr.length - 1] = arr[0];
-        return novoArray;
     }
 
     private static void carregarArray(Array array, String caminho) {

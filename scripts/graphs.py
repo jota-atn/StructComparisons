@@ -49,7 +49,7 @@ def plotar_grafico():
     legend_pontos = []
 
     for language, cor in zip(languages, cores_linguagens):    
-        caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/insertion_first_n_elements.txt"
+        caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/linkedlist/insertion_last_one_element.txt"
 
         sizes, times = read_arquivo(caminho)
 
