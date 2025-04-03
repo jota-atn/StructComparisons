@@ -1,28 +1,74 @@
 from ArrayList import ArrayList
-from BST import BST
+#from LinkedList import LinkedList
 from HashMap import HashMap
 
 import time
-import sys
 
-arraylist = ArrayList(20)
-out_path = "out/insertion_last.txt"
+def test_gets_arraylist():
+    outpaths = ["out/arraylist/get_first.txt", "out/arraylist/get_last.txt", "out/arraylist/get_middle.txt"]
+    sizes = [1000, 10000, 100000, 1000000, 10000000]
+    get_first_al(outpaths[0], sizes)
+    #get_last_al(outpaths[1], sizes)
+    #get_middle_al(outpaths[2], sizes)
 
-sizes = [1000, 10000, 100000, 1000000, 10000000]
+def get_first_al(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        arraylist = ArrayList(20)
+        with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
+            lines = archive.readlines()
 
-for size in sizes:
-    with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
-        linhas = archive.readlines()
-    
-    total_time = 0
+        for line in lines:
+            arraylist.add_last(line)
+        
+        total_time = 0
 
-    for linha in linhas:
-        inicio = time.perf_counter()    
-        arraylist.add(linha)
-        fim = time.perf_counter()
-        total_time += (fim - inicio) * 1000
-            
-    total_time = (total_time) / len(linhas)
-    
-    with open(out_path, "a") as archive:   
-        archive.write(f"{size};{total_time} \n")
+        for i in range(30):
+            start = time.time()
+            arraylist.get_first()
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time = (total_time / 30)
+
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as outpath:
+        outpath.writelines(outputs)
+
+def get_last_al(outpath, sizes):
+    outputs = []
+
+def get_middle_al(outpath, sizes):
+    outputs = []
+
+def test_insertion_arraylist():
+    outpaths = ["out/arraylist/insertion_all.txt"]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    insertion_all_al(outpaths[0], sizes)
+
+
+def insertion_all_al(out_path, sizes):
+    outputs = []
+    for size in sizes:
+        arraylist = ArrayList(20)
+        with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
+            lines = archive.readlines()
+
+        total_time = 0
+
+        for line in lines:
+            start = time.time()
+            arraylist.add_last(line)
+            end = time.time()
+            total_time += (end - start) * 1000
+
+        total_time = total_time / size
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(out_path, "w") as outpath:
+        outpath.writelines(outputs)
+
+
+#test_insertion_arraylist()
+test_gets_arraylist()
