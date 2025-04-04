@@ -4,6 +4,16 @@ from HashMap import HashMap
 
 import time
 
+def fill_array(size):
+    arraylist = ArrayList()
+    with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
+        lines = archive.readlines()
+
+    for line in lines:
+        arraylist.add_last(line)
+
+    return arraylist
+
 def test_gets_arraylist():
     outpaths = ["out/arraylist/get_first.txt", "out/arraylist/get_last.txt", "out/arraylist/get_middle.txt"]
     sizes = [1000, 10000, 100000, 1000000, 10000000]
@@ -89,12 +99,12 @@ def get_middle_al(outpath, sizes):
 
 
 def test_insertion_arraylist():
-    outpaths = ["out/arraylist/insertion_all.txt"]
+    outpaths = ["out/arraylist/insertion_all.txt", "out/arraylist/insertion_onefirst.txt", "out/arraylist/insertion_onelast.txt", "out/arraylist/insertion_onemiddle"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     insertion_all_al(outpaths[0], sizes)
     insertion_onefirst_al(outpaths[1], sizes)
     insertion_onelast_al(outpaths[2], sizes)
-    insertion_one_middle_al(outpaths[3], sizes)
+    insertion_onemiddle_al(outpaths[3], sizes)
     insertion_nfirst_al(outpaths[4], sizes)
     insertion_nlast_al(outpaths[5], sizes)
     insertion_nmiddle_al(outpaths[6], sizes)
@@ -121,6 +131,68 @@ def insertion_all_al(out_path, sizes):
     with open(out_path, "w") as outpath:
         outpath.writelines(outputs)
 
+def insertion_onefirst_al(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        arraylist = fill_array(size)
+        
+        total_time = 0
+        for i in range(30):
+            start = time.time()
+            arraylist.add_first(1)
+            end = time.time()
+            total_time += (end - start) * 1000
 
-test_insertion_arraylist()
+        total_time = (total_time / 30)
+        outputs.append(f"{size};{total_time} \n")
+    
+    with open(outpath, "w") as outpath:
+        outpath.writelines(outputs)
+
+def insertion_onelast_al(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        arraylist = fill_array(size)
+
+        total_time = 0
+        for i in range(30):
+            start = time.time()
+            arraylist.add_last(1)
+            end = time.time()
+            total_time += (end - start) * 1000
+
+        total_time = (total_time / 30)
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as outpath:
+        outpath.writelines(outputs)
+
+def insertion_onemiddle_al(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        arraylist = fill_array(size)
+
+        total_time = 0
+        for i in range(30):
+            start = time.time()
+            arraylist.add_middle(1)
+            end = time.time()
+            total_time += (end - start) * 1000
+
+        total_time = (total_time / 30)
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as outpath:
+        outpath.writelines(outputs)
+
+def insertion_nfirst_al(outpath, sizes):
+    return
+
+def insertion_nlast_al(outpath, sizes):
+    return
+
+def insertion_nmiddle_al(outpath, sizes):
+    return
+
 test_gets_arraylist()
+test_insertion_arraylist()

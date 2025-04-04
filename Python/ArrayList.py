@@ -18,6 +18,11 @@ class ArrayList:
         self.array.insert(0, valor)
         self._size += 1
 
+    def add_middle(self, valor):
+        middle = len(self) // 2
+        self.array.insert(middle, valor)
+        self._size += 1
+
     def remove_first(self):
         removed = self.array[-1]
         self.array.pop()
@@ -36,22 +41,6 @@ class ArrayList:
         self.array.pop()
         self._size -= 1
         return removed
-
-    def insert(self, index, valor):
-        if index < 0 or index >= len(self):
-            return 'index out of bounds'
-
-        self.array.insert(index, valor)
-        self._size += 1
-
-    def insert_first(self, valor):
-        self.insert(0, valor)
-
-    def insert_last(self, valor):
-        self.add_last(valor)
-    
-    def insert_middle(self, valor):
-        self.insert(len(self) / 2, valor)
 
     def search(self, value):
         for i in range(len(self)):
