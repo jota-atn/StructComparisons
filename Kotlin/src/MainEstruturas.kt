@@ -1,5 +1,6 @@
 import java.io.File
 import kotlin.system.measureNanoTime
+import estruturas.ArrayList
 
 fun main() {
     val caminhoArquivo = "c:/Users/Raiiz/OneDrive/Documentos/StructComparisons-1/scripts/inputs/dataset_10000000.txt"
@@ -13,10 +14,10 @@ fun main() {
         val tempos = mutableListOf<Long>()
 
         repeat(30) {
-            val list = ArrayList<Int>(valores.size)
+            val list = ArrayList(valores.size)
 
             val tempo = measureNanoTime {
-                list.addFirst(valorParaAdicionar) 
+                list.addLast(valorParaAdicionar)
             }
 
             tempos.add(tempo)
