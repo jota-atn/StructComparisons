@@ -1,24 +1,35 @@
-class ArrayList {
-    //*atributos */
-    private val array = mutableListOf<Int>()
+class ArrayList(tamanho: Int) {
+    private val array = mutableListOf(tamanho)
 
-    //*criação da função add */
-    fun add(num: Int) {
-        array.add(num)
+    fun add(numero: Int) {
+        array.add(numero)
     }
 
-    //*Criação da função getIndex */
-    fun getIndex(ind: Int): Int {
-        return array[ind]
+    fun addFirst(numero: Int) {
+        array.add(0, numero)
     }
 
-    //*Criação da função remove */
-    fun remove(indR: Int) {
-        array.removeAt(indR)
+    fun addMeio(index: Int, numero: Int) {
+        array.add(index, numero)
     }
 
-    //*sobrescrição do toString */
+    fun addLast(numero: Int) {
+        array.add(numero)
+    }
+
+    fun getIndex(index: Int): Int {
+        return array[index]
+    }
+
+    fun remove(index: Int) {
+        array.removeAt(index)
+    }
+
     override fun toString(): String {
         return array.joinToString(" ")
+    }
+
+    fun size(){
+        array.size
     }
 }
