@@ -3,142 +3,237 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class MainEstruturas {
-    private static final int quantAquecimento = 10;
     private static final int quantOperacoes = 30;
+    private static final String[] arquivos = {
+            "scripts/inputs/dataset_1000.txt",
+            "scripts/inputs/dataset_10000.txt",
+            "scripts/inputs/dataset_100000.txt",
+            "scripts/inputs/dataset_250000.txt",
+            "scripts/inputs/dataset_500000.txt",
+            "scripts/inputs/dataset_600000.txt",
+            "scripts/inputs/dataset_750000.txt",
+            "scripts/inputs/dataset_1000000.txt",
+            "scripts/inputs/dataset_1700000.txt",
+            "scripts/inputs/dataset_2500000.txt",
+            "scripts/inputs/dataset_3700000.txt",
+            "scripts/inputs/dataset_5000000.txt",
+            "scripts/inputs/dataset_6000000.txt",
+            "scripts/inputs/dataset_7500000.txt",
+            "scripts/inputs/dataset_9000000.txt",
+            "scripts/inputs/dataset_10000000.txt"
+    };
 
-    public static void main(String[] args) {
-        String[] arquivos = {
-                "scripts/inputs/dataset_1000.txt",
-                "scripts/inputs/dataset_10000.txt",
-                "scripts/inputs/dataset_100000.txt",
-                "scripts/inputs/dataset_250000.txt",
-                "scripts/inputs/dataset_500000.txt",
-                "scripts/inputs/dataset_600000.txt",
-                "scripts/inputs/dataset_750000.txt",
-                "scripts/inputs/dataset_1000000.txt",
-                "scripts/inputs/dataset_1700000.txt",
-                "scripts/inputs/dataset_2500000.txt",
-                "scripts/inputs/dataset_3700000.txt",
-                "scripts/inputs/dataset_5000000.txt",
-                "scripts/inputs/dataset_6000000.txt",
-                "scripts/inputs/dataset_7500000.txt",
-                "scripts/inputs/dataset_9000000.txt",
-                "scripts/inputs/dataset_10000000.txt"
-        };
-
+    public static void main(String[] args) throws FileNotFoundException {
         for (String caminho : arquivos) {
-            try {
-                aquecimento(caminho, new ArrayList<>());
-                aquecimento(caminho, new LinkedList<>());
+            Array arrayList = new Array();
+            Linked linkedList = new Linked();
 
-                System.out.println("\n=== Arquivo: " + caminho + " ===");
-                executeTests(caminho, new ArrayList<>(), "ArrayList");
-                executeTests(caminho, new LinkedList<>(), "LinkedList");
-            } catch (FileNotFoundException e) {
-                System.err.println("Erro: Arquivo não encontrado - " + caminho);
-            }
+            ArrayList<Integer> dados = carregarDados(caminho);
+
+            System.out.println("\n======= Testes com arquivo: " + caminho + " =======");
+
+            System.out.println("\n-- ArrayList --");
+            executarTestesEstrutura(arrayList, new ArrayList<>(dados));
+
+            System.out.println("\n-- LinkedList --");
+            executarTestesEstrutura(linkedList, new ArrayList<>(dados));
         }
     }
 
-    private static void aquecimento(String caminho, List<Integer> list) throws FileNotFoundException {
-        for (int i = 0; i < quantAquecimento; i++) {
-            list.clear();
-            carregaDados(list, caminho);
-            list.add(0, 1);
-            list.add(Math.min(list.size(), list.size() / 2), 2);
-            list.add(3);
-        }
+    private static void executarTestesEstrutura(Object estrutura, ArrayList<Integer> dadosOriginais) {
+        int n = Math.max(1, dadosOriginais.size() / 1000);
+        System.out.printf("Adicionar todos os elementos          : %.3f μs\n", medirTempo(() -> {
+            limpar(estrutura);
+            adicionarTodos(estrutura, new ArrayList<>(dadosOriginais));
+        }));
+
+        // ---- Adição ----
+        System.out.printf("Adicionar 1 elemento no início        : %.3f μs\n", medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            adicionarInicio(estrutura, 1);
+        }));
+        System.out.printf("Adicionar 1 elemento no meio          : %.3f μs\n", medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            adicionarMeio(estrutura, 2);
+        }));
+        System.out.printf("Adicionar 1 elemento no fim           : %.3f μs\n", medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            adicionarFim(estrutura, 3);
+        }));
+
+        System.out.printf("Adicionar %d elementos no início      : %.3f μs\n", n, medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            adicionarInicioVarios(estrutura, 1, n);
+        }));
+        System.out.printf("Adicionar %d elementos no meio        : %.3f μs\n", n, medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            adicionarMeioVarios(estrutura, 2, n);
+        }));
+        System.out.printf("Adicionar %d elementos no fim         : %.3f μs\n", n, medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            adicionarFimVarios(estrutura, 3, n);
+        }));
+
+        // ---- Acesso ----
+        System.out.printf("Acessar elemento no início            : %.3f μs\n", medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            acessarInicio(estrutura);
+        }));
+        System.out.printf("Acessar elemento no meio              : %.3f μs\n", medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            acessarMeio(estrutura);
+        }));
+        System.out.printf("Acessar elemento no fim               : %.3f μs\n", medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            acessarFim(estrutura);
+        }));
+
+        System.out.printf("Acessar %d elementos no início        : %.3f μs\n", n, medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            acessarInicioVarios(estrutura, n);
+        }));
+        System.out.printf("Acessar %d elementos no meio          : %.3f μs\n", n, medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            acessarMeioVarios(estrutura, n);
+        }));
+        System.out.printf("Acessar %d elementos no fim           : %.3f μs\n", n, medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            acessarFimVarios(estrutura, n);
+        }));
+
+        // ---- Remoção ----
+        System.out.printf("Remover elemento no início            : %.3f μs\n", medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            removerInicio(estrutura);
+        }));
+        System.out.printf("Remover elemento no meio              : %.3f μs\n", medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            removerMeio(estrutura);
+        }));
+        System.out.printf("Remover elemento no fim               : %.3f μs\n", medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            removerFim(estrutura);
+        }));
+
+        System.out.printf("Remover %d elementos no início        : %.3f μs\n", n, medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            removerInicioVarios(estrutura, n);
+        }));
+        System.out.printf("Remover %d elementos no meio          : %.3f μs\n", n, medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            removerMeioVarios(estrutura, n);
+        }));
+        System.out.printf("Remover %d elementos no fim           : %.3f μs\n", n, medirTempo(() -> {
+            carregar(estrutura, new ArrayList<>(dadosOriginais));
+            removerFimVarios(estrutura, n);
+        }));
     }
 
-    private static void executeTests(String caminho, List<Integer> list, String tipoLista) throws FileNotFoundException {
-        carregaDados(list, caminho);
-        int tamanho = list.size();
-        int meio = tamanho / 2;
-        int n = Math.max((int) (tamanho * 0.001), 1);
-
-        System.out.println("\nTestando com " + tipoLista);
-        printResult("Adicionar todos os elementos", AddAll(caminho, list));
-        printResult("Adicionar 1 elemento no início", AddFirst(caminho, list));
-        printResult("Adicionar 1 elemento no meio", AddMiddle(caminho, list, meio));
-        printResult("Adicionar 1 elemento no final", AddLast(caminho, list));
-        printResult("Adicionar " + n + " elementos no início", AddNFirst(caminho, list, n));
-        printResult("Adicionar " + n + " elementos no meio", AddNMiddle(caminho, list, n, meio));
-        printResult("Adicionar " + n + " elementos no final", AddNLast(caminho, list, n));
-    }
-
-    private static void carregaDados(List<Integer> list, String caminho) throws FileNotFoundException {
-        list.clear();
+    private static ArrayList<Integer> carregarDados(String caminho) throws FileNotFoundException {
+        ArrayList<Integer> dados = new ArrayList<>();
         try (Scanner sc = new Scanner(new File(caminho))) {
             while (sc.hasNextInt()) {
-                list.add(sc.nextInt());
+                dados.add(sc.nextInt());
             }
         }
+        return dados;
     }
 
-    private static double AddAll(String caminho, List<Integer> list) throws FileNotFoundException {
-        long totalTime = 0;
+    private static double medirTempo(Runnable operacao) {
+        long total = 0;
         for (int i = 0; i < quantOperacoes; i++) {
-            list.clear();
-            long start = System.nanoTime();
-            carregaDados(list, caminho);
-            long end = System.nanoTime();
-            totalTime += (end - start);
+            long inicio = System.nanoTime();
+            operacao.run();
+            long fim = System.nanoTime();
+            total += (fim - inicio);
         }
-        return (totalTime / quantOperacoes) / 1000.0;
+        return total / (quantOperacoes * 1000.0);
     }
 
-    private static double AddFirst(String caminho, List<Integer> list) throws FileNotFoundException {
-        return AddPosition(caminho, list, 0, 1);
+    private static void limpar(Object estrutura) {
+        if (estrutura instanceof Array a) a.clear();
+        else if (estrutura instanceof Linked l) l.clear();
     }
 
-    private static double AddMiddle(String caminho, List<Integer> list, int middle) throws FileNotFoundException {
-        return AddPosition(caminho, list, Math.min(middle, list.size()), 2);
+    private static void adicionarTodos(Object estrutura, ArrayList<Integer> dados) {
+        if (estrutura instanceof Array a) a.addAll(dados);
+        else if (estrutura instanceof Linked l) l.addAll(new LinkedList<>(dados));
     }
 
-    private static double AddLast(String caminho, List<Integer> list) throws FileNotFoundException {
-        return AddPosition(caminho, list, list.size(), 3);
+    private static void carregar(Object estrutura, ArrayList<Integer> dados) {
+        limpar(estrutura);
+        adicionarTodos(estrutura, dados);
     }
 
-    private static double AddPosition(String caminho, List<Integer> list, int index, int value) throws FileNotFoundException {
-        long totalTime = 0;
-        for (int i = 0; i < quantOperacoes; i++) {
-            carregaDados(list, caminho);
-            long start = System.nanoTime();
-            list.add(Math.min(index, list.size()), value);
-            long end = System.nanoTime();
-            totalTime += (end - start);
-        }
-        return (totalTime / quantOperacoes) / 1000.0;
+    private static void adicionarInicio(Object estrutura, int valor) {
+        if (estrutura instanceof Array a) a.addFirst(valor);
+        else if (estrutura instanceof Linked l) l.addFirst(valor);
+    }
+    private static void adicionarInicioVarios(Object estrutura, int valor, int n) {
+        for (int i = 0; i < n; i++) adicionarInicio(estrutura, valor);
     }
 
-    private static double AddNFirst(String caminho, List<Integer> list, int n) throws FileNotFoundException {
-        return AddNPosition(caminho, list, 0, n);
+    private static void adicionarMeio(Object estrutura, int valor) {
+        if (estrutura instanceof Array a) a.addMiddle(valor);
+        else if (estrutura instanceof Linked l) l.addMiddle(valor);
+    }
+    private static void adicionarMeioVarios(Object estrutura, int valor, int n) {
+        for (int i = 0; i < n; i++) adicionarMeio(estrutura, valor);
     }
 
-    private static double AddNMiddle(String caminho, List<Integer> list, int n, int middle) throws FileNotFoundException {
-        return AddNPosition(caminho, list, Math.min(middle, list.size()), n);
+    private static void adicionarFim(Object estrutura, int valor) {
+        if (estrutura instanceof Array a) a.addLast(valor);
+        else if (estrutura instanceof Linked l) l.addLast(valor);
+    }
+    private static void adicionarFimVarios(Object estrutura, int valor, int n) {
+        for (int i = 0; i < n; i++) adicionarFim(estrutura, valor);
     }
 
-    private static double AddNLast(String caminho, List<Integer> list, int n) throws FileNotFoundException {
-        return AddNPosition(caminho, list, list.size(), n);
+    private static void acessarInicio(Object estrutura) {
+        if (estrutura instanceof Array a) a.getFirst();
+        else if (estrutura instanceof Linked l) l.getFirst();
+    }
+    private static void acessarInicioVarios(Object estrutura, int n) {
+        for (int i = 0; i < n; i++) acessarInicio(estrutura);
     }
 
-    private static double AddNPosition(String caminho, List<Integer> list, int index, int n) throws FileNotFoundException {
-        long totalTime = 0;
-        for (int i = 0; i < quantOperacoes; i++) {
-            carregaDados(list, caminho);
-            List<Integer> tempData = new ArrayList<>(list);
-            long start = System.nanoTime();
-            for (int j = 0; j < n && j < tempData.size(); j++) {
-                list.add(Math.min(index, list.size()), tempData.get(j));
-            }
-            long end = System.nanoTime();
-            totalTime += (end - start);
-        }
-        return (totalTime / quantOperacoes) / 1000.0;
+    private static void acessarMeio(Object estrutura) {
+        if (estrutura instanceof Array a) a.getMiddle();
+        else if (estrutura instanceof Linked l) l.getMiddle();
+    }
+    private static void acessarMeioVarios(Object estrutura, int n) {
+        for (int i = 0; i < n; i++) acessarMeio(estrutura);
     }
 
-    private static void printResult(String operation, double time) {
-        System.out.printf("%-40s: %8.3f μs%n", operation, time);
+    private static void acessarFim(Object estrutura) {
+        if (estrutura instanceof Array a) a.getLast();
+        else if (estrutura instanceof Linked l) l.getLast();
+    }
+    private static void acessarFimVarios(Object estrutura, int n) {
+        for (int i = 0; i < n; i++) acessarFim(estrutura);
+    }
+
+    private static void removerInicio(Object estrutura) {
+        if (estrutura instanceof Array a) a.removeFirst();
+        else if (estrutura instanceof Linked l) l.removeFirst();
+    }
+    private static void removerInicioVarios(Object estrutura, int n) {
+        for (int i = 0; i < n; i++) removerInicio(estrutura);
+    }
+
+    private static void removerMeio(Object estrutura) {
+        if (estrutura instanceof Array a) a.removeMiddle();
+        else if (estrutura instanceof Linked l) l.removeMiddle();
+    }
+    private static void removerMeioVarios(Object estrutura, int n) {
+        for (int i = 0; i < n; i++) removerMeio(estrutura);
+    }
+
+    private static void removerFim(Object estrutura) {
+        if (estrutura instanceof Array a) a.removeLast();
+        else if (estrutura instanceof Linked l) l.removeLast();
+    }
+    private static void removerFimVarios(Object estrutura, int n) {
+        for (int i = 0; i < n; i++) removerFim(estrutura);
     }
 }
