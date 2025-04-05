@@ -9,11 +9,7 @@
 using namespace std;
 using namespace chrono;
 
-auto test_add(ArrayList& array_list, int n, bool use_reserve) {
-    
-    if (use_reserve) {
-        array_list.reserve(n);
-    }
+auto test_add(ArrayList& array_list, int n) {
 
     auto inicio = high_resolution_clock::now();
     
@@ -43,7 +39,7 @@ void test_dataset_insertion_last_n_elements(ArrayList& array_list, int num_execu
 
         int num_elementos = valor * 0.001;
         for (int i = 0; i < num_execucoes; ++i) {
-            tempo_total += test_add(array_list, num_elementos, true);
+            tempo_total += test_add(array_list, num_elementos);
         }
 
         double tempo_medio = static_cast<double> (tempo_total) / num_execucoes;

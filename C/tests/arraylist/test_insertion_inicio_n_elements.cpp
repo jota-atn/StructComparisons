@@ -9,11 +9,7 @@
 using namespace std;
 using namespace chrono;
 
-auto test_insert_first(ArrayList& array_list, int n, bool use_reserve) {
-    
-    if (use_reserve) {
-        array_list.reserve(n);
-    }
+auto test_insert_first(ArrayList& array_list, int n) {
     
     auto inicio = high_resolution_clock::now();
     
@@ -22,7 +18,7 @@ auto test_insert_first(ArrayList& array_list, int n, bool use_reserve) {
     }
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(fim - inicio);
+    auto duration = duration_cast<microseconds>(fim - inicio);
     
     return duration.count();
 }
@@ -42,7 +38,7 @@ void test_dataset_insertion_first_n_elements(ArrayList& array_list, int num_exec
         
         int num_elementos = valor * 0.001; 
         for (int i = 0; i < num_execucoes; i++) {
-            tempo_total += test_insert_first(array_list, num_elementos, true);
+            tempo_total += test_insert_first(array_list, num_elementos);
         }
 
         double tempo_medio = static_cast<double> (tempo_total) / num_execucoes;
@@ -51,7 +47,7 @@ void test_dataset_insertion_first_n_elements(ArrayList& array_list, int num_exec
 
         cout << "Tempo medio de insercao sempre no inicio de " << num_elementos
             << " para um Data Set de tamanho " << to_string(valor)
-            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " milissegundos" << endl;
+            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
     }
 }
 
