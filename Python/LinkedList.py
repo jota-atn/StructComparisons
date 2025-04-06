@@ -17,7 +17,7 @@ class LinkedList:
     def is_empty(self):
         return self.first is None
 
-    def add(self, value):
+    def add_last(self, value):
         node = NodeLinkedList(value)
 
         if self.is_empty():
@@ -42,6 +42,10 @@ class LinkedList:
 
        self._size += 1
 
+    def add_middle(self, value):
+        middle = len(self) // 2
+        self.insert(middle, value)
+
     def insert(self, index, value):
         node = NodeLinkedList(value)
 
@@ -65,10 +69,7 @@ class LinkedList:
                 aux.prev = node
                 self._size += 1
 
-    def insert_middle(self, value):
-        self.insert(len(self) // 2, value)
-
-    def remove(self):
+    def remove_last(self):
         removed = self.last
 
         if len(self) == 1:
@@ -80,6 +81,34 @@ class LinkedList:
         self._size -= 1
         return removed.value
 
+    def remove_first(self):
+        if len(self) == 0:
+            return "Empty LinkedList"
+
+        if(len(self) == 1:
+           self.first = None
+           self.last = None
+        else:
+           self.first.next.prev = None
+           self.first = self.first.next
+
+        self._size -= 1
+
+    def remove_last(self):
+           if(len(self) == 0:
+              return "Empty LinkedList"
+
+            if len(self) == 1:
+              self.remove_first()
+              return
+            
+            self.last.prev.next = None
+            self.last = self.last.prev
+            self._size -= 1
+
+    def remove_middle(self):
+        
+            
     def get(self, index):
         if self.is_empty() or index < 0 or index >= len(self):
             return "Index out of bounds"
@@ -91,3 +120,13 @@ class LinkedList:
             cont += 1
 
         return aux.value
+
+    def get_first(self):
+           return self.get(0)
+
+    def get_last(self):
+           return self.get(len(self)-1)
+
+    def get_middle(self):
+           middle = len(self) // 2
+           return self.get(middle)
