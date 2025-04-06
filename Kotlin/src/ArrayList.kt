@@ -1,3 +1,4 @@
+package estruturas
 class ArrayList(tamanho: Int) {
     private val array = mutableListOf(tamanho)
 
@@ -14,7 +15,7 @@ class ArrayList(tamanho: Int) {
     }
 
     fun addLast(numero: Int) {
-        array.add(numero)
+        array.add(array.size, numero)
     }
 
     fun getIndex(index: Int): Int {

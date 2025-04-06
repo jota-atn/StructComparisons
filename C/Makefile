@@ -1,17 +1,21 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -g
-SRC = src/linked_list.c src/array_list.c src/hash_map.c src/bst_tree.c src/main.c
-OBJ = $(SRC:.c=.o)
-EXEC = main
+CXX = g++
+CXXFLAGS = -m64 -Iinclude/cpp
+SRC_DIR = src/cpp
+TESTS_DIR = tests
+BIN_DIR = bin
 
-all: $(EXEC)
+$(shell mkdir -p $(BIN_DIR))
 
-$(EXEC): $(OBJ)
-	$(CC) $(CFLAGS) -o $(EXEC) $(OBJ)
+all: arraylist linkedlist hashmap
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+arraylist: $(TESTS_DIR)/arraylist/main.cpp $(TESTS_DIR)/arraylist/output.cpp $(SRC_DIR)/array_list.cpp
+	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/arraylist_exec $^
+
+linkedlist: $(TESTS_DIR)/linkedlist/main.cpp $(TESTS_DIR)/linkedlist/output.cpp $(SRC_DIR)/linked_list.cpp
+	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/linkedlist_exec $^
+
+hashmap: $(TESTS_DIR)/hashmap/main.cpp $(TESTS_DIR)/hashmap/output.cpp $(SRC_DIR)/hash_map.cpp
+	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/hashmap_exec $^
 
 clean:
-	rm -f $(OBJ) $(EXEC)
-
+	rm -rf $(BIN_DIR)/*

@@ -25,7 +25,7 @@ auto test_get_inicio(ArrayList& array_list, int n) {
 void test_dataset_get_inicio(ArrayList& array_list) {
     vector<int> values = {1000, 10000, 100000, 1000000, 10000000};
     
-    string saida = "C:/Users/jamqu/Projects/StructComparisons/C/out/get_inicio.txt";
+    string saida = "../out/arraylist/get_inicio.txt";
     
     limpar_arquivo(saida);
 
