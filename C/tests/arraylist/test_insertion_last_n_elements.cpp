@@ -22,7 +22,7 @@ auto test_add(ArrayList& array_list, int n, bool use_reserve) {
     }
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(fim - inicio);
+    auto duration = duration_cast<microseconds>(fim - inicio);
     
     return duration.count();
 }

@@ -40,17 +40,21 @@ void ArrayList::clear() {
 }
 
 void ArrayList::fill_array(string value) {
-
     array_list.clear();
 
-    const string filename = "C:/Users/jamqu/Projects/StructComparisons/scripts/inputs/dataset_" + value + ".txt"; 
+    const string filename = "/StructComparisons/scripts/inputs/dataset_" + value + ".txt"; 
     
     ifstream file(filename);
     int valor;
-        while (file >> valor) {
+
+    size_t expected_size = stoi(value); 
+
+    array_list.reserve(expected_size); 
+
+    while (file >> valor) {
         ArrayList::add(valor);
     }
-    
+
     file.close();
 
 }

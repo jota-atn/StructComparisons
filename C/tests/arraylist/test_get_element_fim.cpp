@@ -13,9 +13,9 @@ using namespace chrono;
 auto test_get_fim(ArrayList& array_list, int n) {
 
     auto inicio = high_resolution_clock::now();
-    
+
     int fim_val = array_list.get(n - 1);
-    
+
     auto fim = high_resolution_clock::now();
     
     auto duration = duration_cast<nanoseconds>(fim - inicio);

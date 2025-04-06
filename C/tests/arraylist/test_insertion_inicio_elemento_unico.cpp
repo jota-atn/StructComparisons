@@ -14,7 +14,7 @@ auto test_insert_first_one_element(ArrayList& array_list, int n, bool use_reserv
     if (use_reserve) {
         array_list.reserve(n);
     }
-    
+
     auto inicio = high_resolution_clock::now();
     
     array_list.insert(0, n);
@@ -40,7 +40,7 @@ void test_dataset_insertion_first_one_element(ArrayList& array_list, int num_exe
         
         int elemento = 50; 
         for (int i = 0; i < num_execucoes; ++i) {
-            tempo_total += test_insert_first_one_element(array_list, elemento, true);
+            tempo_total += test_insert_first_one_element(array_list, elemento, false);
         }
 
         double tempo_medio = static_cast<double> (tempo_total) / num_execucoes;

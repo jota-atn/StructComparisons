@@ -24,7 +24,7 @@ auto test_add_one_element(ArrayList& array_list) {
     
     auto fim = steady_clock::now();
     
-    auto duration = duration_cast<nanoseconds>(fim - inicio);
+    auto duration = duration_cast<microseconds>(fim - inicio);
     
     return duration.count();
 }

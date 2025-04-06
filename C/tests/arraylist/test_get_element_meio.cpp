@@ -12,9 +12,9 @@ using namespace chrono;
 auto test_get_meio(ArrayList& array_list, int n) {
 
     auto inicio = high_resolution_clock::now();
-    
+        
     int inicio_val = array_list.get(n/2);
-    
+
     auto fim = high_resolution_clock::now();
     
     auto duration = duration_cast<nanoseconds>(fim - inicio);
