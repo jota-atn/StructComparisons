@@ -27,7 +27,7 @@ void test_dataset_insertion_last_n_elements(ArrayList& array_list, int num_execu
 
     vector <int> values = {1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
     
-    string saida = "../../out/linkedlist/insertion_last_n_elements.txt";
+    string saida = "/StructComparisons/C/out/arraylist/_insertion_last_n_elements.txt";
     
     limpar_arquivo(saida);
 
