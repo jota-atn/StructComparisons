@@ -24,8 +24,8 @@ class ArrayList:
         self._size += 1
 
     def remove_first(self):
-        removed = self.array[-1]
-        self.array.pop()
+        removed = self.array[0]
+        self.array.pop(0)
         self._size -= 1
         return removed
 
