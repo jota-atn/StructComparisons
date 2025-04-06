@@ -27,7 +27,7 @@ void test_dataset_insertion_middle(ArrayList& array_list, int num_execucoes) {
 
     vector <int> values = {1000, 10000, 100000, 1000000, 10000000};
     
-    string saida = "/StructComparisons/C/out/arraylist/insertion_middle.txt";
+    string saida = "../out/arraylist/insertion_middle.txt";
     
     limpar_arquivo(saida);
 

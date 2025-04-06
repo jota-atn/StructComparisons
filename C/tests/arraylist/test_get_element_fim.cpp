@@ -28,7 +28,7 @@ void test_dataset_get_fim(ArrayList& array_list) {
 
     vector<int> values = {1000, 10000, 100000, 1000000, 10000000};
 
-    string saida = "/StructComparisons/C/out/arraylist/get_fim.txt";
+    string saida = "../out/arraylist/get_fim.txt";
 
     limpar_arquivo(saida);
 

@@ -25,7 +25,7 @@ auto test_get_meio(ArrayList& array_list, int n) {
 void test_dataset_get_meio(ArrayList& array_list) {
     vector<int> values = {1000, 10000, 100000, 1000000, 10000000};
     
-    string saida = "/StructComparisons/C/out/arraylist/get_meio.txt";
+    string saida = "../out/arraylist/get_meio.txt";
     
     limpar_arquivo(saida);
 

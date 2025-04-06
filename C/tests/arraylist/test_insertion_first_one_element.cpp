@@ -25,7 +25,7 @@ void test_dataset_insertion_first_one_element(ArrayList& array_list, int num_exe
 
     vector <int> values = {1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
     
-    string saida = "/StructComparisons/C/out/arraylist/insertion_first_elemento_unico.txt";
+    string saida = "../out/arraylist/insertion_first_elemento_unico.txt";
     
     limpar_arquivo(saida);
 
