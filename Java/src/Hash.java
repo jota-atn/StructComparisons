@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Map;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -24,6 +23,10 @@ public class Hash {
 	
 	public int getKey(int key) {
 		return this.hash.get(key);
+	}
+
+	public boolean contains(int numero){
+		return this.hash.containsValue(numero);
 	}
 	
 	public void remove(int key) {
