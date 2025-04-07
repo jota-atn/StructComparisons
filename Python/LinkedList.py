@@ -53,10 +53,10 @@ class LinkedList:
             self.first = node
             self.last = node
             self._size += 1
-        else if index == 0:
+        elif index == 0:
             self.add_first(value)
             return
-        else if index > 0:
+        elif index > 0:
             aux = self.first
             for i in range(index):
                 aux = aux.next
@@ -69,45 +69,49 @@ class LinkedList:
                 aux.prev = node
                 self._size += 1
 
-    def remove_last(self):
-        removed = self.last
-
+    def remove(self, index):
         if len(self) == 1:
             self.first = None
             self.last = None
-        else:
-            self.last.prev.next = None
-            self.last = self.last.prev
-        self._size -= 1
-        return removed.value
+            self._size -= 1
+            return
 
-    def remove_first(self):
-        if len(self) == 0:
-            return "Empty LinkedList"
+        if index == 0:
+            self.first.next.prev = None
+            self.first = self.first.next
+            self._size -= 1
+            return
 
-        if(len(self) == 1:
-           self.first = None
-           self.last = None
-        else:
-           self.first.next.prev = None
-           self.first = self.first.next
-
-        self._size -= 1
-
-    def remove_last(self):
-           if(len(self) == 0:
-              return "Empty LinkedList"
-
-            if len(self) == 1:
-              self.remove_first()
-              return
-            
+        if index == len(self) -1:
             self.last.prev.next = None
             self.last = self.last.prev
             self._size -= 1
+            return
+
+        else:
+            aux = self.first
+            for i in range(index):
+                aux = aux.next
+
+            aux.next.prev = aux.prev
+            aux.prev.next = aux.next
+            self._size -= 1
+
+    def remove_last(self):
+        removed = self.last
+        self.remove(len(self)-1)
+        return removed.value
+
+    def remove_first(self):
+        removed = self.first
+        self.remove(0)
+        return removed.value
 
     def remove_middle(self):
-        
+        middle = len(self) // 2
+        removed = self.get(middle)
+        self.remove(middle)
+        return removed
             
     def get(self, index):
         if self.is_empty() or index < 0 or index >= len(self):
