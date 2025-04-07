@@ -1,3 +1,4 @@
+package estruturas
 class Hash {
     //*atributos */
     private val hash: MutableMap<Int, Int>
@@ -23,6 +24,11 @@ class Hash {
     //*criação do remove */
     fun remove(ind: Int) {
         this.hash.remove(ind)
+    }
+
+    //*verifica se um valor está contido no mapa */
+    fun containsValue(valor: Int): Boolean {
+        return this.hash.containsValue(valor)
     }
 
     //*sobrescrição do toString */

@@ -1,7 +1,6 @@
 import estruturas.ArrayList
 import java.io.File
 import kotlin.math.roundToLong
-import kotlin.random.Random
 import kotlin.system.measureNanoTime
 
 fun main() {
@@ -16,10 +15,11 @@ fun main() {
     )
 
     val posicoes = mapOf("first" to 0.0, "middle" to 0.5, "last" to 1.0)
-    val cargas = listOf(
-        1_000, 10_000, 100_000, 250_000, 500_000, 600_000, 750_000, 1_000_000,
-        1_700_000, 2_500_000, 3_700_000, 5_000_000, 6_000_000, 7_500_000, 9_000_000, 10_000_000
-    )
+    val entradas = File("scripts/inputs").listFiles { file -> file.name.startsWith("dataset_") }?.toList() ?: emptyList()
+    val cargas = entradas.mapNotNull { 
+        val nome = it.name.removePrefix("dataset_")
+        nome.toIntOrNull()?.let { carga -> carga to it } 
+    }.toMap()
 
     println("Escolha a operação:")
     println("1 - Add único (início, meio, fim)")
@@ -32,8 +32,8 @@ fun main() {
     val operacaoEscolhida = readln().toIntOrNull() ?: return println("Operação inválida")
     val operacaoSelecionada = operacoes.find { it.second == operacaoEscolhida }?.first ?: return println("Operação inválida")
 
-    for (carga in cargas) {
-        val valores = List(carga) { Random.nextInt() }
+    for ((carga, arquivo) in cargas) {
+        val valores = arquivo.readLines().mapNotNull { it.toIntOrNull() }
         val n = (carga * 0.001).toInt()
 
         when (operacaoEscolhida) {
@@ -51,8 +51,8 @@ fun main() {
                         }
                         val tempo = measureNanoTime {
                             when (operacaoEscolhida) {
-                                1 -> lista.add(index, Random.nextInt())
-                                2 -> repeat(n) { lista.add(index, Random.nextInt()) }
+                                1 -> lista.add(index, valores[0])
+                                2 -> repeat(n) { lista.add(index, valores[0]) }
                                 3 -> lista.getIndex(index)
                                 4 -> lista.remove(index)
                                 5 -> repeat(n) { if (lista.size() > index) lista.remove(index) }
@@ -64,12 +64,12 @@ fun main() {
                     val media = tempos.average().roundToLong()
                     val quantidade = if (operacaoEscolhida in listOf(1, 4)) "one_element" else if (operacaoEscolhida in listOf(2, 5)) "n_elements" else ""
                     val nomeArquivo = if (operacaoEscolhida == 3)
-                        "get_${traduzir(nomePosicao)}.txt"
+                        "get_${nomePosicao}.txt"
                     else
                         "${operacaoSelecionada}_${nomePosicao}_${quantidade}.txt"
 
-                    val arquivo = File("$diretorioSaida/$nomeArquivo")
-                    arquivo.appendText("$carga;$media\n")
+                    val arquivoSaida = File("$diretorioSaida/$nomeArquivo")
+                    arquivoSaida.appendText("$carga;$media\n")
                 }
             }
 
@@ -89,13 +89,4 @@ fun main() {
         }
     }
     println("Resultados salvos na pasta '$diretorioSaida'.")
-}
-
-fun traduzir(posicao: String): String {
-    return when (posicao) {
-        "first" -> "inicio"
-        "middle" -> "meio"
-        "last" -> "fim"
-        else -> posicao
-    }
 }
