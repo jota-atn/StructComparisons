@@ -42,9 +42,15 @@ void ArrayList::clear() {
 void ArrayList::fill_array(string value) {
     array_list.clear();
 
-    const string filename = "/StructComparisons/scripts/inputs/dataset_" + value + ".txt"; 
+    const string filename = "../../scripts/inputs/dataset_" + value + ".txt"; 
     
     ifstream file(filename);
+    if (!file) {
+        cerr << "Erro ao abrir o arquivo: " << filename << endl;
+        return;
+    }
+
+
     int valor;
 
     size_t expected_size = stoi(value); 
