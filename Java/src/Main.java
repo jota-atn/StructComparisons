@@ -50,7 +50,7 @@ public class Main {
             long somaTemposHashmap = 0;
             long somaTemposTree = 0;
 
-            String caminho = "scripts/inputs/dataset_" + tamanho + ".txt";
+            String caminho = "/mnt/c/Users/Pedro Ramos/IdeaProjects/StructComparisons/scripts/inputs/dataset_" + tamanho + ".txt";
 
             for (int i = 0; i < quantOperacoes; i++) {
                 array.clear();
