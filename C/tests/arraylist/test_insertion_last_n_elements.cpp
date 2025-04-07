@@ -18,7 +18,7 @@ auto test_add(ArrayList& array_list, int n) {
     }
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     
     return duration.count();
 }

@@ -16,7 +16,7 @@ auto test_remove_last_one_element(ArrayList& array_list) {
     array_list.remove(array_list.size() - 1);
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     
     return duration.count();
 }
@@ -43,6 +43,6 @@ void test_dataset_remove_last_one_element(ArrayList& array_list, int num_execuco
         gerar_saida(tempo_medio, to_string(valor), saida);
 
         cout << "Tempo medio de remocao no fim de 1 elemento para um Data Set de tamanho " << to_string(valor)
-            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
+            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }
