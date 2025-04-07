@@ -1,6 +1,7 @@
 from ArrayList import ArrayList
-#from LinkedList import LinkedList
-#from HashMap import HashMap
+from LinkedList import LinkedList
+from HashMap import HashMap
+from AVL import AVL
 
 import time
 
@@ -14,6 +15,36 @@ def fill_array(size):
         arraylist.add_last(line)
 
     return arraylist
+
+def fill_linkedlist(size):
+    linkedlist = LinkedList()
+    with open(f"../scripts/inputs/dataset_{size}.txt", "r" as archive:
+              lines = archive.readlines()
+
+    for line in lines:
+              linkedlist.add_last(line)
+
+    return linkedlist
+
+def fill_hashmap(size):
+    hashmap = HashMap()
+    with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
+              lines = archive.readlines()
+
+    for line in lines:
+              hashmap.put(line, line)
+
+    return hashmap
+
+def fill_avl(size):
+    avl = AVL()
+    with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
+              lines = archive.readlines()
+
+    for line in lines:
+              avl.add(line)
+
+    return avl
 
 #Função que chama as funções individuais de teste de gets.
 def test_gets_arraylist():
@@ -378,6 +409,37 @@ def remove_nmiddle_al(outpath, sizes):
         total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
+def test_gets_linkedlist():
+    outpaths = []
+    sizes = []
+    get_first_ll(outpaths[0], sizes)
+    get_last_ll(outpaths[1], sizes)
+    get_middle_ll(outpaths[2], sizes)
+
+def test_insertion_linkedlist():
+    outpaths = []
+    sizes = []
+    insertion_all_ll(outpaths[0], sizes)
+    insertion_onefirst_ll(outpaths[1], sizes)
+    insertion_onelast_ll(outpaths[2], sizes)
+    insertion_onemiddle_ll(outpaths[3], sizes)
+    insertion_nfirst_ll(outpaths[4], sizes)
+    insertion_nlast_ll(outpaths[5], sizes)
+    insertion_nmiddle_ll(outpaths[6], sizes)
+
+def test_remove_linkedlist():
+    outpaths = []
+    sizes = []
+    remove_onefirst_ll(outpaths[0], sizes)
+    remove_onelast_ll(outpaths[1], sizes)
+    remove_onemiddle_ll(outpaths[2], sizes)
+    remove_nfirst_ll(outpaths[3], sizes)
+    remove_nlast_ll(outpaths[4], sizes)
+    remove_nmiddle_ll(outpaths[5], sizes)
+
 test_gets_arraylist()
 test_insertion_arraylist()
 test_remove_arraylist()
+test_gets_linkedlist()
+test_insertion_linkedlist()
+test_remove_linkedlist()

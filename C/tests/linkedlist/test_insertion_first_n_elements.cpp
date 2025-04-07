@@ -18,7 +18,7 @@ auto test_insert_first(LinkedList& linked_list, int n) {
     }
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     
     return duration.count();
 }
@@ -27,7 +27,7 @@ void test_dataset_insertion_first_n_elements(LinkedList& linked_list, int num_ex
 
     vector <int> values = {10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
     
-    string saida = "../out/linkedlist/insertion_first_elemento_unico.txt";
+    string saida = "../out/linkedlist/insertion_first_n_elements.txt";
     
     limpar_arquivo(saida);
 
@@ -47,7 +47,7 @@ void test_dataset_insertion_first_n_elements(LinkedList& linked_list, int num_ex
 
         cout << "Tempo medio de insercao na Linked List sempre no inicio de " << num_elementos
             << " para um Data Set de tamanho " << to_string(valor)
-            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
+            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }
 

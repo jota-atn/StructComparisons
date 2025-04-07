@@ -24,7 +24,7 @@ auto test_add_last_one_element(LinkedList& linked_list) {
     
     auto fim = steady_clock::now();
     
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     
     return duration.count();
 }
@@ -52,6 +52,6 @@ void test_dataset_insertion_last_one_element(LinkedList& linked_list, int num_ex
 
         cout << "Tempo medio de insercao ao fim de " << 1
             << " elemento para um Data Set de tamanho " << to_string(valor)
-            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
+            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }

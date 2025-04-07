@@ -14,7 +14,9 @@ int main() {
     test_dataset_insertion_middle(array_list, 50);
     test_dataset_remove_last_one_element(array_list, 10000);
     test_dataset_remove_last_n_elements(array_list, 10000);
-
+    test_dataset_remove_first_one_element(array_list, 10000);
+    test_dataset_remove_first_n_elements(array_list, 10000);
+    test_dataset_search_element(array_list, 10000);
 
     return 0;
 }
