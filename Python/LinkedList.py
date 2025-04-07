@@ -61,7 +61,7 @@ class LinkedList:
             for i in range(index):
                 aux = aux.next
             if aux is None:
-                self.add(value)
+                self.add_last(value)
                 return
             else:
                 node.next = aux

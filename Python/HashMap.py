@@ -22,6 +22,8 @@ class HashMap:
         if self.is_empty():
             return 'Empty HashMap!'
 
+        if key not in self.hashmap: return
+
         removed = self.hashmap[key]
 
         self.hashmap.pop(self, key)
