@@ -37,7 +37,7 @@ void test_dataset_insertion(HashMap& hashmap, int num_execucoes) {
         long long tempo_total = 0;
 
         for (int i = 0; i < num_execucoes; ++i) {
-            hashmap.clear(); // limpa antes de cada execução
+            hashmap.clear();
             tempo_total += test_put(hashmap, valor);
         }
 
