@@ -1,3 +1,5 @@
+package estruturas
+
 import java.util.LinkedList
 
 class Linked {
@@ -12,18 +14,30 @@ class Linked {
     }
 
     fun addMeio(ind: Int, num: Int) {
-        linked.add(ind, num)
+        if (ind in 0..linked.size) {
+            linked.add(ind, num)
+        }
     }
 
     fun addLast(num: Int) {
         linked.addLast(num)
     }
 
-    fun getIndex(ind: Int): Int {
-        return linked[ind]
+    fun getIndex(ind: Int): Int? {
+        return if (ind in 0 until linked.size) linked[ind] else null
     }
 
-    fun remove(meio: Int) {
-        linked.removeAt(meio)
+    fun remove(ind: Int) {
+        if (ind in 0 until linked.size) {
+            linked.removeAt(ind)
+        }
+    }
+
+    fun size(): Int {
+        return linked.size
+    }
+
+    override fun toString(): String {
+        return linked.joinToString(" ")
     }
 }
