@@ -23,6 +23,9 @@ class LinkedList {
         bool is_empty();
         void clear();
         void fill_list(string value);
+        int get_first();
+        int get_middle();
+        int get_last();
         ~LinkedList();
 };
 
