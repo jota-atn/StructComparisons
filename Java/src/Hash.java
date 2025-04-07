@@ -25,6 +25,10 @@ public class Hash {
 	public int getKey(int key) {
 		return this.hash.get(key);
 	}
+
+	public boolean contains(int numero){
+		return this.hash.containsValue(numero);
+	}
 	
 	public void remove(int key) {
 		this.hash.remove(key);
