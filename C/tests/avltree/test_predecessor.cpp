@@ -1,0 +1,52 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <chrono>
+#include <string>
+#include "../../include/cpp/avl_tree.hpp"
+#include "../../include/cpp/output.hpp"
+
+using namespace std;
+using namespace chrono;
+
+auto test_predecessor(AVLTree& tree, int key) {
+    auto inicio = high_resolution_clock::now();
+    
+    volatile int pred = tree.predecessor(key); 
+
+    auto fim = high_resolution_clock::now();
+    
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
+    
+    return duration.count();
+}
+
+void test_dataset_predecessor(AVLTree& tree, int num_execucoes) {
+    vector<int> values = {1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000};
+
+    string saida = "../out/avltree/predecessor.txt";
+
+    limpar_arquivo(saida);
+
+    for (int valor : values) {
+        tree.clear();
+        for (int i = 0; i < valor; ++i) {
+            tree.insert(i);
+        }
+
+        int key = valor / 2;
+
+        long long tempo_total = 0;
+        for (int i = 0; i < num_execucoes; ++i) {
+            tempo_total += test_predecessor(tree, key);
+        }
+
+        double tempo_medio = static_cast<double>(tempo_total) / num_execucoes;
+
+        gerar_saida(tempo_medio, to_string(valor), saida);
+
+        cout << "Tempo médio para pegar o predecessor de " << key << " em AVL com "
+             << valor << " elementos após " << num_execucoes
+             << " execuções: " << tempo_medio << " microssegundos" << endl;
+    }
+}

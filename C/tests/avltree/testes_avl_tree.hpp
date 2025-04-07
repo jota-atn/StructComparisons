@@ -1,0 +1,7 @@
+#include "test_get_max_value_avl.cpp"
+#include "test_get_min_value_avl.cpp"
+#include "test_successor.cpp"
+#include "test_predecessor.cpp"
+#include "test_insertion_n_elements.cpp"
+#include "test_single_access_avl.cpp"
+#include "test_single_remotion_avl.cpp"

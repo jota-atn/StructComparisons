@@ -1,9 +1,10 @@
 package estruturas
-class ArrayList(tamanho: Int) {
-    private val array = mutableListOf(tamanho)
 
-    fun add(numero: Int) {
-        array.add(numero)
+class ArrayList(tamanho: Int) {
+    private val array = kotlin.collections.ArrayList<Int>(tamanho)
+
+    fun add(ind: Int, numero: Int) {
+        array.add(ind, numero)
     }
 
     fun addFirst(numero: Int) {
@@ -30,7 +31,7 @@ class ArrayList(tamanho: Int) {
         return array.joinToString(" ")
     }
 
-    fun size(){
-        array.size
+    fun size(): Int {
+        return array.size
     }
 }
