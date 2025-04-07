@@ -102,13 +102,7 @@ func testDatasetInsertionFirstNElements(lista *arraylist.ArrayList, numExecucoes
 }
 
 func main() {
-    // Criar a estrutura inicial
     lista := arraylist.NovaLista(10000000)
-    
-    // Número de execuções para cada tamanho (menos que os exemplos anteriores 
-    // porque cada execução já faz muitas inserções)
     numExecucoes := 10
-    
-    // Testar inserção de elementos no início
     testDatasetInsertionFirstNElements(lista, numExecucoes)
 }

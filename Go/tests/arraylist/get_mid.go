@@ -80,7 +80,6 @@ func testDatasetGetMid(lista *arraylist.ArrayList) {
         
         tempoTotal := int64(0)
         
-        // Usar um número grande de execuções para ter medições precisas
         numExecucoes := 100000000
         
         fmt.Printf("Executando teste para tamanho %d...\n", valor)
@@ -99,9 +98,6 @@ func testDatasetGetMid(lista *arraylist.ArrayList) {
 }
 
 func main() {
-    // Criar a estrutura inicial
     lista := arraylist.NovaLista(10000000)
-    
-    // Testar acesso ao elemento do meio
     testDatasetGetMid(lista)
 }

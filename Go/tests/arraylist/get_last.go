@@ -72,7 +72,7 @@ func preencherLista(lista *arraylist.ArrayList, tamanho string) {
 func testDatasetGetLast(lista *arraylist.ArrayList) {
     valores := []int{10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000}
     
-    saida := "./out/arraylist/get_fim.txt"
+    saida := "./out/arraylist/get_last.txt"
     
     limparArquivo(saida)
     
@@ -100,9 +100,6 @@ func testDatasetGetLast(lista *arraylist.ArrayList) {
 }
 
 func main() {
-    // Criar a estrutura inicial
     lista := arraylist.NovaLista(10000000)
-    
-    // Testar acesso ao último elemento
     testDatasetGetLast(lista)
 }
