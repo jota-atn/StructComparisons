@@ -1,4 +1,6 @@
-package main
+package arraylist
+
+import "fmt"
 
 // ArrayList implementa uma lista dinâmica usando array
 type ArrayList struct {
@@ -7,8 +9,8 @@ type ArrayList struct {
 	size  int
 }
 
-// NewArrayList cria uma nova lista com a capacidade inicial especificada
-func NewArrayList(size int) *ArrayList {
+// NovaLista cria uma nova lista com a capacidade inicial especificada
+func NovaLista(size int) *ArrayList {
 	return &ArrayList{
 		array: make([]interface{}, size),
 		last:  -1,
@@ -16,21 +18,21 @@ func NewArrayList(size int) *ArrayList {
 	}
 }
 
-// Len retorna o tamanho da lista
-func (a *ArrayList) Len() int {
+// Tamanho retorna o tamanho da lista
+func (a *ArrayList) Tamanho() int {
 	return a.size
 }
 
-// IsEmpty verifica se a lista está vazia
-func (a *ArrayList) IsEmpty() bool {
+// EstaVazia verifica se a lista está vazia
+func (a *ArrayList) EstaVazia() bool {
 	return a.size == 0
 }
 
-// Add adiciona um elemento ao final da lista
-func (a *ArrayList) Add(value interface{}) {
-	a.EnsureCapacity(len(a.array) + 1)
+// Adicionar adiciona um elemento ao final da lista
+func (a *ArrayList) Adicionar(value interface{}) {
+	a.garantirCapacidade(a.size + 1)
 	
-	if a.IsEmpty() {
+	if a.EstaVazia() {
 		a.last = 0
 	} else {
 		a.last++
@@ -40,43 +42,88 @@ func (a *ArrayList) Add(value interface{}) {
 	a.size++
 }
 
-// Remove remove e retorna o último elemento da lista
-func (a *ArrayList) Remove() interface{} {
-	if a.IsEmpty() {
+// Inserir adiciona um elemento na posição especificada
+func (a *ArrayList) Inserir(index int, value interface{}) error {
+	if index < 0 || index > a.size {
+		return &IndexOutOfBoundsError{index}
+	}
+	
+	a.garantirCapacidade(a.size + 1)
+	
+	// Se a inserção for no final, chama Adicionar
+	if index == a.size {
+		a.Adicionar(value)
 		return nil
 	}
 	
-	removed := a.array[a.last]
+	// Move elementos para abrir espaço
+	for i := a.size; i > index; i-- {
+		a.array[i] = a.array[i-1]
+	}
 	
-	if a.size == 1 {
-		a.last = -1
-	} else {
-		a.last--
+	a.array[index] = value
+	a.size++
+	a.last++
+	return nil
+}
+
+// InserirAll adiciona todos os elementos ao final da lista
+func (a *ArrayList) InserirAll(elements []interface{}) {
+	for _, elem := range elements {
+		a.Adicionar(elem)
+	}
+}
+
+// Remover remove e retorna o elemento na posição especificada
+func (a *ArrayList) Remover(index int) (interface{}, error) {
+	if a.EstaVazia() || index < 0 || index >= a.size {
+		return nil, &IndexOutOfBoundsError{index}
+	}
+	
+	removed := a.array[index]
+	
+	// Move elementos para preencher a lacuna
+	for i := index; i < a.size-1; i++ {
+		a.array[i] = a.array[i+1]
 	}
 	
 	a.size--
-	return removed
+	if a.size == 0 {
+		a.last = -1
+	} else if index == a.size { // Se removemos o último elemento
+		a.last--
+	}
+	return removed, nil
 }
 
-// Get retorna o elemento no índice especificado
-func (a *ArrayList) Get(index int) interface{} {
-	if a.IsEmpty() || index < 0 || index >= a.size {
-		return "Index out of bounds"
+// Elemento retorna o elemento no índice especificado
+func (a *ArrayList) Elemento(index int) (interface{}, error) {
+	if a.EstaVazia() || index < 0 || index >= a.size {
+		return nil, &IndexOutOfBoundsError{index}
 	}
 	
-	return a.array[index]
+	return a.array[index], nil
 }
 
-// Resize dobra o tamanho do array interno
-func (a *ArrayList) Resize() {
+// redimensionar dobra o tamanho do array interno
+func (a *ArrayList) redimensionar() {
 	newArray := make([]interface{}, len(a.array)*2)
 	copy(newArray, a.array)
 	a.array = newArray
 }
 
-// EnsureCapacity garante que o array tenha pelo menos a capacidade especificada
-func (a *ArrayList) EnsureCapacity(requiredCapacity int) {
+// garantirCapacidade garante que o array tenha pelo menos a capacidade especificada
+func (a *ArrayList) garantirCapacidade(requiredCapacity int) {
 	if requiredCapacity > len(a.array) {
-		a.Resize()
+		a.redimensionar()
 	}
+}
+
+// IndexOutOfBoundsError representa um erro de índice fora dos limites
+type IndexOutOfBoundsError struct {
+	Index int
+}
+
+func (e *IndexOutOfBoundsError) Error() string {
+	return fmt.Sprintf("índice fora dos limites: %d", e.Index)
 }

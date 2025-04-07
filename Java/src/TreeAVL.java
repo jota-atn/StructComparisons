@@ -1,3 +1,9 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class TreeAVL {
     private Node root;
 
@@ -60,8 +66,12 @@ public class TreeAVL {
         return node;
     }
 
-    public void insert(int key) {
-        root = insert(root, key);
+    public void insert(String caminho) throws FileNotFoundException {
+        Scanner sc = new Scanner(new File(caminho));
+
+        while(sc.hasNext()){
+            root = insert(root, sc.nextInt());
+        }
     }
 
     public boolean search(int key) {
@@ -76,11 +86,28 @@ public class TreeAVL {
         return key < node.key ? search(node.left, key) : search(node.right, key);
     }
 
-    private Node minValueNode(Node node) {
-        Node current = node;
-        while (current.left != null)
-            current = current.left;
-        return current;
+    public void deleteByIndex(int index) {
+        List<Integer> orderedList = toListInOrder();
+        if (index >= 0 && index < orderedList.size()) {
+            int keyToDelete = orderedList.get(index);
+            delete(keyToDelete);
+        } else {
+            System.out.println("Índice inválido.");
+        }
+    }
+
+    public List<Integer> toListInOrder() {
+        List<Integer> result = new ArrayList<>();
+        inOrder(root, result);
+        return result;
+    }
+
+    private void inOrder(Node node, List<Integer> list) {
+        if (node != null) {
+            inOrder(node.left, list);
+            list.add(node.key);
+            inOrder(node.right, list);
+        }
     }
 
     private Node delete(Node root, int key) {
@@ -110,7 +137,52 @@ public class TreeAVL {
         root = delete(root, key);
     }
 
+    private Node minValueNode(Node node) {
+        Node current = node;
+        while (current.left != null)
+            current = current.left;
+        return current;
+    }
+
+
     public void clear() {
         root = null;
     }
+
+    public int MinNode() {
+        if (root == null) throw new IllegalStateException("Árvore vazia.");
+        Node current = root;
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current.key;
+    }
+
+    public int MaxNode() {
+        if (root == null) throw new IllegalStateException("Árvore vazia.");
+        Node current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+        return current.key;
+    }
+
+    public Integer sucessorByIndex(int index) {
+        List<Integer> list = toListInOrder();
+        if (index >= 0 && index < list.size() - 1) {
+            return list.get(index + 1);
+        }
+        System.out.println("Índice inválido ou não há sucessor.");
+        return null;
+    }
+
+    public Integer predecessorByIndex(int index) {
+        List<Integer> list = toListInOrder();
+        if (index > 0 && index < list.size()) {
+            return list.get(index - 1);
+        }
+        System.out.println("Índice inválido ou não há predecessor.");
+        return null;
+    }
+
 }
