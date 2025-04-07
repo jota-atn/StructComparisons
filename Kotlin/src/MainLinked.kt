@@ -25,7 +25,7 @@ fun main() {
     println("3 - acessar elemento")
     println("4 - remover unico")
     println("5 - remover n valor")
-    println("6 - add all") // nova operação
+    println("6 - add all")
     val comando = readln().toIntOrNull()
 
     val tempos = mutableListOf<Long>()
@@ -33,7 +33,6 @@ fun main() {
     repeat(30) {
         val lista = Linked()
 
-        // Para operações exceto "add all", preenche a lista antes
         if (comando != 6) {
             repeat(carga) { lista.add(it) }
         }
@@ -69,7 +68,6 @@ fun main() {
                 }
 
                 6 -> {
-                    // add all: insere todos os elementos da carga na lista
                     repeat(carga) { lista.add(it) }
                 }
 

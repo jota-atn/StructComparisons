@@ -25,7 +25,7 @@ fun main() {
 
     repeat(30) {
         val lista = when (comando) {
-            6 -> arrayListOf<Int>() // Lista vazia para addAll
+            6 -> arrayListOf<Int>()
             else -> arrayListOf<Int>().apply { repeat(carga) { add(it) } }
         }
 
