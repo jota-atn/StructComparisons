@@ -13,9 +13,9 @@ using namespace chrono;
 auto test_get_fim(ArrayList& array_list, int n) {
 
     auto inicio = high_resolution_clock::now();
-    
+
     int fim_val = array_list.get(n - 1);
-    
+
     auto fim = high_resolution_clock::now();
     
     auto duration = duration_cast<nanoseconds>(fim - inicio);
@@ -26,9 +26,9 @@ auto test_get_fim(ArrayList& array_list, int n) {
 
 void test_dataset_get_fim(ArrayList& array_list) {
 
-    vector<int> values = {1000, 10000, 100000, 1000000, 10000000};
+    vector<int> values = {10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
 
-    string saida = "C:/Users/jamqu/Projects/StructComparisons/C/out/get_fim.txt";
+    string saida = "../out/arraylist/get_fim.txt";
 
     limpar_arquivo(saida);
 

@@ -109,4 +109,8 @@ public class TreeAVL {
     public void delete(int key) {
         root = delete(root, key);
     }
+
+    public void clear() {
+        root = null;
+    }
 }

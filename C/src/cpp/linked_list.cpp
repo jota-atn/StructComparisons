@@ -26,6 +26,32 @@ void LinkedList::remove_last() {
     }
 }
 
+int LinkedList::get_first() {
+    if (linked_list.empty()) return linked_list.front();
+
+    return -1;
+
+}
+
+int LinkedList::get_last() {
+    if (linked_list.empty()) return linked_list.back();
+
+    return -1;
+
+}
+
+int LinkedList::get_middle() {
+    if (!linked_list.empty()) {
+        size_t middle_index = linked_list.size() / 2;
+        auto it = linked_list.begin();
+        advance(it, middle_index);
+        return *it;
+    }
+
+    return -1;
+
+}
+
 bool LinkedList::contains(int elemento) {
     return find(linked_list.begin(), linked_list.end(), elemento) != linked_list.end();
 }
@@ -48,14 +74,15 @@ void LinkedList::clear() {
     linked_list.clear();
 }
 
-void LinkedList::fill_list(std::string value) {
+void LinkedList::fill_list(string value) {
     linked_list.clear();
 
-    const std::string filename = "C:/Users/jamqu/Projects/StructComparisons/scripts/inputs/dataset_" + value + ".txt";
+    const string filename = "../../scripts/inputs/dataset_" + value + ".txt"; 
+
     
-    std::ifstream file(filename);
+    ifstream file(filename);
     if (!file) {
-        std::cerr << "Erro ao abrir o arquivo: " << filename << std::endl;
+        cerr << "Erro ao abrir o arquivo: " << filename << endl;
         return;
     }
 

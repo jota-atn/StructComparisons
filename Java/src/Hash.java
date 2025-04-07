@@ -1,5 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Hash {
 	private HashMap<Integer, Integer> hash;
@@ -10,27 +13,25 @@ public class Hash {
 		this.indice = 0;
 	}
 	
-	public void put(int numero) {
-		this.hash.put(indice, numero);
-		this.indice++;
+	public void put(String caminho) throws FileNotFoundException {
+		Scanner sc = new Scanner(new File(caminho));
+
+		while(sc.hasNext()){
+			this.hash.put(indice, sc.nextInt());
+			this.indice++;
+		}
 	}
 	
 	public int getKey(int key) {
 		return this.hash.get(key);
 	}
 	
-	public void remove(int meio) {
-		this.hash.remove(meio);
+	public void remove(int key) {
+		this.hash.remove(key);
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder saida = new StringBuilder();
-		for (Map.Entry<Integer, Integer> entry : this.hash.entrySet()) {
-			saida.append(entry.getValue()).append(" ");
-		}
-		return saida.toString().trim();
+	public void clear(){
+		this.hash.clear();
 	}
-
 
 }
