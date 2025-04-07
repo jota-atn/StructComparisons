@@ -28,7 +28,7 @@ void test_dataset_get_meio(LinkedList& linked_list) {
 
     vector<int> values = {10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
 
-    string saida = "../out/linkedlist/get_meio.txt";
+    string saida = "../out/linkedlist/get_mid.txt";
 
     limpar_arquivo(saida);
 

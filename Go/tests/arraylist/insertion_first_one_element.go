@@ -62,7 +62,7 @@ func preencherLista(lista *arraylist.ArrayList, tamanho string) {
 func testDatasetInsertionFirstOneElement(lista *arraylist.ArrayList, numExecucoes int) {
 	valores := []int{1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000}
 	
-	saida := "./out/arraylist/insertionFirst.txt"
+	saida := "./out/arraylist/insertion_first_one_element.txt"
 	
 	limparArquivo(saida)
 	

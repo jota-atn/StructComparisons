@@ -15,7 +15,7 @@ auto test_search_element(LinkedList& linked_list, int element) {
     linked_list.contains(element);
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     
     return duration.count();
 }
@@ -45,6 +45,6 @@ void test_dataset_search_element(LinkedList& linked_list, int num_execucoes) {
 
         cout << "Tempo medio de busca para elemento " << elemento_alvo
              << " em Data Set de tamanho " << to_string(valor)
-             << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
+             << " apos " << num_execucoes << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }

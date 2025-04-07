@@ -1,5 +1,6 @@
 import os
 import matplotlib.pyplot as plot
+from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.ticker import FuncFormatter
 
 def read_arquivo(caminho):
@@ -38,47 +39,141 @@ def formatar_eixo_x(x, pos):
     else:
         return f'{int(x)}'
 
-def plotar_grafico():
-    languages = ["C", "Java", "Python", "Go", "Kotlin"]
-    
-    cores_linguagens = ['black', 'orange', 'cyan', 'navy', 'olive']
-    cores_pontos = ['red', 'orangered', 'orange', 'gold', 'yellow', 'greenyellow', 'limegreen', 'green', 'turquoise', 'cyan', 'deepskyblue', 'blue', 'slateblue', 'purple', 'magenta', 'deeppink']
+
+def obter_testes_disponiveis(structure, languages):
+
+    for lang in languages:
+
+        dir_path = f"../{lang}/out/{structure}"
+
+        if os.path.exists(dir_path):
+
+            return sorted([
+                f for f in os.listdir(dir_path)
+                if f.endswith(".txt") and os.path.isfile(os.path.join(dir_path, f))
+            ])
+        
+    return []
+
+def plotar_teste(structure, test, pdf, languages, cores_linguagens, cores_pontos):
 
     plot.figure(figsize=(10, 6))
-
     legend_pontos = []
+    sizes_usado = []
 
-    for language, cor in zip(languages, cores_linguagens):    
-        caminho = f"C:/Users/jamqu/Projects/StructComparisons/{language}/out/linkedlist/insertion_last_one_element.txt"
+    for lang, cor in zip(languages, cores_linguagens):
+
+        caminho = f"../{lang}/out/{structure}/{test}"
+        if not os.path.exists(caminho):
+            continue
 
         sizes, times = read_arquivo(caminho)
+        if not sizes or not times:
+            continue
 
-        if sizes and times:
-            plot.plot(sizes, times, linestyle='-', label=f"{language}", linewidth=1.5, zorder=1, color=cor)
+        plot.plot(sizes, times, linestyle='-', label=lang, linewidth=1.5, color=cor, zorder=1)
 
-            for i in range(len(sizes)):
-                plot.scatter(sizes[i], times[i], color=cores_pontos[i], s=20, alpha=1.0, zorder=2)
+        for i in range(len(sizes)):
+            cor_ponto = cores_pontos[i % len(cores_pontos)]
+            plot.scatter(sizes[i], times[i], color=cor_ponto, s=20, alpha=1.0, zorder=2)
 
-            legend_pontos = []
-            for i in range(0, len(sizes)):
-                legend_pontos.append(plot.Line2D([0], [0], marker='o', color='w', markerfacecolor=cores_pontos[i], markersize=8, label=f'Ponto {sizes[i]}'))
+        if not sizes_usado:
+            sizes_usado = sizes[:]
 
+    if sizes_usado:
+        legend_pontos = [
+            plot.Line2D([0], [0], marker='o', color='w',
+                        markerfacecolor=cores_pontos[i % len(cores_pontos)],
+                        markersize=8, label=f'Ponto {sizes_usado[i]}')
+            for i in range(len(sizes_usado))
+        ]
 
-        plot.title("Comparação de Inserção entre Linguagens")
-        plot.ylabel("Tempo de Execução (milisegundos)")
-        plot.xlabel("Tamanho do Dataset")
+    plot.title(f"Comparação de {test} entre Linguagens - {structure.capitalize()}")
+    plot.xlabel("Tamanho do Dataset")
+    plot.ylabel("Tempo de Execução (ms)")
+    plot.grid(True, alpha=0.5)
+    plot.gca().xaxis.set_major_formatter(FuncFormatter(formatar_eixo_x))
 
-        plot.gca().xaxis.set_major_formatter(FuncFormatter(formatar_eixo_x))
+    legenda_linguagens = plot.legend(title="Linguagens", loc='best', fontsize='8')
+    legenda_pontos = plot.legend(handles=legend_pontos, title="Pontos", loc='upper left', fontsize='8', bbox_to_anchor=(0.125, 1))
 
-        legenda_linguagens = plot.legend(title="Linguagens", loc='best', fontsize='8')
-        legenda_pontos = plot.legend(handles=legend_pontos, title="Pontos", loc='upper left', fontsize='8', bbox_to_anchor=(0.125, 1))
+    plot.gca().add_artist(legenda_linguagens)
+    plot.gca().add_artist(legenda_pontos)
+    plot.tight_layout()
 
-        plot.gca().add_artist(legenda_linguagens)
-        plot.gca().add_artist(legenda_pontos)
+    pdf.savefig()
+    plot.close()
 
-        plot.grid(True, alpha=0.5)
+def gerar_graficos_listas_pdf(languages, cores_linguagens, cores_pontos):
 
-    plot.show()
+    structures = ["arraylist", "linkedlist"]
+
+    os.makedirs("./out", exist_ok=True)
+
+    for structure in structures:
+        pdf_path = f"./out/{structure}.pdf"
+        testes = obter_testes_disponiveis(structure, languages)
+
+        if not testes:
+            print(f"Nenhum teste encontrado para {structure}")
+            continue
+
+        with PdfPages(pdf_path) as pdf:
+            for test in testes:
+                plotar_teste(structure, test, pdf, languages, cores_linguagens, cores_pontos)
+
+        print(f"Gráficos salvos em {pdf_path}")
+
+def gerar_graficos_mapas_pdf(languages, cores_linguagens, cores_pontos):
+
+    structures = ["hashmap"]
+
+    os.makedirs("./out", exist_ok=True)
+
+    for structure in structures:
+        pdf_path = f"./out/{structure}.pdf"
+        testes = obter_testes_disponiveis(structure, languages)
+
+        if not testes:
+            print(f"Nenhum teste encontrado para {structure}")
+            continue
+
+        with PdfPages(pdf_path) as pdf:
+            for test in testes:
+                plotar_teste(structure, test, pdf, languages, cores_linguagens, cores_pontos)
+
+        print(f"Gráficos salvos em {pdf_path}")
+
+def gerar_graficos_trees_pdf(languages, cores_linguagens, cores_pontos):
+
+    structures = ["avltree"]
+
+    os.makedirs("./out", exist_ok=True)
+
+    for structure in structures:
+        pdf_path = f"./out/{structure}.pdf"
+        testes = obter_testes_disponiveis(structure, languages)
+
+        if not testes:
+            print(f"Nenhum teste encontrado para {structure}")
+            continue
+
+        with PdfPages(pdf_path) as pdf:
+            for test in testes:
+                plotar_teste(structure, test, pdf, languages, cores_linguagens, cores_pontos)
+
+        print(f"Gráficos salvos em {pdf_path}")
 
 if __name__ == "__main__":
-    plotar_grafico()
+
+    languages = ["C", "Java", "Python", "Go", "Kotlin"]
+    cores_linguagens = ['black', 'orange', 'cyan', 'navy', 'olive']
+    cores_pontos = [
+                    'red', 'orangered', 'orange', 'gold', 'yellow',
+                    'greenyellow', 'limegreen', 'green', 'turquoise',
+                    'cyan', 'deepskyblue', 'blue', 'slateblue',
+                    'purple', 'magenta', 'deeppink']
+
+    gerar_graficos_listas_pdf(languages, cores_linguagens, cores_pontos)
+    gerar_graficos_mapas_pdf(languages, cores_linguagens, cores_pontos)
+    gerar_graficos_trees_pdf(languages, cores_linguagens, cores_pontos)
