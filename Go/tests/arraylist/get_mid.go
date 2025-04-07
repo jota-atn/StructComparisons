@@ -10,14 +10,13 @@ import (
     "github.com/jota-atn/StructComparisons/Go/arraylist"
 )
 
-// testInsertFirst mede o tempo para inserir n elementos no início da lista
-func testInsertFirst(lista *arraylist.ArrayList, n int) int64 {
+// testGetMid mede o tempo para obter o elemento do meio da lista
+func testGetMid(lista *arraylist.ArrayList, n int) int64 {
     inicio := time.Now()
     
-    // Inserir n elementos no início da lista
-    for i := 0; i < n; i++ {
-        lista.Inserir(0, i)
-    }
+    // Obter o elemento do meio
+    elemento, _ := lista.Elemento(n / 2)
+    _ = elemento // Evitar que o compilador otimize e elimine a operação
     
     duracao := time.Since(inicio)
     return duracao.Nanoseconds()
@@ -68,11 +67,11 @@ func preencherLista(lista *arraylist.ArrayList, tamanho string) {
     }
 }
 
-// testDatasetInsertionFirstNElements testa inserção de elementos no início para diferentes tamanhos
-func testDatasetInsertionFirstNElements(lista *arraylist.ArrayList, numExecucoes int) {
+// testDatasetGetMid testa acesso ao elemento do meio para diferentes tamanhos
+func testDatasetGetMid(lista *arraylist.ArrayList) {
     valores := []int{10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000}
     
-    saida := "./out/arraylist/insertion_first_n_elements.txt"
+    saida := "./out/arraylist/get_mid.txt"
     
     limparArquivo(saida)
     
@@ -81,23 +80,21 @@ func testDatasetInsertionFirstNElements(lista *arraylist.ArrayList, numExecucoes
         
         tempoTotal := int64(0)
         
-        // Calcular o número de elementos a inserir (0.1% do tamanho)
-        numElementos := int(float64(valor) * 0.001)
+        // Usar um número grande de execuções para ter medições precisas
+        numExecucoes := 100000000
         
-        fmt.Printf("Executando teste para tamanho %d com inserção de %d elementos...\n", valor, numElementos)
+        fmt.Printf("Executando teste para tamanho %d...\n", valor)
         
         for i := 0; i < numExecucoes; i++ {
-            tempoTotal += testInsertFirst(lista, numElementos)
-            // Recriar a lista para cada execução para manter condições consistentes
-            preencherLista(lista, strconv.Itoa(valor))
+            tempoTotal += testGetMid(lista, valor)
         }
         
         tempoMedio := float64(tempoTotal) / float64(numExecucoes)
         
         gerarSaida(tempoMedio, strconv.Itoa(valor), saida)
         
-        fmt.Printf("Tempo medio de inserção de %d elementos sempre no inicio para um Data Set de tamanho %d apos %d execucoes: %.4f nanossegundos\n", 
-            numElementos, valor, numExecucoes, tempoMedio)
+        fmt.Printf("Tempo medio de acesso ao elemento do meio para um Data Set de tamanho %d apos %d execucoes: %.4f nanossegundos\n", 
+            valor, numExecucoes, tempoMedio)
     }
 }
 
@@ -105,10 +102,6 @@ func main() {
     // Criar a estrutura inicial
     lista := arraylist.NovaLista(10000000)
     
-    // Número de execuções para cada tamanho (menos que os exemplos anteriores 
-    // porque cada execução já faz muitas inserções)
-    numExecucoes := 10
-    
-    // Testar inserção de elementos no início
-    testDatasetInsertionFirstNElements(lista, numExecucoes)
+    // Testar acesso ao elemento do meio
+    testDatasetGetMid(lista)
 }
