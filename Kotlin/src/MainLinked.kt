@@ -9,84 +9,124 @@ fun main() {
 
     println("Escolha a carga:")
     cargas.forEachIndexed { i, c -> println("${i + 1} - $c") }
-    val cargaIndex = readln().toIntOrNull()?.minus(1) ?: -1
+    val carga = cargas.getOrNull(readln().toIntOrNull()?.minus(1) ?: -1) ?: return println("Índice inválido")
 
-    if (cargaIndex !in cargas.indices) {
-        println("Índice inválido.")
-        return
-    }
-
-    val carga = cargas[cargaIndex]
     val valorTeste = 42
+    val n = (carga * 0.001).toInt()
+
+    val opcoes = listOf(
+        "1 - Add único (início, meio, fim)",
+        "2 - Add N elementos (início, meio, fim)",
+        "3 - Get (início, meio, fim)",
+        "4 - Remove único (início, meio, fim)",
+        "5 - Remove N elementos (início, meio, fim)",
+        "6 - Add All"
+    )
 
     println("Escolha a operação:")
-    println("1 - add unico")
-    println("2 - add n valor")
-    println("3 - acessar elemento")
-    println("4 - remover unico")
-    println("5 - remover n valor")
-    println("6 - add all")
-    val comando = readln().toIntOrNull()
+    opcoes.forEach { println(it) }
+    val operacao = readln().toIntOrNull() ?: return println("Operação inválida")
 
-    val tempos = mutableListOf<Long>()
+    val posicoes = listOf(
+        "Início" to 0,
+        "Meio" to carga / 2,
+        "Fim" to carga - 1
+    )
+
+    val resultadosAcumulados = mutableMapOf<String, Long>().withDefault { 0L }
 
     repeat(30) {
-        val lista = Linked()
+        val resultados = mutableMapOf<String, Long>()
 
-        if (comando != 6) {
-            repeat(carga) { lista.add(it) }
-        }
+        when (operacao) {
+            1 -> { // Add único
+                for ((nome, pos) in posicoes) {
+                    val lista = Linked()
+                    repeat(carga) { lista.addLast(it) }
 
-        val tempo = measureNanoTime {
-            when (comando) {
-                1 -> {
-                    lista.addMeio(lista.size() / 2, valorTeste)
-                }
-
-                2 -> {
-                    val n = (carga * 0.001).toInt()
-                    repeat(n) {
-                        lista.addMeio(lista.size() / 2, valorTeste)
+                    val tempo = measureNanoTime {
+                        lista.add(pos, valorTeste)
                     }
-                }
-
-                3 -> {
-                    lista.getIndex(lista.size() / 2)
-                }
-
-                4 -> {
-                    lista.remove(lista.size() / 2)
-                }
-
-                5 -> {
-                    val n = (carga * 0.001).toInt()
-                    repeat(n) {
-                        if (lista.size() > 0) {
-                            lista.remove(lista.size() / 2)
-                        }
-                    }
-                }
-
-                6 -> {
-                    repeat(carga) { lista.add(it) }
-                }
-
-                else -> {
-                    println("Operação inválida.")
-                    return
+                    resultados[nome] = tempo
                 }
             }
+
+            2 -> { // Add N elementos
+                for ((nome, pos) in posicoes) {
+                    val lista = Linked()
+                    repeat(carga) { lista.addLast(it) }
+
+                    val tempo = measureNanoTime {
+                        repeat(n) {
+                            lista.add(pos, valorTeste)
+                        }
+                    }
+                    resultados[nome] = tempo
+                }
+            }
+
+            3 -> { // Get
+                for ((nome, pos) in posicoes) {
+                    val lista = Linked()
+                    repeat(carga) { lista.addLast(it) }
+
+                    val tempo = measureNanoTime {
+                        lista.getIndex(pos)
+                    }
+                    resultados[nome] = tempo
+                }
+            }
+
+            4 -> { // Remove único
+                for ((nome, pos) in posicoes) {
+                    val lista = Linked()
+                    repeat(carga) { lista.addLast(it) }
+
+                    val tempo = measureNanoTime {
+                        lista.remove(pos)
+                    }
+                    resultados[nome] = tempo
+                }
+            }
+
+            5 -> { // Remove N
+                for ((nome, pos) in posicoes) {
+                    val lista = Linked()
+                    repeat(carga) { lista.addLast(it) }
+
+                    val tempo = measureNanoTime {
+                        repeat(n) {
+                            if (lista.size() > pos) {
+                                lista.remove(pos)
+                            }
+                        }
+                    }
+                    resultados[nome] = tempo
+                }
+            }
+
+            6 -> { // Add All
+                val lista = Linked()
+                val tempo = measureNanoTime {
+                    repeat(carga) {
+                        lista.addLast(it)
+                    }
+                }
+                resultados["Add All"] = tempo
+            }
+
+            else -> println("Operação inválida")
         }
 
-        tempos.add(tempo)
+        resultados.forEach { (local, tempo) ->
+            resultadosAcumulados[local] = resultadosAcumulados.getValue(local) + tempo
+        }
     }
 
-    val mediaNano = tempos.average()
-    val mediaMili = mediaNano / 1_000_000.0
-
-    println("\nResultado para carga de $carga elementos:")
-    println("Operação escolhida: $comando")
-    println("Média de tempo em 30 execuções:")
-    println("- %.2f nanosegundos".format(mediaNano))
-    println("- %.3f milissegundos".format(mediaMili))
+    // Exibir médias em nanosegundos
+    println("\nMédia de tempo em 30 execuções (em nanosegundos):")
+    resultadosAcumulados.forEach { (local, tempoTotal) ->
+        val media = tempoTotal / 30.0
+        println("- $local: ${"%.2f".format(media)} ns")
+    }
 }

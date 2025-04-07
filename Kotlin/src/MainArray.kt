@@ -1,3 +1,4 @@
+import estruturas.ArrayList
 import kotlin.system.measureNanoTime
 
 fun main() {
@@ -8,50 +9,93 @@ fun main() {
 
     println("Escolha a carga:")
     cargas.forEachIndexed { i, c -> println("${i + 1} - $c") }
-    val cargaIndex = readln().toIntOrNull()?.minus(1) ?: return println("Índice inválido.")
-    val carga = cargas[cargaIndex]
+    val carga = cargas.getOrNull(readln().toIntOrNull()?.minus(1) ?: -1) ?: return println("Índice inválido")
+
+    val valorTeste = 42
+    val n = (carga * 0.001).toInt()
+
+    val opcoes = listOf(
+        "1 - Add único (início, meio, fim)",
+        "2 - Add N elementos (início, meio, fim)",
+        "3 - Get (início, meio, fim)",
+        "4 - Remove único (início, meio, fim)",
+        "5 - Remove N elementos (início, meio, fim)",
+        "6 - Add All"
+    )
 
     println("Escolha a operação:")
-    println("1 - add unico")
-    println("2 - add n valor")
-    println("3 - acessar elemento")
-    println("4 - remover unico")
-    println("5 - remover n valor")
-    println("6 - add all")
-    val comando = readln().toIntOrNull() ?: return println("Comando inválido.")
+    opcoes.forEach { println(it) }
+    val operacao = readln().toIntOrNull() ?: return println("Operação inválida")
 
-    val tempos = mutableListOf<Long>()
-    val valorTeste = 42
+    val posicoes = listOf(
+        "Início" to 0,
+        "Meio" to carga / 2,
+        "Fim" to carga - 1
+    )
+
+    val acumulador = mutableMapOf<String, Long>()
+    posicoes.forEach { (nome, _) -> acumulador[nome] = 0L }
+    if (operacao == 6) acumulador["Add All"] = 0L
 
     repeat(30) {
-        val lista = when (comando) {
-            6 -> arrayListOf<Int>()
-            else -> arrayListOf<Int>().apply { repeat(carga) { add(it) } }
-        }
+        when (operacao) {
+            1 -> for ((nome, pos) in posicoes) {
+                val lista = ArrayList(carga)
+                repeat(carga) { lista.addLast(it) }
+                val tempo = measureNanoTime { lista.add(pos, valorTeste) }
+                acumulador[nome] = acumulador[nome]!! + tempo
+            }
 
-        val tempo = measureNanoTime {
-            when (comando) {
-                1 -> lista.add(carga / 2, valorTeste)
-                2 -> repeat((carga * 0.001).toInt()) { lista.add(carga / 2, valorTeste) }
-                3 -> lista[carga / 2]
-                4 -> lista.removeAt(carga / 2)
-                5 -> repeat((carga * 0.001).toInt()) {
-                    if (lista.isNotEmpty()) lista.removeAt(lista.size / 2)
+            2 -> for ((nome, pos) in posicoes) {
+                val lista = ArrayList(carga)
+                repeat(carga) { lista.addLast(it) }
+                val tempo = measureNanoTime {
+                    repeat(n) { lista.add(pos, valorTeste) }
                 }
-                6 -> lista.addAll(List(carga) { it })
-                else -> return println("Operação inválida.")
+                acumulador[nome] = acumulador[nome]!! + tempo
+            }
+
+            3 -> for ((nome, pos) in posicoes) {
+                val lista = ArrayList(carga)
+                repeat(carga) { lista.addLast(it) }
+                val tempo = measureNanoTime { lista.getIndex(pos) }
+                acumulador[nome] = acumulador[nome]!! + tempo
+            }
+
+            4 -> for ((nome, pos) in posicoes) {
+                val lista = ArrayList(carga)
+                repeat(carga) { lista.addLast(it) }
+                val tempo = measureNanoTime { lista.remove(pos) }
+                acumulador[nome] = acumulador[nome]!! + tempo
+            }
+
+            5 -> for ((nome, pos) in posicoes) {
+                val lista = ArrayList(carga)
+                repeat(carga) { lista.addLast(it) }
+                val tempo = measureNanoTime {
+                    repeat(n) { if (lista.size() > pos) lista.remove(pos) }
+                }
+                acumulador[nome] = acumulador[nome]!! + tempo
+            }
+
+            6 -> {
+                val lista = ArrayList(carga)
+                val tempo = measureNanoTime {
+                    repeat(carga) { lista.addLast(it) }
+                }
+                acumulador["Add All"] = acumulador["Add All"]!! + tempo
             }
         }
-
-        tempos.add(tempo)
     }
 
-    val mediaNano = tempos.average()
-    val mediaMili = mediaNano / 1_000_000.0
-
     println("\nResultado para carga de $carga elementos:")
-    println("Operação escolhida: $comando")
-    println("Média de tempo em 30 execuções:")
-    println("- %.2f nanosegundos".format(mediaNano))
-    println("- %.3f milissegundos".format(mediaMili))
+    if (operacao == 6) {
+        val media = acumulador["Add All"]!! / 30.0
+        println("Média Add All: %.0f ns".format(media))
+    } else {
+        acumulador.forEach { (local, totalTempo) ->
+            val media = totalTempo / 30.0
+            println("Tempo médio em $local: %.0f ns".format(media))
+        }
+    }
 }

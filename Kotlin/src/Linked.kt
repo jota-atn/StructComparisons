@@ -3,34 +3,26 @@ package estruturas
 import java.util.LinkedList
 
 class Linked {
-    private val linked: LinkedList<Int> = LinkedList()
+    private val linked = LinkedList<Int>()
 
-    fun add(num: Int) {
-        linked.add(num)
+    fun add(index: Int, value: Int) {
+        linked.add(index, value)
     }
 
-    fun addFirst(num: Int) {
-        linked.addFirst(num)
+    fun addFirst(value: Int) {
+        linked.addFirst(value)
     }
 
-    fun addMeio(ind: Int, num: Int) {
-        if (ind in 0..linked.size) {
-            linked.add(ind, num)
-        }
+    fun addLast(value: Int) {
+        linked.addLast(value)
     }
 
-    fun addLast(num: Int) {
-        linked.addLast(num)
+    fun getIndex(index: Int): Int {
+        return linked[index]
     }
 
-    fun getIndex(ind: Int): Int? {
-        return if (ind in 0 until linked.size) linked[ind] else null
-    }
-
-    fun remove(ind: Int) {
-        if (ind in 0 until linked.size) {
-            linked.removeAt(ind)
-        }
+    fun remove(index: Int) {
+        linked.removeAt(index)
     }
 
     fun size(): Int {
@@ -41,3 +33,4 @@ class Linked {
         return linked.joinToString(" ")
     }
 }
+
