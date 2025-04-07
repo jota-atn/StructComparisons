@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3dfb70bc-d687-4ca8-95c1-e25851ef367f" name="Changes" comment="quase pronto">
+      <change beforePath="$PROJECT_DIR$/C/bin/arraylist_exec" beforeDir="false" afterPath="$PROJECT_DIR$/C/bin/arraylist_exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C/bin/linkedlist_exec" beforeDir="false" afterPath="$PROJECT_DIR$/C/bin/linkedlist_exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C/out/linkedlist/insertion_first_elemento_unico.txt" beforeDir="false" afterPath="$PROJECT_DIR$/C/out/linkedlist/insertion_first_elemento_unico.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C/out/linkedlist/insertion_last_n_elements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/C/out/linkedlist/insertion_last_n_elements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C/out/linkedlist/insertion_last_one_element.txt" beforeDir="false" afterPath="$PROJECT_DIR$/C/out/linkedlist/insertion_last_one_element.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/out/AVLTree/Min_Max.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/out/AVLTree/getIndex.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/out/AVLTree/predecessor_sucessor.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Hash.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Hash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/TreeAVL.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/TreeAVL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StructComparisons/Array.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StructComparisons/Hash.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StructComparisons/Linked.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StructComparisons/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StructComparisons/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StructComparisons/TreeAVL.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PedroRamos1208&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jota-atn/StructComparisons.git&quot;,
+    &quot;accountId&quot;: &quot;d884cc57-6e21-4e1c-a80b-d6f0c3e807b5&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2vCRY6ofbnHRAcfS020ctol3vJW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.MainEstruturas.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="StructComparisons" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainEstruturas" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainEstruturas" />
+      <module name="StructComparisons" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MainEstruturas" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3dfb70bc-d687-4ca8-95c1-e25851ef367f" name="Changes" comment="" />
+      <created>1743647113969</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743647113969</updated>
+    </task>
+    <task id="LOCAL-00001" summary=".">
+      <option name="closed" value="true" />
+      <created>1743648150581</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743648150581</updated>
+    </task>
+    <task id="LOCAL-00002" summary=".">
+      <option name="closed" value="true" />
+      <created>1743648630692</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743648630692</updated>
+    </task>
+    <task id="LOCAL-00003" summary=".">
+      <option name="closed" value="true" />
+      <created>1743829901731</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1743829901731</updated>
+    </task>
+    <task id="LOCAL-00004" summary="quase pronto">
+      <option name="closed" value="true" />
+      <created>1743907969735</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743907969735</updated>
+    </task>
+    <task id="LOCAL-00005" summary="quase pronto">
+      <option name="closed" value="true" />
+      <created>1743908617849</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743908617849</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="." />
+    <MESSAGE value="quase pronto" />
+    <option name="LAST_COMMIT_MESSAGE" value="quase pronto" />
+  </component>
+</project>
