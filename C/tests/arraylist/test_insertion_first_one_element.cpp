@@ -16,7 +16,7 @@ auto test_insert_first_one_element(ArrayList& array_list, int n) {
     array_list.insert(0, n);
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     
     return duration.count();
 }
@@ -25,7 +25,7 @@ void test_dataset_insertion_first_one_element(ArrayList& array_list, int num_exe
 
     vector <int> values = {1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
     
-    string saida = "../out/arraylist/insertion_first_elemento_unico.txt";
+    string saida = "../out/arraylist/insertion_first_one_element.txt";
     
     limpar_arquivo(saida);
 
@@ -45,7 +45,7 @@ void test_dataset_insertion_first_one_element(ArrayList& array_list, int num_exe
 
         cout << "Tempo medio de insercao sempre no inicio de um unico elemento, " << elemento
             << " para um Data Set de tamanho " << to_string(valor)
-            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
+            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " nanosssegundos" << endl;
     }
 }
 

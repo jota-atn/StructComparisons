@@ -15,7 +15,7 @@ auto test_search_element(ArrayList& array_list, int element) {
     array_list.contains(element);
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     
     return duration.count();
 }
@@ -24,7 +24,7 @@ void test_dataset_search_element(ArrayList& array_list, int num_execucoes) {
     
     vector<int> values = {1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
     
-    string saida = "../out/arraylist/search_element.txt";
+    string saida = "../out/arraylist/test_search_element.txt";
     
     limpar_arquivo(saida);
     
@@ -45,6 +45,6 @@ void test_dataset_search_element(ArrayList& array_list, int num_execucoes) {
 
         cout << "Tempo medio de busca para elemento " << elemento_alvo
              << " em Data Set de tamanho " << to_string(valor)
-             << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
+             << " apos " << num_execucoes << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }

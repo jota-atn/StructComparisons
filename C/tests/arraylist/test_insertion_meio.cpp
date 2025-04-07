@@ -18,7 +18,7 @@ auto test_insert_middle(ArrayList& array_list, int n) {
     }
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     
     return duration.count();
 }
@@ -47,7 +47,7 @@ void test_dataset_insertion_middle(ArrayList& array_list, int num_execucoes) {
 
         cout << "Tempo medio de insercao sempre no meio de " << num_elementos
             << " para um Data Set de tamanho " << to_string(valor)
-            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
+            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }
 

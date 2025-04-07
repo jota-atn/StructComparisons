@@ -16,7 +16,7 @@ auto test_remove_last_one_element(LinkedList& linked_list) {
     linked_list.remove_last();
     
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     
     return duration.count();
 }
@@ -44,6 +44,6 @@ void test_dataset_remove_last_one_element(LinkedList& linked_list, int num_execu
         gerar_saida(tempo_medio, to_string(valor), saida);
 
         cout << "Tempo medio de remocao no fim de 1 elemento para um Data Set de tamanho " << to_string(valor)
-            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
+            << " apos " << num_execucoes << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }
