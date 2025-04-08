@@ -86,9 +86,7 @@ func testDatasetInsertionFirstOneElement(lista *arraylist.ArrayList, numExecucoe
 }
 
 func main() {
-	// Criar a estrutura inicial
 	lista := arraylist.NovaLista(10000000)
-	
 	// Testar com 5 execuções para cada tamanho de dataset
 	testDatasetInsertionFirstOneElement(lista, 5)
 }

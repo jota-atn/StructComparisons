@@ -1,132 +1,92 @@
 import estruturas.Linked
+import java.io.File
+import kotlin.math.roundToLong
 import kotlin.system.measureNanoTime
 
 fun main() {
-    val cargas = listOf(
-        1_000, 10_000, 100_000, 250_000, 500_000, 600_000, 750_000, 1_000_000,
-        1_700_000, 2_500_000, 3_700_000, 5_000_000, 6_000_000, 7_500_000, 9_000_000, 10_000_000
+    val diretorioSaida = "Kotlin/out/LinkedList"
+    val operacoes = listOf(
+        "insertion" to 1,
+        "insertion" to 2,
+        "get" to 3,
+        "remove" to 4,
+        "remove" to 5,
+        "addall" to 6
     )
 
-    println("Escolha a carga:")
-    cargas.forEachIndexed { i, c -> println("${i + 1} - $c") }
-    val carga = cargas.getOrNull(readln().toIntOrNull()?.minus(1) ?: -1) ?: return println("Índice inválido")
-
-    val valorTeste = 42
-    val n = (carga * 0.001).toInt()
-
-    val opcoes = listOf(
-        "1 - Add único (início, meio, fim)",
-        "2 - Add N elementos (início, meio, fim)",
-        "3 - Get (início, meio, fim)",
-        "4 - Remove único (início, meio, fim)",
-        "5 - Remove N elementos (início, meio, fim)",
-        "6 - Add All"
-    )
+    val posicoes = mapOf("first" to 0.0, "middle" to 0.5, "last" to 1.0)
+    val entradas = File("scripts/inputs").listFiles { file -> file.name.startsWith("dataset_") }?.toList() ?: emptyList()
+    val cargas = entradas.mapNotNull { 
+        val nome = it.name.removePrefix("dataset_")
+        nome.toIntOrNull()?.let { carga -> carga to it } 
+    }.toMap()
 
     println("Escolha a operação:")
-    opcoes.forEach { println(it) }
-    val operacao = readln().toIntOrNull() ?: return println("Operação inválida")
+    println("1 - Add único (início, meio, fim)")
+    println("2 - Add N elementos (início, meio, fim)")
+    println("3 - Get (início, meio, fim)")
+    println("4 - Remove único (início, meio, fim)")
+    println("5 - Remove N elementos (início, meio, fim)")
+    println("6 - Add All")
 
-    val posicoes = listOf(
-        "Início" to 0,
-        "Meio" to carga / 2,
-        "Fim" to carga - 1
-    )
+    val operacaoEscolhida = readln().toIntOrNull() ?: return println("Operação inválida")
+    val operacaoSelecionada = operacoes.find { it.second == operacaoEscolhida }?.first ?: return println("Operação inválida")
 
-    val resultadosAcumulados = mutableMapOf<String, Long>().withDefault { 0L }
+    for ((carga, arquivo) in cargas) {
+        val valores = arquivo.readLines().mapNotNull { it.toIntOrNull() }
+        val n = (carga * 0.001).toInt()
 
-    repeat(30) {
-        val resultados = mutableMapOf<String, Long>()
-
-        when (operacao) {
-            1 -> { // Add único
-                for ((nome, pos) in posicoes) {
-                    val lista = Linked()
-                    repeat(carga) { lista.addLast(it) }
-
-                    val tempo = measureNanoTime {
-                        lista.add(pos, valorTeste)
-                    }
-                    resultados[nome] = tempo
-                }
-            }
-
-            2 -> { // Add N elementos
-                for ((nome, pos) in posicoes) {
-                    val lista = Linked()
-                    repeat(carga) { lista.addLast(it) }
-
-                    val tempo = measureNanoTime {
-                        repeat(n) {
-                            lista.add(pos, valorTeste)
+        when (operacaoEscolhida) {
+            1, 2, 4, 5, 3 -> {
+                for ((nomePosicao, proporcao) in posicoes) {
+                    val tempos = mutableListOf<Long>()
+                    repeat(30) {
+                        val lista = Linked()
+                        for (v in valores) lista.addLast(v)
+                        val index = when (nomePosicao) {
+                            "first" -> 0
+                            "middle" -> lista.size() / 2
+                            "last" -> lista.size() - 1
+                            else -> 0
                         }
-                    }
-                    resultados[nome] = tempo
-                }
-            }
-
-            3 -> { // Get
-                for ((nome, pos) in posicoes) {
-                    val lista = Linked()
-                    repeat(carga) { lista.addLast(it) }
-
-                    val tempo = measureNanoTime {
-                        lista.getIndex(pos)
-                    }
-                    resultados[nome] = tempo
-                }
-            }
-
-            4 -> { // Remove único
-                for ((nome, pos) in posicoes) {
-                    val lista = Linked()
-                    repeat(carga) { lista.addLast(it) }
-
-                    val tempo = measureNanoTime {
-                        lista.remove(pos)
-                    }
-                    resultados[nome] = tempo
-                }
-            }
-
-            5 -> { // Remove N
-                for ((nome, pos) in posicoes) {
-                    val lista = Linked()
-                    repeat(carga) { lista.addLast(it) }
-
-                    val tempo = measureNanoTime {
-                        repeat(n) {
-                            if (lista.size() > pos) {
-                                lista.remove(pos)
+                        val tempo = measureNanoTime {
+                            when (operacaoEscolhida) {
+                                1 -> lista.add(index, valores[0])
+                                2 -> repeat(n) { lista.add(index, valores[0]) }
+                                3 -> lista.getIndex(index)
+                                4 -> lista.remove(index)
+                                5 -> repeat(n) { if (lista.size() > index) lista.remove(index) }
                             }
                         }
+                        tempos.add(tempo)
                     }
-                    resultados[nome] = tempo
+
+                    val media = tempos.average().roundToLong()
+                    val quantidade = if (operacaoEscolhida in listOf(1, 4)) "one_element" else if (operacaoEscolhida in listOf(2, 5)) "n_elements" else ""
+                    val nomeArquivo = if (operacaoEscolhida == 3)
+                        "get_${nomePosicao}.txt"
+                    else
+                        "${operacaoSelecionada}_${nomePosicao}_${quantidade}.txt"
+
+                    val arquivoSaida = File("$diretorioSaida/$nomeArquivo")
+                    arquivoSaida.appendText("$carga;$media\n")
                 }
             }
 
-            6 -> { // Add All
-                val lista = Linked()
-                val tempo = measureNanoTime {
-                    repeat(carga) {
-                        lista.addLast(it)
+            6 -> {
+                val tempos = mutableListOf<Long>()
+                repeat(30) {
+                    val lista = Linked()
+                    val tempo = measureNanoTime {
+                        for (v in valores) lista.addLast(v)
                     }
+                    tempos.add(tempo)
                 }
-                resultados["Add All"] = tempo
+                val media = tempos.average().roundToLong()
+                val arquivo = File("$diretorioSaida/addall.txt")
+                arquivo.appendText("$carga;$media\n")
             }
-
-            else -> println("Operação inválida")
-        }
-
-        resultados.forEach { (local, tempo) ->
-            resultadosAcumulados[local] = resultadosAcumulados.getValue(local) + tempo
         }
     }
-
-    // Exibir médias em nanosegundos
-    println("\nMédia de tempo em 30 execuções (em nanosegundos):")
-    resultadosAcumulados.forEach { (local, tempoTotal) ->
-        val media = tempoTotal / 30.0
-        println("- $local: ${"%.2f".format(media)} ns")
-    }
+    println("Resultados salvos na pasta '$diretorioSaida'.")
 }

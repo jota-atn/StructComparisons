@@ -1,101 +1,92 @@
 import estruturas.ArrayList
+import java.io.File
+import kotlin.math.roundToLong
 import kotlin.system.measureNanoTime
 
 fun main() {
-    val cargas = listOf(
-        1_000, 10_000, 100_000, 250_000, 500_000, 600_000, 750_000, 1_000_000,
-        1_700_000, 2_500_000, 3_700_000, 5_000_000, 6_000_000, 7_500_000, 9_000_000, 10_000_000
+    val diretorioSaida = "Kotlin/out/ArrayList"
+    val operacoes = listOf(
+        "insertion" to 1,
+        "insertion" to 2,
+        "get" to 3,
+        "remove" to 4,
+        "remove" to 5,
+        "addall" to 6
     )
 
-    println("Escolha a carga:")
-    cargas.forEachIndexed { i, c -> println("${i + 1} - $c") }
-    val carga = cargas.getOrNull(readln().toIntOrNull()?.minus(1) ?: -1) ?: return println("Índice inválido")
-
-    val valorTeste = 42
-    val n = (carga * 0.001).toInt()
-
-    val opcoes = listOf(
-        "1 - Add único (início, meio, fim)",
-        "2 - Add N elementos (início, meio, fim)",
-        "3 - Get (início, meio, fim)",
-        "4 - Remove único (início, meio, fim)",
-        "5 - Remove N elementos (início, meio, fim)",
-        "6 - Add All"
-    )
+    val posicoes = mapOf("first" to 0.0, "middle" to 0.5, "last" to 1.0)
+    val entradas = File("scripts/inputs").listFiles { file -> file.name.startsWith("dataset_") }?.toList() ?: emptyList()
+    val cargas = entradas.mapNotNull { 
+        val nome = it.name.removePrefix("dataset_")
+        nome.toIntOrNull()?.let { carga -> carga to it } 
+    }.toMap()
 
     println("Escolha a operação:")
-    opcoes.forEach { println(it) }
-    val operacao = readln().toIntOrNull() ?: return println("Operação inválida")
+    println("1 - Add único (início, meio, fim)")
+    println("2 - Add N elementos (início, meio, fim)")
+    println("3 - Get (início, meio, fim)")
+    println("4 - Remove único (início, meio, fim)")
+    println("5 - Remove N elementos (início, meio, fim)")
+    println("6 - Add All")
 
-    val posicoes = listOf(
-        "Início" to 0,
-        "Meio" to carga / 2,
-        "Fim" to carga - 1
-    )
+    val operacaoEscolhida = readln().toIntOrNull() ?: return println("Operação inválida")
+    val operacaoSelecionada = operacoes.find { it.second == operacaoEscolhida }?.first ?: return println("Operação inválida")
 
-    val acumulador = mutableMapOf<String, Long>()
-    posicoes.forEach { (nome, _) -> acumulador[nome] = 0L }
-    if (operacao == 6) acumulador["Add All"] = 0L
+    for ((carga, arquivo) in cargas) {
+        val valores = arquivo.readLines().mapNotNull { it.toIntOrNull() }
+        val n = (carga * 0.001).toInt()
 
-    repeat(30) {
-        when (operacao) {
-            1 -> for ((nome, pos) in posicoes) {
-                val lista = ArrayList(carga)
-                repeat(carga) { lista.addLast(it) }
-                val tempo = measureNanoTime { lista.add(pos, valorTeste) }
-                acumulador[nome] = acumulador[nome]!! + tempo
-            }
+        when (operacaoEscolhida) {
+            1, 2, 4, 5, 3 -> {
+                for ((nomePosicao, proporcao) in posicoes) {
+                    val tempos = mutableListOf<Long>()
+                    repeat(30) {
+                        val lista = ArrayList(carga)
+                        for (v in valores) lista.addLast(v)
+                        val index = when (nomePosicao) {
+                            "first" -> 0
+                            "middle" -> lista.size() / 2
+                            "last" -> lista.size() - 1
+                            else -> 0
+                        }
+                        val tempo = measureNanoTime {
+                            when (operacaoEscolhida) {
+                                1 -> lista.add(index, valores[0])
+                                2 -> repeat(n) { lista.add(index, valores[0]) }
+                                3 -> lista.getIndex(index)
+                                4 -> lista.remove(index)
+                                5 -> repeat(n) { if (lista.size() > index) lista.remove(index) }
+                            }
+                        }
+                        tempos.add(tempo)
+                    }
 
-            2 -> for ((nome, pos) in posicoes) {
-                val lista = ArrayList(carga)
-                repeat(carga) { lista.addLast(it) }
-                val tempo = measureNanoTime {
-                    repeat(n) { lista.add(pos, valorTeste) }
+                    val media = tempos.average().roundToLong()
+                    val quantidade = if (operacaoEscolhida in listOf(1, 4)) "one_element" else if (operacaoEscolhida in listOf(2, 5)) "n_elements" else ""
+                    val nomeArquivo = if (operacaoEscolhida == 3)
+                        "get_${nomePosicao}.txt"
+                    else
+                        "${operacaoSelecionada}_${nomePosicao}_${quantidade}.txt"
+
+                    val arquivoSaida = File("$diretorioSaida/$nomeArquivo")
+                    arquivoSaida.appendText("$carga;$media\n")
                 }
-                acumulador[nome] = acumulador[nome]!! + tempo
-            }
-
-            3 -> for ((nome, pos) in posicoes) {
-                val lista = ArrayList(carga)
-                repeat(carga) { lista.addLast(it) }
-                val tempo = measureNanoTime { lista.getIndex(pos) }
-                acumulador[nome] = acumulador[nome]!! + tempo
-            }
-
-            4 -> for ((nome, pos) in posicoes) {
-                val lista = ArrayList(carga)
-                repeat(carga) { lista.addLast(it) }
-                val tempo = measureNanoTime { lista.remove(pos) }
-                acumulador[nome] = acumulador[nome]!! + tempo
-            }
-
-            5 -> for ((nome, pos) in posicoes) {
-                val lista = ArrayList(carga)
-                repeat(carga) { lista.addLast(it) }
-                val tempo = measureNanoTime {
-                    repeat(n) { if (lista.size() > pos) lista.remove(pos) }
-                }
-                acumulador[nome] = acumulador[nome]!! + tempo
             }
 
             6 -> {
-                val lista = ArrayList(carga)
-                val tempo = measureNanoTime {
-                    repeat(carga) { lista.addLast(it) }
+                val tempos = mutableListOf<Long>()
+                repeat(30) {
+                    val lista = ArrayList(carga)
+                    val tempo = measureNanoTime {
+                        for (v in valores) lista.addLast(v)
+                    }
+                    tempos.add(tempo)
                 }
-                acumulador["Add All"] = acumulador["Add All"]!! + tempo
+                val media = tempos.average().roundToLong()
+                val arquivo = File("$diretorioSaida/addall.txt")
+                arquivo.appendText("$carga;$media\n")
             }
         }
     }
-
-    println("\nResultado para carga de $carga elementos:")
-    if (operacao == 6) {
-        val media = acumulador["Add All"]!! / 30.0
-        println("Média Add All: %.0f ns".format(media))
-    } else {
-        acumulador.forEach { (local, totalTempo) ->
-            val media = totalTempo / 30.0
-            println("Tempo médio em $local: %.0f ns".format(media))
-        }
-    }
+    println("Resultados salvos na pasta '$diretorioSaida'.")
 }
