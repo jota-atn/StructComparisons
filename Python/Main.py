@@ -154,11 +154,11 @@ def insertion_all_al(outpath, sizes):
         total_time = 0
         for i in range(30):
             arraylist = ArrayList()
+            start = time.time()
             for line in lines:
-                start = time.time()
                 arraylist.add_last(line)
-                end = time.time()
-                total_time += (end - start) * 1000000000
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
         total_time = (total_time/30)  / size
         outputs.append(f"{size};{total_time} \n")
@@ -503,11 +503,11 @@ def insertion_all_ll(outpath, sizes):
         total_time = 0
         for i in range(30):
             linkedlist = LinkedList()
+            start = time.time()
             for line in lines:
-                start = time.time()
                 linkedlist.add_last(line)
-                end = time.time()
-                total_time += (end - start) * 1000000000
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
         total_time = (total_time / 30) / size
         outputs.append(f"{size};{total_time} \n")
@@ -779,11 +779,11 @@ def insertion_all_hash(outpath, sizes):
 
         for i in range(30):
             hashmap = HashMap()
+            start = time.time()
             for line in lines:
-                start = time.time()
                 hashmap.put(line, line)
-                end = time.time()
-                total_time += (end - start) * 1000000000
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
         total_time /= 30
         outputs.append(f"{size};{total_time} \n")
@@ -862,11 +862,11 @@ def insertion_all_avl(outpath, sizes):
 
         for i in range(30):
             avl = AVL()
+            start = time.time()
             for line in lines:
-                start = time.time()
                 avl.add(line)
-                end = time.time()
-                total_time += (end - start) * 1000000000
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
         total_time /= 30
         outputs.append(f"{size};{total_time} \n")
