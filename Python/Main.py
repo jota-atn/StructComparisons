@@ -884,7 +884,7 @@ def search_avl(outpath, sizes):
         for i in range(30):
             avl.search(target)
         end = time.time()
-        total_time = ((end - start) * 1000000000) / 30
+        total_time += ((end - start) * 1000000000) / 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
