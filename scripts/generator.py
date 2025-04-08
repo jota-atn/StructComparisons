@@ -23,7 +23,7 @@ def generate_large_data(filename: str, size: int, mode="random", num_range=(0, 1
 if __name__ == "__main__":
     os.makedirs("inputs", exist_ok=True)
     
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
 
     for size in sizes:
         filename = f"inputs/dataset_{size}.txt"

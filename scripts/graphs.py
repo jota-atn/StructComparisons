@@ -90,7 +90,7 @@ def plotar_teste(structure, test, pdf, languages, cores_linguagens, cores_pontos
 
     plot.title(f"Comparação de {test} entre Linguagens - {structure.capitalize()}")
     plot.xlabel("Tamanho do Dataset")
-    plot.ylabel("Tempo de Execução (ms)")
+    plot.ylabel("Tempo de Execução (ns)")
     plot.grid(True, alpha=0.5)
     plot.gca().xaxis.set_major_formatter(FuncFormatter(formatar_eixo_x))
 
@@ -176,4 +176,4 @@ if __name__ == "__main__":
 
     gerar_graficos_listas_pdf(languages, cores_linguagens, cores_pontos)
     gerar_graficos_mapas_pdf(languages, cores_linguagens, cores_pontos)
-    gerar_graficos_trees_pdf(languages, cores_linguagens, cores_pontos)
+    gerar_graficos_trees_pdf(languages, cores_linguagens, cores_pontos)  

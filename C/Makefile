@@ -6,7 +6,7 @@ BIN_DIR = bin
 
 $(shell mkdir -p $(BIN_DIR))
 
-all: arraylist linkedlist hashmap
+all: arraylist linkedlist hashmap avltree
 
 arraylist: $(TESTS_DIR)/arraylist/main.cpp $(TESTS_DIR)/arraylist/output.cpp $(SRC_DIR)/array_list.cpp
 	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/arraylist_exec $^
@@ -16,6 +16,9 @@ linkedlist: $(TESTS_DIR)/linkedlist/main.cpp $(TESTS_DIR)/linkedlist/output.cpp 
 
 hashmap: $(TESTS_DIR)/hashmap/main.cpp $(TESTS_DIR)/hashmap/output.cpp $(SRC_DIR)/hash_map.cpp
 	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/hashmap_exec $^
+
+avltree: $(TESTS_DIR)/avltree/main.cpp $(TESTS_DIR)/avltree/output.cpp $(SRC_DIR)/avl_tree.cpp
+	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/avltree_exec $^
 
 clean:
 	rm -rf $(BIN_DIR)/*

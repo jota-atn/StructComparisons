@@ -22,7 +22,7 @@ auto test_predecessor(AVLTree& tree, int key) {
 }
 
 void test_dataset_predecessor(AVLTree& tree, int num_execucoes) {
-    vector<int> values = {1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000};
+    vector<int> values = {10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000};
 
     string saida = "../out/avltree/predecessor.txt";
 

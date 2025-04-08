@@ -22,8 +22,8 @@ auto test_get_meio(ArrayList& array_list, int n) {
     return duration.count();
 }
 
-void test_dataset_get_meio(ArrayList& array_list) {
-    vector<int> values = {10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
+void test_dataset_get_meio(ArrayList& array_list, int num_execucoes) {
+    vector<int> values = {10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000};
     
     string saida = "../out/arraylist/get_mid.txt";
     
@@ -34,7 +34,6 @@ void test_dataset_get_meio(ArrayList& array_list) {
         
         long long tempo_total = 0;
         
-        int num_execucoes = 100000000;
         for (int i = 0; i < num_execucoes; ++i) {
             tempo_total += test_get_meio(array_list, valor);
         }
