@@ -49,7 +49,7 @@ def fill_avl(size):
 #Função que chama as funções individuais de teste de gets.
 def test_gets_arraylist():
     outpaths = ["out/arraylist/get_first.txt", "out/arraylist/get_last.txt", "out/arraylist/get_mid.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
     get_first_al(outpaths[0], sizes)
     get_last_al(outpaths[1], sizes)
     get_middle_al(outpaths[2], sizes)
@@ -135,7 +135,7 @@ def get_middle_al(outpath, sizes):
 #Função que chama individualmente as funções de teste de inserção.
 def test_insertion_arraylist():
     outpaths = ["out/arraylist/insertion_all.txt", "out/arraylist/insertion_first_one_element.txt", "out/arraylist/insertion_last_one_element.txt", "out/arraylist/insertion_mid_one_element.txt", "out/arraylist/insertion_first_n_elements.txt", "out/arraylist/insertion_last_n_elements.txt", "out/arraylist/insertion_mid_n_elements.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
     insertion_all_al(outpaths[0], sizes)
     insertion_onefirst_al(outpaths[1], sizes)
     insertion_onelast_al(outpaths[2], sizes)
@@ -292,7 +292,7 @@ def insertion_nmiddle_al(outpath, sizes):
 #Função que chama as funções individuais de teste de remoção de arraylist.
 def test_remove_arraylist():
     outpaths = ["out/arraylist/remove_first_one_element.txt", "out/arraylist/remove_last_one_element.txt", "out/arraylist/remove_mid_one_element.txt", "out/arraylist/remove_first_n_elements.txt", "out/arraylist/remove_last_n_elements.txt", "out/arraylist/remove_mid_n_elements.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
     remove_onefirst_al(outpaths[0], sizes)
     remove_onelast_al(outpaths[1], sizes)
     remove_onemiddle_al(outpaths[2], sizes)
@@ -421,7 +421,7 @@ def remove_nmiddle_al(outpath, sizes):
 
 def test_gets_linkedlist():
     outpaths = ["out/linkedlist/get_first.txt", "out/linkedlist/get_last.txt", "out/linkedlist/get_mid.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
     get_first_ll(outpaths[0], sizes)
     get_last_ll(outpaths[1], sizes)
     get_middle_ll(outpaths[2], sizes)
@@ -485,7 +485,7 @@ def get_middle_ll(outpath, sizes):
 
 def test_insertion_linkedlist():
     outpaths = ["out/linkedlist/insertion_all.txt", "out/linkedlist/insertion_first_one_element.txt", "out/linkedlist/insertion_last_one_element.txt", "out/linkedlist/insertion_mid_one_element.txt", "out/linkedlist/insertion_first_n_elements.txt", "out/linkedlist/insertion_last_n_elements.txt", "out/linkedlist/insertion_mid_n_elements.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
     insertion_all_ll(outpaths[0], sizes)
     insertion_onefirst_ll(outpaths[1], sizes)
     insertion_onelast_ll(outpaths[2], sizes)
@@ -635,7 +635,7 @@ def insertion_nmiddle_ll(outpath, sizes):
 
 def test_remove_linkedlist():
     outpaths = ["out/linkedlist/remove_first_one_element.txt", "out/linkedlist/remove_last_one_element.txt", "out/linkedlist/remove_mid_one_element.txt", "out/linkedlist/remove_first_n_elements.txt", "out/linkedlist/remove_last_n_elements.txt", "out/linkedlist/remove_mid_n_elements.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
     remove_onefirst_ll(outpaths[0], sizes)
     remove_onelast_ll(outpaths[1], sizes)
     remove_onemiddle_ll(outpaths[2], sizes)
@@ -762,7 +762,7 @@ def remove_nmiddle_ll(outpath, sizes):
 
 def test_hashmap():
     outpaths = ["out/hashmap/insertion_all.txt", "out/hashmap/acess_one_element.txt", "out/hashmap/remove_one_element.txt", "out/hashmap/search_innexistent.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
     insertion_all_hash(outpaths[0], sizes)
     acess_one(outpaths[1], sizes)
     remove_one(outpaths[2], sizes)
@@ -843,14 +843,140 @@ def search_zero(outpath, sizes):
 
 def test_avl():
     outpaths = ["out/avl/insertion_all.txt", "out/avl/search.txt", "out/avl/remove.txt", "out/avl/max.txt", "out/avl/min.txt", "out/avl/sucessor.txt", "out/avl/predecessor.txt"]
-    sizes = []
-    #insertion_all_avl()
-    #search_avl()
-    #remove_avl()
-    #max_avl()
-    #min_avl()
-    #sucessor_avl()
-    #predecessor_avl()
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
+    insertion_all_avl(outpaths[0], sizes)
+    search_avl(outpaths[1], sizes)
+    remove_avl(outpaths[2], sizes)
+    max_avl(outpaths[3], sizes)
+    min_avl(outpaths[4], sizes)
+    sucessor_avl(outpaths[5], sizes)
+    predecessor_avl(outpaths[6], sizes)
+
+def insertion_all_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
+            lines = archive.readlines()
+
+        total_time = 0
+
+        for i in range(30):
+            avl = AVL()
+            for line in lines:
+                start = time.time()
+                avl.add(line)
+                end = time.time()
+                total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def search_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        target = size // 2
+        avl = fill_avl(size)
+        total_time = 0
+        start = time.time()
+        for i in range(30):
+            avl.search(target)
+        end = time.time()
+        total_time = ((end - start) * 1000000000) / 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def remove_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        target = size // 2
+        total_time = 0
+        for i in range(30):
+            avl = fill_avl(size)
+            start = time.time()
+            avl.remove(target)
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def max_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        total_time = 0
+        avl = fill_avl(size)
+        for i in range(30):
+            start = time.time()
+            avl.max()
+            end = time.time()
+            total_time += (end-start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def min_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        total_time = 0
+        avl = fill_avl(size)
+        for i in range(30):
+            start = time.time()
+            avl.min()
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def sucessor_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        total_time = 0
+        avl = fill_avl(size)
+        target = size // 2
+        for i in range(30):
+            start = time.time()
+            avl.sucessor(target)
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def predecessor_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        total_time = 0
+        avl = fill_avl(size)
+        target = size // 2
+        for i in range(30):
+            start = time.time()
+            avl.predecessor(target)
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
 
 test_gets_arraylist()
 test_insertion_arraylist()
