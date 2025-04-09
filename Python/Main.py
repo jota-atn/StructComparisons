@@ -842,7 +842,7 @@ def search_zero(outpath, sizes):
         out.writelines(outputs)
 
 def test_avl():
-    outpaths = ["out/avl/insertion_all.txt", "out/avl/search.txt", "out/avl/remove.txt", "out/avl/max.txt", "out/avl/min.txt", "out/avl/sucessor.txt", "out/avl/predecessor.txt"]
+    outpaths = ["out/avltree/insertion_all.txt", "out/avltree/search.txt", "out/avltree/remove.txt", "out/avltree/max.txt", "out/avltree/min.txt", "out/avltree/sucessor.txt", "out/avltree/predecessor.txt"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
     insertion_all_avl(outpaths[0], sizes)
     search_avl(outpaths[1], sizes)
