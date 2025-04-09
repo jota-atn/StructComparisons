@@ -136,13 +136,13 @@ def get_middle_al(outpath, sizes):
 def test_insertion_arraylist():
     outpaths = ["out/arraylist/insertion_all.txt", "out/arraylist/insertion_first_one_element.txt", "out/arraylist/insertion_last_one_element.txt", "out/arraylist/insertion_mid_one_element.txt", "out/arraylist/insertion_first_n_elements.txt", "out/arraylist/insertion_last_n_elements.txt", "out/arraylist/insertion_mid_n_elements.txt"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
-    insertion_all_al(outpaths[0], sizes)
+    #insertion_all_al(outpaths[0], sizes)
     insertion_onefirst_al(outpaths[1], sizes)
-    insertion_onelast_al(outpaths[2], sizes)
-    insertion_onemiddle_al(outpaths[3], sizes)
-    insertion_nfirst_al(outpaths[4], sizes)
-    insertion_nlast_al(outpaths[5], sizes)
-    insertion_nmiddle_al(outpaths[6], sizes)
+    #insertion_onelast_al(outpaths[2], sizes)
+    #insertion_onemiddle_al(outpaths[3], sizes)
+    #insertion_nfirst_al(outpaths[4], sizes)
+    #insertion_nlast_al(outpaths[5], sizes)
+    #insertion_nmiddle_al(outpaths[6], sizes)
 
 #Teste de preenchimento do arraylist.
 def insertion_all_al(outpath, sizes):
@@ -978,11 +978,11 @@ def predecessor_avl(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
-test_gets_arraylist()
+#test_gets_arraylist()
 test_insertion_arraylist()
-test_remove_arraylist()
-test_gets_linkedlist()
-test_insertion_linkedlist()
-test_remove_linkedlist()
-test_hashmap()
-test_avl()
+#test_remove_arraylist()
+#test_gets_linkedlist()
+#test_insertion_linkedlist()
+#test_remove_linkedlist()
+#test_hashmap()
+#test_avl()
