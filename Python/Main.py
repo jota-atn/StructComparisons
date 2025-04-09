@@ -160,7 +160,7 @@ def insertion_all_al(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time/30)  / size
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -313,7 +313,7 @@ def remove_onefirst_al(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -332,7 +332,7 @@ def remove_onelast_al(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -351,7 +351,7 @@ def remove_onemiddle_al(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -509,7 +509,7 @@ def insertion_all_ll(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -656,7 +656,7 @@ def remove_onefirst_ll(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -675,7 +675,7 @@ def remove_onelast_ll(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -694,7 +694,7 @@ def remove_onemiddle_ll(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
