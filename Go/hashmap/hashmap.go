@@ -1,4 +1,4 @@
-package main
+package hashmap
 
 // HashMap implementa um mapa de hash simples
 type HashMap struct {
