@@ -37,7 +37,7 @@ fun main() {
         print("Digite o valor para a operação de $operacao: ")
         scanner.nextLine().toInt()
     } else {
-        -1 // Valor dummy
+        -1
     }
 
     val inputDir = File("scripts/inputs")
