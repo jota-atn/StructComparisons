@@ -832,7 +832,7 @@ def search_zero(outpath, sizes):
         total_time = 0
         start = time.time()
         for i in range(30):
-            hashmap.get(0)
+            hashmap.get(1000000000)
         end = time.time()
         total_time += ((end - start) * 1000000000) / 30
         outputs.append(f"{size};{total_time} \n")
@@ -876,7 +876,7 @@ def insertion_all_avl(outpath, sizes):
 def search_avl(outpath, sizes):
     outputs = []
     for size in sizes:
-        target = size // 2
+        target = 1000000000
         avl = fill_avl(size)
         total_time = 0
         start = time.time()
