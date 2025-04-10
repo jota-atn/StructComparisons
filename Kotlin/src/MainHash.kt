@@ -26,7 +26,7 @@ fun main() {
         // Operação 2: get (busca valor 0)
         medirTempoHash(carga, valores, "get") { hash ->
             for (v in valores) hash.put(v)
-            hash.getKey(0)
+            hash.getKey(10000000)
         }
 
         // Operação 3: remove (remove valor 0)
@@ -38,7 +38,7 @@ fun main() {
         // Operação 4: contains (verifica se contém o valor 0)
         medirTempoHash(carga, valores, "contains") { hash ->
             for (v in valores) hash.put(v)
-            hash.containsValue(0)
+            hash.containsValue(10000000)
         }
     }
 
