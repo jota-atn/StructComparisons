@@ -42,7 +42,7 @@ fun main() {
         for (arquivo in arquivos) {
             val dados = arquivo.readLines().mapNotNull { it.toIntOrNull() }
             val carga = dados.size
-            val valorTeste = 0
+            val valorTeste = 10000000
 
             val tempos = mutableListOf<Long>()
             repeat(30) {
