@@ -10,7 +10,6 @@ def fill_array(size):
     arraylist = ArrayList()
     with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
         lines = archive.readlines()
-
     for line in lines:
         arraylist.add_last(line)
 
@@ -49,7 +48,7 @@ def fill_avl(size):
 #Função que chama as funções individuais de teste de gets.
 def test_gets_arraylist():
     outpaths = ["out/arraylist/get_first.txt", "out/arraylist/get_last.txt", "out/arraylist/get_mid.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     get_first_al(outpaths[0], sizes)
     get_last_al(outpaths[1], sizes)
     get_middle_al(outpaths[2], sizes)
@@ -135,7 +134,7 @@ def get_middle_al(outpath, sizes):
 #Função que chama individualmente as funções de teste de inserção.
 def test_insertion_arraylist():
     outpaths = ["out/arraylist/insertion_all.txt", "out/arraylist/insertion_first_one_element.txt", "out/arraylist/insertion_last_one_element.txt", "out/arraylist/insertion_mid_one_element.txt", "out/arraylist/insertion_first_n_elements.txt", "out/arraylist/insertion_last_n_elements.txt", "out/arraylist/insertion_mid_n_elements.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     insertion_all_al(outpaths[0], sizes)
     insertion_onefirst_al(outpaths[1], sizes)
     insertion_onelast_al(outpaths[2], sizes)
@@ -292,7 +291,7 @@ def insertion_nmiddle_al(outpath, sizes):
 #Função que chama as funções individuais de teste de remoção de arraylist.
 def test_remove_arraylist():
     outpaths = ["out/arraylist/remove_first_one_element.txt", "out/arraylist/remove_last_one_element.txt", "out/arraylist/remove_mid_one_element.txt", "out/arraylist/remove_first_n_elements.txt", "out/arraylist/remove_last_n_elements.txt", "out/arraylist/remove_mid_n_elements.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     remove_onefirst_al(outpaths[0], sizes)
     remove_onelast_al(outpaths[1], sizes)
     remove_onemiddle_al(outpaths[2], sizes)
@@ -421,7 +420,7 @@ def remove_nmiddle_al(outpath, sizes):
 
 def test_gets_linkedlist():
     outpaths = ["out/linkedlist/get_first.txt", "out/linkedlist/get_last.txt", "out/linkedlist/get_mid.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     get_first_ll(outpaths[0], sizes)
     get_last_ll(outpaths[1], sizes)
     get_middle_ll(outpaths[2], sizes)
@@ -485,7 +484,7 @@ def get_middle_ll(outpath, sizes):
 
 def test_insertion_linkedlist():
     outpaths = ["out/linkedlist/insertion_all.txt", "out/linkedlist/insertion_first_one_element.txt", "out/linkedlist/insertion_last_one_element.txt", "out/linkedlist/insertion_mid_one_element.txt", "out/linkedlist/insertion_first_n_elements.txt", "out/linkedlist/insertion_last_n_elements.txt", "out/linkedlist/insertion_mid_n_elements.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     insertion_all_ll(outpaths[0], sizes)
     insertion_onefirst_ll(outpaths[1], sizes)
     insertion_onelast_ll(outpaths[2], sizes)
@@ -635,7 +634,7 @@ def insertion_nmiddle_ll(outpath, sizes):
 
 def test_remove_linkedlist():
     outpaths = ["out/linkedlist/remove_first_one_element.txt", "out/linkedlist/remove_last_one_element.txt", "out/linkedlist/remove_mid_one_element.txt", "out/linkedlist/remove_first_n_elements.txt", "out/linkedlist/remove_last_n_elements.txt", "out/linkedlist/remove_mid_n_elements.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     remove_onefirst_ll(outpaths[0], sizes)
     remove_onelast_ll(outpaths[1], sizes)
     remove_onemiddle_ll(outpaths[2], sizes)
@@ -762,7 +761,7 @@ def remove_nmiddle_ll(outpath, sizes):
 
 def test_hashmap():
     outpaths = ["out/hashmap/insertion_all.txt", "out/hashmap/acess_one_element.txt", "out/hashmap/remove_one_element.txt", "out/hashmap/search_innexistent.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     insertion_all_hash(outpaths[0], sizes)
     acess_one(outpaths[1], sizes)
     remove_one(outpaths[2], sizes)
@@ -843,7 +842,7 @@ def search_zero(outpath, sizes):
 
 def test_avl():
     outpaths = ["out/avltree/insertion_all.txt", "out/avltree/search.txt", "out/avltree/remove.txt", "out/avltree/max.txt", "out/avltree/min.txt", "out/avltree/sucessor.txt", "out/avltree/predecessor.txt"]
-    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     insertion_all_avl(outpaths[0], sizes)
     search_avl(outpaths[1], sizes)
     remove_avl(outpaths[2], sizes)
