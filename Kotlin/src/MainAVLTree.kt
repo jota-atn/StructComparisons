@@ -1,122 +1,77 @@
-import tree.Node
 import estruturas.AVLTree
+import tree.Node
 import java.io.File
-import java.util.Scanner
+import kotlin.math.roundToLong
 import kotlin.system.measureNanoTime
 
 fun main() {
     val avl = AVLTree()
-    val scanner = Scanner(System.`in`)
-
-    println(
-        """
-        Escolha a operação digitando o número:
-        1 - inserir_all
-        2 - get
-        3 - remove
-        4 - sucessor
-        5 - predecessor
-        6 - min
-        7 - max
-    """.trimIndent()
-    )
-    val opcao = scanner.nextLine().toInt()
-
-    val operacao = when (opcao) {
-        1 -> "inserir_all"
-        2 -> "get"
-        3 -> "remove"
-        4 -> "sucessor"
-        5 -> "predecessor"
-        6 -> "min"
-        7 -> "max"
-        else -> throw IllegalArgumentException("Opção inválida")
-    }
-
-    val valor: Int = if (operacao != "inserir_all" && operacao != "min" && operacao != "max") {
-        print("Digite o valor para a operação de $operacao: ")
-        scanner.nextLine().toInt()
-    } else {
-        -1 // Valor dummy
-    }
-
-    val inputDir = File("scripts/inputs")
-    val arquivosNaoNulos = inputDir.listFiles { _, name ->
-        name.startsWith("dataset_") && name.endsWith(".txt")
-    } ?: arrayOf()
-
-    val arquivos = arquivosNaoNulos.sortedBy { file ->
-        file.name.substringAfter("dataset_").substringBefore(".txt").toInt()
-    }
-
     val outputDir = File("Kotlin/out/AVLTree")
     outputDir.mkdirs()
 
-    val nomeArquivoSaida = when (operacao) {
-        "inserir_all" -> "insertion_all.txt"
-        "get" -> "get_element.txt"
-        "remove" -> "remove_element.txt"
-        "sucessor" -> "sucessor_element.txt"
-        "predecessor" -> "predecessor_element.txt"
-        "min" -> "min.txt"
-        "max" -> "max.txt"
-        else -> throw IllegalArgumentException("Operação inválida")
-    }
+    val arquivos = File("scripts/inputs").listFiles { _, name ->
+        name.startsWith("dataset_") && name.endsWith(".txt")
+    }?.sortedBy {
+        it.name.removePrefix("dataset_").removeSuffix(".txt").toIntOrNull()
+    } ?: return println("Nenhum arquivo de entrada encontrado.")
 
-    val arquivoSaida = File(outputDir, nomeArquivoSaida)
-    arquivoSaida.printWriter().use { out ->
+    val operacoes = listOf(
+        "inserir_all",
+        "get",
+        "remove",
+        "sucessor",
+        "predecessor",
+        "min",
+        "max"
+    )
+
+    for (operacao in operacoes) {
+        val nomeArquivo = when (operacao) {
+            "inserir_all" -> "insertion_all.txt"
+            "get" -> "get_element.txt"
+            "remove" -> "remove_element.txt"
+            "sucessor" -> "sucessor_element.txt"
+            "predecessor" -> "predecessor_element.txt"
+            "min" -> "min.txt"
+            "max" -> "max.txt"
+            else -> continue
+        }
+
+        val arquivoSaida = File(outputDir, nomeArquivo)
+
         for (arquivo in arquivos) {
-            val dados = arquivo.readLines().map { it.toInt() }
+            val dados = arquivo.readLines().mapNotNull { it.toIntOrNull() }
             val carga = dados.size
+            val valorTeste = 0
 
-            var tempoTotal = 0L
-
+            val tempos = mutableListOf<Long>()
             repeat(30) {
                 var root: Node? = null
-                for (valorLista in dados) {
-                    root = avl.insert(root, valorLista)
+                for (v in dados) {
+                    root = avl.insert(root, v)
                 }
 
-                val tempo = when (operacao) {
-                    "inserir_all" -> measureNanoTime {
-                        var r: Node? = null
-                        for (v in dados) r = avl.insert(r, v)
+                val tempo = measureNanoTime {
+                    when (operacao) {
+                        "inserir_all" -> {
+                            var r: Node? = null
+                            for (v in dados) r = avl.insert(r, v)
+                        }
+                        "get" -> avl.search(root, valorTeste)
+                        "remove" -> avl.delete(root, valorTeste)
+                        "sucessor" -> avl.sucessor(root, valorTeste)
+                        "predecessor" -> avl.predecessor(root, valorTeste)
+                        "min" -> avl.min(root)
+                        "max" -> avl.max(root)
                     }
-
-                    "get" -> measureNanoTime {
-                        avl.search(root, valor)
-                    }
-
-                    "remove" -> measureNanoTime {
-                        avl.delete(root, valor)
-                    }
-
-                    "sucessor" -> measureNanoTime {
-                        avl.sucessor(root, valor)
-                    }
-
-                    "predecessor" -> measureNanoTime {
-                        avl.predecessor(root, valor)
-                    }
-
-                    "min" -> measureNanoTime {
-                        avl.min(root)
-                    }
-
-                    "max" -> measureNanoTime {
-                        avl.max(root)
-                    }
-
-                    else -> 0L
                 }
-
-                tempoTotal += tempo
+                tempos.add(tempo)
             }
 
-            val tempoMedio = tempoTotal / 30
-            out.println("$carga;$tempoMedio")
+            val media = tempos.average().roundToLong()
+            arquivoSaida.appendText("$carga;$media\n")
         }
     }
 
-    println("Resultados salvos em: ${arquivoSaida.path}")
+    println("Resultados salvos na pasta '${outputDir.path}'")
 }
