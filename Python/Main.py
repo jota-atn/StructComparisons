@@ -10,7 +10,6 @@ def fill_array(size):
     arraylist = ArrayList()
     with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
         lines = archive.readlines()
-
     for line in lines:
         arraylist.add_last(line)
 
@@ -154,13 +153,13 @@ def insertion_all_al(outpath, sizes):
         total_time = 0
         for i in range(30):
             arraylist = ArrayList()
+            start = time.time()
             for line in lines:
-                start = time.time()
                 arraylist.add_last(line)
-                end = time.time()
-                total_time += (end - start) * 1000000000
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
-        total_time = (total_time/30)  / size
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -313,7 +312,7 @@ def remove_onefirst_al(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -332,7 +331,7 @@ def remove_onelast_al(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -351,7 +350,7 @@ def remove_onemiddle_al(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -503,13 +502,13 @@ def insertion_all_ll(outpath, sizes):
         total_time = 0
         for i in range(30):
             linkedlist = LinkedList()
+            start = time.time()
             for line in lines:
-                start = time.time()
                 linkedlist.add_last(line)
-                end = time.time()
-                total_time += (end - start) * 1000000000
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -656,7 +655,7 @@ def remove_onefirst_ll(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -675,7 +674,7 @@ def remove_onelast_ll(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -694,7 +693,7 @@ def remove_onemiddle_ll(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
-        total_time = (total_time / 30) / size
+        total_time = (total_time / 30)
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -779,11 +778,11 @@ def insertion_all_hash(outpath, sizes):
 
         for i in range(30):
             hashmap = HashMap()
+            start = time.time()
             for line in lines:
-                start = time.time()
                 hashmap.put(line, line)
-                end = time.time()
-                total_time += (end - start) * 1000000000
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
         total_time /= 30
         outputs.append(f"{size};{total_time} \n")
@@ -833,7 +832,7 @@ def search_zero(outpath, sizes):
         total_time = 0
         start = time.time()
         for i in range(30):
-            hashmap.get(0)
+            hashmap.get(1000000000)
         end = time.time()
         total_time += ((end - start) * 1000000000) / 30
         outputs.append(f"{size};{total_time} \n")
@@ -842,21 +841,147 @@ def search_zero(outpath, sizes):
         out.writelines(outputs)
 
 def test_avl():
-    outpaths = ["out/avl/insertion_all.txt", "out/avl/search.txt", "out/avl/remove.txt", "out/avl/max.txt", "out/avl/min.txt", "out/avl/sucessor.txt", "out/avl/predecessor.txt"]
-    sizes = []
-    #insertion_all_avl()
-    #search_avl()
-    #remove_avl()
-    #max_avl()
-    #min_avl()
-    #sucessor_avl()
-    #predecessor_avl()
+    outpaths = ["out/avltree/insertion_all.txt", "out/avltree/search.txt", "out/avltree/remove.txt", "out/avltree/max.txt", "out/avltree/min.txt", "out/avltree/sucessor.txt", "out/avltree/predecessor.txt"]
+    sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
+    insertion_all_avl(outpaths[0], sizes)
+    search_avl(outpaths[1], sizes)
+    remove_avl(outpaths[2], sizes)
+    max_avl(outpaths[3], sizes)
+    min_avl(outpaths[4], sizes)
+    sucessor_avl(outpaths[5], sizes)
+    predecessor_avl(outpaths[6], sizes)
+
+def insertion_all_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        with open(f"../scripts/inputs/dataset_{size}.txt", "r") as archive:
+            lines = archive.readlines()
+
+        total_time = 0
+
+        for i in range(30):
+            avl = AVL()
+            start = time.time()
+            for line in lines:
+                avl.add(line)
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def search_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        target = 1000000000
+        avl = fill_avl(size)
+        total_time = 0
+        start = time.time()
+        for i in range(30):
+            avl.search(target)
+        end = time.time()
+        total_time += ((end - start) * 1000000000) / 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def remove_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        target = size // 2
+        total_time = 0
+        for i in range(30):
+            avl = fill_avl(size)
+            start = time.time()
+            avl.remove(target)
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def max_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        total_time = 0
+        avl = fill_avl(size)
+        for i in range(30):
+            start = time.time()
+            avl.max()
+            end = time.time()
+            total_time += (end-start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def min_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        total_time = 0
+        avl = fill_avl(size)
+        for i in range(30):
+            start = time.time()
+            avl.min()
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def sucessor_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        total_time = 0
+        avl = fill_avl(size)
+        target = size // 2
+        for i in range(30):
+            start = time.time()
+            avl.sucessor(target)
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
+
+def predecessor_avl(outpath, sizes):
+    outputs = []
+    for size in sizes:
+        total_time = 0
+        avl = fill_avl(size)
+        target = size // 2
+        for i in range(30):
+            start = time.time()
+            avl.predecessor(target)
+            end = time.time()
+            total_time += (end - start) * 1000000000
+
+        total_time /= 30
+        outputs.append(f"{size};{total_time} \n")
+
+    with open(outpath, "w") as out:
+        out.writelines(outputs)
 
 #test_gets_arraylist()
 test_insertion_arraylist()
-#test_remove_arraylist()
-#test_gets_linkedlist()
-#test_insertion_linkedlist()
-#test_remove_linkedlist()
-#test_hashmap()
-#test_avl()
+test_remove_arraylist()
+test_gets_linkedlist()
+test_insertion_linkedlist()
+test_remove_linkedlist()
+test_hashmap()
+test_avl()

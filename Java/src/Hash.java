@@ -5,19 +5,18 @@ import java.util.Scanner;
 
 public class Hash {
 	private HashMap<Integer, Integer> hash;
-	private int indice;
 	
 	public Hash() {
 		this.hash = new HashMap<>();
-		this.indice = 0;
 	}
 	
 	public void put(String caminho) throws FileNotFoundException {
 		Scanner sc = new Scanner(new File(caminho));
+		int indice = 0;
 
 		while(sc.hasNext()){
 			this.hash.put(indice, sc.nextInt());
-			this.indice++;
+			indice++;
 		}
 	}
 	
