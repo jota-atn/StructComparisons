@@ -66,6 +66,7 @@ class LinkedList:
             else:
                 node.next = aux
                 aux.prev.next = node
+                node.prev = aux.prev
                 aux.prev = node
                 self._size += 1
 
