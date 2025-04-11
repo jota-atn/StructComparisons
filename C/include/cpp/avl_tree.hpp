@@ -37,6 +37,7 @@ public:
     void insert(int key);
     void remove(int key);
     bool search(int key);
+    void fill_tree(string value);
     void clear();
 
     int min();     

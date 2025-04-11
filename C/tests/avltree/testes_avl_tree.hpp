@@ -5,3 +5,4 @@
 #include "test_insertion_n_elements.cpp"
 #include "test_single_access_avl.cpp"
 #include "test_single_remotion_avl.cpp"
+#include "test_fill_avltree.cpp"

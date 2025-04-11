@@ -1,5 +1,10 @@
 #include "../../include/cpp/avl_tree.hpp"
 #include <algorithm>
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 AVLTree::AVLTree() : root(nullptr) {}
 
@@ -193,4 +198,23 @@ int AVLTree::predecessor(int key) {
 void AVLTree::clear() {
     destroy(root);
     root = nullptr;
+}
+
+void AVLTree::fill_tree(string value) {
+    clear();
+
+    const std::string filename = "../../scripts/inputs/dataset_" + value + ".txt";
+
+    std::ifstream file(filename);
+    if (!file) {
+        std::cerr << "Erro ao abrir o arquivo: " << filename << std::endl;
+        return;
+    }
+
+    int number;
+    while (file >> number) {
+        insert(number);
+    }
+
+    file.close();
 }

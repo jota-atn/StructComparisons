@@ -10,3 +10,4 @@
 #include "test_get_element_meio.cpp"
 #include "test_get_element_fim.cpp"
 #include "test_search.cpp"
+#include "test_fill_linkedlist.cpp"

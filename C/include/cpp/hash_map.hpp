@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <unordered_map>
+#include <fstream>
 
 using namespace std;
 
@@ -17,6 +18,7 @@ class HashMap {
         void remove(int chave);
         size_t size();
         void clear();
+        void fill_map(string value);
         ~HashMap();
 };
 
