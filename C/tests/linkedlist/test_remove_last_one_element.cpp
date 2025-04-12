@@ -23,7 +23,7 @@ auto test_remove_last_one_element(LinkedList& linked_list) {
 
 void test_dataset_remove_last_one_element(LinkedList& linked_list, int num_execucoes) {
     
-    vector<int> values = {10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000};
+    vector<int> values = {10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000};
         
     string saida = "../out/linkedlist/remove_last_one_element.txt";
     
