@@ -1,6 +1,10 @@
 #ifndef AVL_TREE_H
 #define AVL_TREE_H
 
+#include <string>
+
+using namespace std;
+
 class AVLTree {
 private:
     struct Node {
