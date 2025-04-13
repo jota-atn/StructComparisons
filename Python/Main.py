@@ -635,11 +635,11 @@ def insertion_nmiddle_ll(outpath, sizes):
 def test_remove_linkedlist():
     outpaths = ["out/linkedlist/remove_first_one_element.txt", "out/linkedlist/remove_last_one_element.txt", "out/linkedlist/remove_mid_one_element.txt", "out/linkedlist/remove_first_n_elements.txt", "out/linkedlist/remove_last_n_elements.txt", "out/linkedlist/remove_mid_n_elements.txt"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
-    #remove_onefirst_ll(outpaths[0], sizes)
-    #remove_onelast_ll(outpaths[1], sizes)
-    #remove_onemiddle_ll(outpaths[2], sizes)
-    #remove_nfirst_ll(outpaths[3], sizes)
-    #remove_nlast_ll(outpaths[4], sizes)
+    remove_onefirst_ll(outpaths[0], sizes)
+    remove_onelast_ll(outpaths[1], sizes)
+    remove_onemiddle_ll(outpaths[2], sizes)
+    remove_nfirst_ll(outpaths[3], sizes)
+    remove_nlast_ll(outpaths[4], sizes)
     remove_nmiddle_ll(outpaths[5], sizes)
 
 def remove_onefirst_ll(outpath, sizes):
@@ -746,12 +746,15 @@ def remove_nmiddle_ll(outpath, sizes):
         n = max(int(size * 0.001), 1)
 
         total_time = 0
-        start = time.time()
-        for j in range(n):
-            linkedlist.remove_middle()
-        end = time.time()
-        total_time += (end - start) * 1000000000
+        for i in range(30):
+            start = time.time()
+            for j in range(n):
+                linkedlist.remove_middle()
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
+
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -856,14 +859,15 @@ def insertion_all_avl(outpath, sizes):
             lines = archive.readlines()
 
         total_time = 0
+        for i in range(30):
+            avl = AVL()
+            start = time.time()
+            for line in lines:
+                avl.add(line)
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
-        avl = AVL()
-        start = time.time()
-        for line in lines:
-            avl.add(line)
-        end = time.time()
-        total_time += (end - start) * 1000000000
-
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -875,10 +879,13 @@ def search_avl(outpath, sizes):
         target = 1000000000
         avl = fill_avl(size)
         total_time = 0
-        start = time.time()
-        avl.search(target)
-        end = time.time()
-        total_time += ((end - start) * 1000000000)
+        for i in range(30):
+            start = time.time()
+            avl.search(target)
+            end = time.time()
+            total_time += ((end - start) * 1000000000)
+
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -889,12 +896,14 @@ def remove_avl(outpath, sizes):
     for size in sizes:
         target = size // 2
         total_time = 0
-        avl = fill_avl(size)
-        start = time.time()
-        avl.remove(target)
-        end = time.time()
-        total_time += (end - start) * 1000000000
-
+        for i in range(30):
+            avl = fill_avl(size)
+            start = time.time()
+            avl.remove(target)
+            end = time.time()
+            total_time += (end - start) * 1000000000
+    
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -905,11 +914,14 @@ def max_avl(outpath, sizes):
     for size in sizes:
         total_time = 0
         avl = fill_avl(size)
-        start = time.time()
-        avl.max()
-        end = time.time()
-        total_time += (end-start) * 1000000000
 
+        for i in range(30):
+            start = time.time()
+            avl.max()
+            end = time.time()
+            total_time += (end-start) * 1000000000
+    
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -920,11 +932,13 @@ def min_avl(outpath, sizes):
     for size in sizes:
         total_time = 0
         avl = fill_avl(size)
-        start = time.time()
-        avl.min()
-        end = time.time()
-        total_time += (end - start) * 1000000000
+        for i in range(30):
+            start = time.time()
+            avl.min()
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -936,11 +950,13 @@ def sucessor_avl(outpath, sizes):
         total_time = 0
         avl = fill_avl(size)
         target = size // 2
-        start = time.time()
-        avl.sucessor(target)
-        end = time.time()
-        total_time += (end - start) * 1000000000
-
+        for i in range(30):
+            start = time.time()
+            avl.sucessor(target)
+            end = time.time()
+            total_time += (end - start) * 1000000000
+        
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -952,21 +968,23 @@ def predecessor_avl(outpath, sizes):
         total_time = 0
         avl = fill_avl(size)
         target = size // 2
-        start = time.time()
-        avl.predecessor(target)
-        end = time.time()
-        total_time += (end - start) * 1000000000
+        for i in range(30):
+            start = time.time()
+            avl.predecessor(target)
+            end = time.time()
+            total_time += (end - start) * 1000000000
 
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
-#test_gets_arraylist()
-#test_insertion_arraylist()
-#test_remove_arraylist()
-#test_gets_linkedlist()
-#test_insertion_linkedlist()
-#test_remove_linkedlist()
-#test_hashmap()
+test_gets_arraylist()
+test_insertion_arraylist()
+test_remove_arraylist()
+test_gets_linkedlist()
+test_insertion_linkedlist()
+test_remove_linkedlist()
+test_hashmap()
 test_avl()
