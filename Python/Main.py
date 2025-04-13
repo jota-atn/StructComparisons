@@ -41,7 +41,7 @@ def fill_avl(size):
               lines = archive.readlines()
 
     for line in lines:
-              avl.add(line)
+              avl.add(int(line))
 
     return avl
 
@@ -964,7 +964,7 @@ def predecessor_avl(outpath, sizes):
 
 #test_gets_arraylist()
 #test_insertion_arraylist()
-test_remove_arraylist()
+#test_remove_arraylist()
 #test_gets_linkedlist()
 #test_insertion_linkedlist()
 #test_remove_linkedlist()
