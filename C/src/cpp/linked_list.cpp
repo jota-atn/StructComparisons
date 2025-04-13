@@ -10,6 +10,14 @@ void LinkedList::add_first(int elemento) {
     linked_list.push_front(elemento);
 }
 
+void LinkedList::add_middle(int elemento) {
+    size_t middle_index = linked_list.size() / 2;
+    auto it = linked_list.begin();
+    advance(it, middle_index);
+    linked_list.insert(it, elemento);
+}
+
+
 void LinkedList::add_last(int elemento) {
     linked_list.push_back(elemento);
 }
@@ -19,6 +27,16 @@ void LinkedList::remove_first() {
         linked_list.pop_front();
     }
 }
+
+void LinkedList::remove_middle() {
+    if (linked_list.empty()) return;
+
+    size_t middle_index = linked_list.size() / 2;
+    auto it = linked_list.begin();
+    advance(it, middle_index);
+    linked_list.erase(it);
+}
+
 
 void LinkedList::remove_last() {
     if (!linked_list.empty()) {

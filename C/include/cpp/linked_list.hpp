@@ -16,7 +16,9 @@ class LinkedList {
         LinkedList();
         void add_first(int elemento);
         void add_last(int elemento);
+        void add_middle(int elemento);
         void remove_first();
+        void remove_middle();
         void remove_last();
         bool contains(int elemento);
         int index_of(int elemento);
