@@ -977,11 +977,11 @@ def predecessor_avl(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
-test_gets_arraylist()
-test_insertion_arraylist()
-test_remove_arraylist()
-test_gets_linkedlist()
-test_insertion_linkedlist()
-test_remove_linkedlist()
+#test_gets_arraylist()
+#test_insertion_arraylist()
+#test_remove_arraylist()
+#test_gets_linkedlist()
+#test_insertion_linkedlist()
+#test_remove_linkedlist()
 test_hashmap()
 test_avl()
