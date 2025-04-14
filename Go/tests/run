@@ -1,0 +1,17 @@
+#!/bin/bash
+
+TESTS_DIR="./tests"
+
+if [ ! -d "$TESTS_DIR" ]; then
+  echo "Diretório '$TESTS_DIR' não encontrado."
+  exit 1
+fi
+
+for dir in "$TESTS_DIR"/*/; do
+  echo "Executando testes em: $dir"
+  for test_file in "$dir"*.go; do
+    echo "Rodando $test_file"
+    go run "$test_file"
+    echo ""
+  done
+done
