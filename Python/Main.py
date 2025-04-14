@@ -41,7 +41,7 @@ def fill_avl(size):
               lines = archive.readlines()
 
     for line in lines:
-              avl.add(line)
+              avl.add(int(line))
 
     return avl
 
@@ -753,6 +753,7 @@ def remove_nmiddle_ll(outpath, sizes):
             end = time.time()
             total_time += (end - start) * 1000000000
 
+
         total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
@@ -858,7 +859,6 @@ def insertion_all_avl(outpath, sizes):
             lines = archive.readlines()
 
         total_time = 0
-
         for i in range(30):
             avl = AVL()
             start = time.time()
@@ -879,11 +879,13 @@ def search_avl(outpath, sizes):
         target = 1000000000
         avl = fill_avl(size)
         total_time = 0
-        start = time.time()
         for i in range(30):
+            start = time.time()
             avl.search(target)
-        end = time.time()
-        total_time += ((end - start) * 1000000000) / 30
+            end = time.time()
+            total_time += ((end - start) * 1000000000)
+
+        total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
     with open(outpath, "w") as out:
@@ -900,7 +902,7 @@ def remove_avl(outpath, sizes):
             avl.remove(target)
             end = time.time()
             total_time += (end - start) * 1000000000
-
+    
         total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
@@ -912,12 +914,13 @@ def max_avl(outpath, sizes):
     for size in sizes:
         total_time = 0
         avl = fill_avl(size)
+
         for i in range(30):
             start = time.time()
             avl.max()
             end = time.time()
             total_time += (end-start) * 1000000000
-
+    
         total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
@@ -952,7 +955,7 @@ def sucessor_avl(outpath, sizes):
             avl.sucessor(target)
             end = time.time()
             total_time += (end - start) * 1000000000
-
+        
         total_time /= 30
         outputs.append(f"{size};{total_time} \n")
 
