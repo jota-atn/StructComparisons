@@ -76,7 +76,7 @@ func testDatasetInsertionLastNElements(lista *linkedlist.LinkedList) {
 	limparArquivo(saida)
 
 	// Usar um número adequado de execuções para ter medições precisas
-	numExecucoes := 100
+	numExecucoes := 30
 
 	for _, valor := range valores {
 		preencherLista(lista, strconv.Itoa(valor))

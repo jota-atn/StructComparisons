@@ -70,7 +70,7 @@ func testDatasetGetIndex(mapa *hashmap.HashMap) {
 	saida := "./out/hashmap/get_index.txt"
 	limparArquivo(saida)
 	rand.Seed(time.Now().UnixNano())
-	numExecucoes := 1000
+	numExecucoes := 30
 
 	for _, valor := range valores {
 		chaves := preencherMapa(mapa, strconv.Itoa(valor))

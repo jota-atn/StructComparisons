@@ -71,7 +71,7 @@ func testDatasetRemoveIndex(mapa *hashmap.HashMap) {
 	saida := "./out/hashmap/remove_index.txt"
 	limparArquivo(saida)
 	rand.Seed(time.Now().UnixNano())
-	numExecucoes := 1000
+	numExecucoes := 30
 	for _, valor := range valores {
 		tempoTotal := int64(0)
 		fmt.Printf("Executando teste para mapa de tamanho %d...\n", valor)

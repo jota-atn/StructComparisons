@@ -85,7 +85,7 @@ func testDatasetRemoveOneElement(arvore *avltree.AVLTree) {
 	rand.Seed(time.Now().UnixNano())
 
 	// Número de execuções para obter uma média confiável
-	numExecucoes := 1000
+	numExecucoes := 30
 
 	for _, valor := range valores {
 		tempoTotal := int64(0)

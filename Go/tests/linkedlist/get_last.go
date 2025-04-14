@@ -82,7 +82,7 @@ func testDatasetGetLast(lista *linkedlist.LinkedList) {
         tempoTotal := int64(0)
         
         // Usar um número grande de execuções para ter medições precisas
-        numExecucoes := 100000000
+        numExecucoes := 30
         
         fmt.Printf("Executando teste para tamanho %d...\n", valor)
         

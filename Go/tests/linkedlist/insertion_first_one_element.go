@@ -95,5 +95,5 @@ func testDatasetInsertionFirstOneElement(lista *linkedlist.LinkedList, numExecuc
 func main() {
 	lista := linkedlist.NovaLista(10000000)
 	// Testar com 5 execuções para cada tamanho de dataset
-	testDatasetInsertionFirstOneElement(lista, 1000) // Em vez de 5
+	testDatasetInsertionFirstOneElement(lista, 30) // Em vez de 5
 }

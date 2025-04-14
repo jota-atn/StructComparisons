@@ -80,7 +80,7 @@ func testDatasetGetMid(lista *linkedlist.LinkedList) {
         
         tempoTotal := int64(0)
         
-        numExecucoes := 100000000
+        numExecucoes := 30
         
         fmt.Printf("Executando teste para tamanho %d...\n", valor)
         

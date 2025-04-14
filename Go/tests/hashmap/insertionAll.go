@@ -64,7 +64,7 @@ func testDatasetInsertionAll(mapa *hashmap.HashMap) {
 	saida := "./out/hashmap/insertion_all.txt"
 	limparArquivo(saida)
 	rand.Seed(time.Now().UnixNano())
-	numExecucoes := 10
+	numExecucoes := 30
 	for _, valor := range valores {
 		tempoTotal := int64(0)
 		numElementos := int(float64(valor) * 0.01)
