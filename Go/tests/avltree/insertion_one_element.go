@@ -71,7 +71,7 @@ func preencherArvore(arvore *avltree.AVLTree, tamanho string) {
 
 // testDatasetInsertionOneElement testa a inserção de um elemento para diferentes tamanhos de árvore
 func testDatasetInsertionOneElement(arvore *avltree.AVLTree) {
-	valores := []int{10, 100, 1000, 2500, 5000, 600000, 750000, 1000000}
+	valores := []int{10, 100, 1000, 2500, 5000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000}
 
 	saida := "./out/avltree/insertion_one_element.txt"
 

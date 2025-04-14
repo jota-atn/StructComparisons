@@ -67,7 +67,7 @@ func preencherMapa(mapa *hashmap.HashMap, tamanho string) []string {
 }
 
 func testDatasetRemoveIndex(mapa *hashmap.HashMap) {
-	valores := []int{1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000}
+	valores := []int{1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000}
 	saida := "./out/hashmap/remove_index.txt"
 	limparArquivo(saida)
 	rand.Seed(time.Now().UnixNano())
