@@ -33,10 +33,10 @@ public class Main {
     }
 
     public static void addTodos(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/insertionAll.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/insertionAll.txt";
-        String caminhoSaidaHasmap = "Java/out/hashmap/insertionAll.txt";
-        String caminhoSaidaTree = "Java/out/AVLTree/insertionAll.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/fill_arraylist.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/fill_linkedlist.txt";
+        String caminhoSaidaHasmap = "Java/out/hashmap/fill_hashmap.txt";
+        String caminhoSaidaTree = "Java/out/AVLTree/fill_avltree.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         BufferedWriter bwH= new BufferedWriter(new FileWriter(caminhoSaidaHasmap));
@@ -109,8 +109,8 @@ public class Main {
     }
 
     public static void addFirst(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/insertionFirst.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/insertionFirst.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/insertion_first_one_element.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/insertion_first_one_element.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -155,8 +155,8 @@ public class Main {
     }
 
     public static void addNFirst(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/insertionNFirst.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/insertionNFirst.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/insertion_first_n_elements.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/insertion_first_n_elements.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -203,8 +203,8 @@ public class Main {
     }
 
     public static void addMiddle(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/insertionMiddle.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/insertionMiddle.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/insertion_middle_one_element.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/insertion_middle_one_element.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -251,8 +251,8 @@ public class Main {
     }
 
     public static void addNMiddle(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/insertionNMiddle.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/insertionNMiddle.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/insertion_middle_n_elements.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/insertion_middle_n_elements.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -300,8 +300,8 @@ public class Main {
     }
 
     public static void addLast(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/insertionLast.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/insertionLast.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/insertion_last_one_element.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/insertion_last_one_element.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -346,8 +346,8 @@ public class Main {
     }
 
     public static void addNLast(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/insertionNLast.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/insertionNLast.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/insertion_last_n_elements.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/insertion_last_n_elements.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -394,8 +394,8 @@ public class Main {
     }
 
     public static void getFirst(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/getFirst.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/getFirst.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/get_first.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/get_first.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -440,9 +440,9 @@ public class Main {
     }
 
     public static void getMiddle(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/getMiddle.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/getMiddle.txt";
-        String caminhoSaidaHashmap = "Java/out/hashmap/getIndex.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/get_mid.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/get_mid.txt";
+        String caminhoSaidaHashmap = "Java/out/hashmap/get.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         BufferedWriter bwH= new BufferedWriter(new FileWriter(caminhoSaidaHashmap));
@@ -505,8 +505,8 @@ public class Main {
     }
 
     public static void getLast(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/getLast.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/getLast.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/get_last.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/get_last.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -551,8 +551,8 @@ public class Main {
     }
 
     public static void removeFirst(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/removeFirst.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/removeFirst.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/remove_first_one_element.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/remove_first_one_element.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -597,8 +597,8 @@ public class Main {
     }
 
     public static void removeNFirst(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/removeNFirst.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/removeNFirst.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/remove_first_n_elements.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/remove_first_n_elements.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -645,10 +645,10 @@ public class Main {
     }
 
     public static void removeMiddle(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/removeMiddle.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/removeMiddle.txt";
-        String caminhoSaidaHash = "Java/out/hashmap/removeIndex.txt";
-        String caminhoSaidaTree = "Java/out/AVLTree/removeIndex.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/remove_middle_one_element.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/remove_middle_one_element.txt";
+        String caminhoSaidaHash = "Java/out/hashmap/remove_one_element.txt";
+        String caminhoSaidaTree = "Java/out/AVLTree/remove_one_element.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         BufferedWriter bwH= new BufferedWriter(new FileWriter(caminhoSaidaHash));
@@ -727,8 +727,8 @@ public class Main {
     }
 
     public static void removeNMiddle(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/removeNMiddle.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/removeNMiddle.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/remove_middle_n_elements.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/remove_middle_n_elements.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -776,8 +776,8 @@ public class Main {
     }
 
     public static void removeLast(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/removeLast.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/removeLast.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/remove_last_one_element.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/remove_last_one_element.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -822,8 +822,8 @@ public class Main {
     }
 
     public static void removeNLast(int[] tamanhos) throws IOException {
-        String caminhoSaidaArray = "Java/out/arraylist/removeNLast.txt";
-        String caminhoSaidaLinked = "Java/out/linkedlist/removeNLast.txt";
+        String caminhoSaidaArray = "Java/out/arraylist/remove_last_n_elements.txt";
+        String caminhoSaidaLinked = "Java/out/linkedlist/remove_last_n_elements.txt";
         BufferedWriter bwA = new BufferedWriter(new FileWriter(caminhoSaidaArray));
         BufferedWriter bwL= new BufferedWriter(new FileWriter(caminhoSaidaLinked));
         Array array = new Array();
@@ -928,8 +928,8 @@ public class Main {
     }
 
     public static void Min_Max_Tree(int[] tamanhos) throws IOException {
-        String caminhoSaidaTreeMin = "Java/out/AVLTree/min.txt";
-        String caminhoSaidaTreeMax = "Java/out/AVLTree/max.txt";
+        String caminhoSaidaTreeMin = "Java/out/AVLTree/min_value.txt";
+        String caminhoSaidaTreeMax = "Java/out/AVLTree/max_value.txt";
         BufferedWriter bwTMin = new BufferedWriter(new FileWriter(caminhoSaidaTreeMin));
         BufferedWriter bwTMax = new BufferedWriter(new FileWriter(caminhoSaidaTreeMax));
         TreeAVL tree = new TreeAVL();
