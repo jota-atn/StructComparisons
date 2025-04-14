@@ -25,7 +25,6 @@ class HashMap:
         if key not in self.hashmap: return
 
         removed = self.hashmap[key]
-
         self.hashmap.pop(self, key)
         self._size -= 1
 
