@@ -6,7 +6,6 @@ class Node:
         self.parent = parent
         self.height = 1
 
-
 class AVL:
     def __init__(self):
         self.root = None
