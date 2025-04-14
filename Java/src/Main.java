@@ -86,16 +86,16 @@ public class Main {
             long mediaH = (somaTemposHashmap/quantOperacoes);
             long mediaT = (somaTemposTree/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Inserir todos os elementos no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Inserir todos os elementos no LL: " + tamanho + ";" + mediaL + "ns");
 
-            bwH.write(tamanho+ ";" + mediaH + "ns\n");
+            bwH.write(tamanho+ ";" + mediaH + "\n");
             System.out.println("Inserir todos os elementos no Hash: " + tamanho + ";" + mediaH + "ns");
 
-            bwT.write(tamanho+ ";" + mediaT + "ns\n");
+            bwT.write(tamanho+ ";" + mediaT + "\n");
             System.out.println("Inserir todos os elementos na Tree: " + tamanho + ";" + mediaT + "ns");
         }
         array.clear();
@@ -142,10 +142,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Inserir 1 elemento no início no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Inserir 1 elemento no início no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -190,10 +190,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Inserir N elementos no início no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Inserir N elementos no início no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -238,10 +238,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Inserir 1 elemento no meio no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Inserir 1 elemento no meio no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -287,10 +287,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Inserir N elementos no meio no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Inserir N elementos no meio no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -333,10 +333,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Inserir 1 elemento no fim no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Inserir 1 elemento no fim no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -381,10 +381,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Inserir N elementos no fim no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Inserir N elementos no fim no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -427,10 +427,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Acessar o primeiro elemento no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Acessar o primeiro elemento no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -487,13 +487,13 @@ public class Main {
             long mediaL = (somaTemposLinked/quantOperacoes);
             long mediaH = (somaTemposHash/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Acessar o elemento do meio no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Acessar o elemento do meio no LL: " + tamanho + ";" + mediaL + "ns");
 
-            bwH.write(tamanho+ ";" + mediaH + "ns\n");
+            bwH.write(tamanho+ ";" + mediaH + "\n");
             System.out.println("Acessar o elemento do meio Hash: " + tamanho + ";" + mediaH + "ns");
         }
         array.clear();
@@ -538,10 +538,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Acessar o último elemento no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Acessar o último elemento no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -584,10 +584,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Remover o primeiro elemento no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Remover o primeiro elemento no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -632,10 +632,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Remover N elementos no início no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Remover N elementos no início no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -704,16 +704,16 @@ public class Main {
             long mediaH = (somaTemposHash/quantOperacoes);
             long mediaT = (somaTemposTree/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Remover 1 elemento do meio no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Remover 1 elemento do meio no LL: " + tamanho + ";" + mediaL + "ns");
 
-            bwH.write(tamanho+ ";" + mediaH + "ns\n");
+            bwH.write(tamanho+ ";" + mediaH + "\n");
             System.out.println("Remover 1 elemento do meio no Hash: " + tamanho + ";" + mediaH + "ns");
 
-            bwT.write(tamanho+ ";" + mediaT + "ns\n");
+            bwT.write(tamanho+ ";" + mediaT + "\n");
             System.out.println("Remover 1 elemento do meio na Tree: " + tamanho + ";" + mediaT + "ns");
         }
         array.clear();
@@ -763,10 +763,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Remover N elementos do meio no Al: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Remover N elementos do meio no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -809,10 +809,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Remover o último elemento no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Remover o último elemento no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -857,10 +857,10 @@ public class Main {
             long mediaA = (somaTemposArray/quantOperacoes);
             long mediaL = (somaTemposLinked/quantOperacoes);
 
-            bwA.write(tamanho + ";" + mediaA + "ns\n");
+            bwA.write(tamanho + ";" + mediaA + "\n");
             System.out.println("Remover N elementos no fim no AL: " + tamanho + ";" + mediaA + "ns");
 
-            bwL.write(tamanho+ ";" + mediaL + "ns\n");
+            bwL.write(tamanho+ ";" + mediaL + "\n");
             System.out.println("Remover N elementos no fim no LL: " + tamanho + ";" + mediaL + "ns");
         }
         array.clear();
@@ -891,7 +891,7 @@ public class Main {
             }
             long mediaH = (somaTemposHash/quantOperacoes);
 
-            bwH.write(tamanho + ";" + mediaH + "ns\n");
+            bwH.write(tamanho + ";" + mediaH + "\n");
             System.out.println("Verifica se contém o elemento no hashmap: " + tamanho + ";" + mediaH + "ns");
         }
         hash.clear();
@@ -920,7 +920,7 @@ public class Main {
             }
             long mediaT = (somaTemposTree/quantOperacoes);
 
-            bwT.write(tamanho + ";" + mediaT + "ns\n");
+            bwT.write(tamanho + ";" + mediaT + "\n");
             System.out.println("Faz uma busca no Tree AVL: " + tamanho + ";" + mediaT + "ns");
         }
         tree.clear();
@@ -958,10 +958,10 @@ public class Main {
             long mediaTMin = (somaTemposTreeMin/quantOperacoes);
             long mediaTMax = (somaTemposTreeMax/quantOperacoes);
 
-            bwTMin.write(tamanho + ";" + mediaTMin + "ns\n");
+            bwTMin.write(tamanho + ";" + mediaTMin + "\n");
             System.out.println("Busca o valor min de uma Tree AVL: " + tamanho + ";" + mediaTMin + "ns");
 
-            bwTMax.write(tamanho + ";" + mediaTMax + "ns\n");
+            bwTMax.write(tamanho + ";" + mediaTMax + "\n");
             System.out.println("Busca o valor max de uma Tree AVL: " + tamanho + ";" + mediaTMax + "ns");
         }
         tree.clear();
@@ -1002,10 +1002,10 @@ public class Main {
             long mediaTPred = (somaTemposTreePred/quantOperacoes);
             long mediaTSuc = (somaTemposTreeSuc/quantOperacoes);
 
-            bwTPred.write(tamanho + ";" + mediaTPred + "ns\n");
+            bwTPred.write(tamanho + ";" + mediaTPred + "\n");
             System.out.println("Busca o predecessor do elemento central da Tree AVL: " + tamanho + ";" + mediaTPred + "ns");
 
-            bwTSuc.write(tamanho + ";" + mediaTSuc + "ns\n");
+            bwTSuc.write(tamanho + ";" + mediaTSuc + "\n");
             System.out.println("Busca o sucessor do elemento central da Tree AVL: " + tamanho + ";" + mediaTSuc + "ns");
         }
         tree.clear();
