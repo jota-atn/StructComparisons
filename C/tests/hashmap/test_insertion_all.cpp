@@ -17,7 +17,7 @@ auto test_put(HashMap& hashmap, int n) {
     }
 
     auto fim = high_resolution_clock::now();
-    auto duracao = duration_cast<microseconds>(fim - inicio);
+    auto duracao = duration_cast<nanoseconds>(fim - inicio);
 
     return duracao.count();
 }
@@ -42,6 +42,6 @@ void test_dataset_insertion(HashMap& hashmap, int num_execucoes) {
 
         cout << "Tempo medio de insercao de " << valor
              << " elementos apos " << num_execucoes << " execucoes: "
-             << tempo_medio << " microssegundos" << endl;
+             << tempo_medio << " nanossegundos" << endl;
     }
 }
