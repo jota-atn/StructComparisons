@@ -6,3 +6,5 @@
 #include "test_single_access_avl.cpp"
 #include "test_single_remotion_avl.cpp"
 #include "test_fill_avltree.cpp"
+#include "test_search_element_existent.cpp"	
+#include "test_search_element_non_existent.cpp"
