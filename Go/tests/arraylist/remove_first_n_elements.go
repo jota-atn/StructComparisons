@@ -76,7 +76,7 @@ func testDatasetRemoveFirstNElements(lista *arraylist.ArrayList) {
 	limparArquivo(saida)
 
 	// Número de execuções para obter uma média confiável
-	numExecucoes := 100 // Podemos ajustar conforme necessário
+	numExecucoes := 30
 
 	for _, valor := range valores {
 		preencherLista(lista, strconv.Itoa(valor))

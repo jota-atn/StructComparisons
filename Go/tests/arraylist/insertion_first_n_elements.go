@@ -103,6 +103,6 @@ func testDatasetInsertionFirstNElements(lista *arraylist.ArrayList, numExecucoes
 
 func main() {
     lista := arraylist.NovaLista(10000000)
-    numExecucoes := 10
+    numExecucoes := 30
     testDatasetInsertionFirstNElements(lista, numExecucoes)
 }
