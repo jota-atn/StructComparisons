@@ -15,7 +15,7 @@ auto test_single_access(AVLTree& avl, int valor) {
 
     auto fim = high_resolution_clock::now();
 
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     return duration.count();
 }
 

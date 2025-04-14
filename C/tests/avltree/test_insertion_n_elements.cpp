@@ -16,7 +16,7 @@ auto test_add(AVLTree& avl, int n) {
     }
 
     auto fim = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
 
     return duration.count();
 }
@@ -48,6 +48,6 @@ void test_dataset_insertion_n_elements(AVLTree& avl, int num_execucoes) {
 
         cout << "Tempo medio de insercao de " << num_elementos
              << " elementos para um Data Set de tamanho " << valor
-             << " apos " << num_execucoes << " execucoes: " << tempo_medio << " microssegundos" << endl;
+             << " apos " << num_execucoes << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }

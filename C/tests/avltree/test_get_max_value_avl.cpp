@@ -45,6 +45,6 @@ void test_dataset_max(AVLTree& tree, int num_execucoes) {
 
         cout << "Tempo médio para pegar o valor máximo em uma AVL com "
              << valor << " elementos após " << num_execucoes
-             << " execuções: " << tempo_medio << " microssegundos" << endl;
+             << " execuções: " << tempo_medio << " nanossegundos" << endl;
     }
 }

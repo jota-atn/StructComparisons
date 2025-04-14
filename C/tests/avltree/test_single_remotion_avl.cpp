@@ -15,7 +15,7 @@ auto test_single_removal(AVLTree& avl, int valor) {
     
     auto fim = high_resolution_clock::now();
 
-    auto duration = duration_cast<microseconds>(fim - inicio);
+    auto duration = duration_cast<nanoseconds>(fim - inicio);
     return duration.count();
 }
 
@@ -44,6 +44,6 @@ void test_dataset_single_element_remotion(AVLTree& avl, int num_execucoes) {
 
         cout << "Tempo medio de remocao de 1 elemento na AVL com " << valor
              << " elementos apos " << num_execucoes
-             << " execucoes: " << tempo_medio << " microssegundos" << endl;
+             << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }

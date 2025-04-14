@@ -47,6 +47,6 @@ void test_dataset_predecessor(AVLTree& tree, int num_execucoes) {
 
         cout << "Tempo médio para pegar o predecessor de " << key << " em AVL com "
              << valor << " elementos após " << num_execucoes
-             << " execuções: " << tempo_medio << " microssegundos" << endl;
+             << " execuções: " << tempo_medio << " nanossegundos" << endl;
     }
 }

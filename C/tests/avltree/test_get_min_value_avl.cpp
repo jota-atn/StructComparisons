@@ -44,6 +44,6 @@ void test_dataset_min(AVLTree& avl, int num_execucoes) {
 
         cout << "Tempo medio para obter o valor minimo em AVL com " << valor
              << " elementos apos " << num_execucoes
-             << " execucoes: " << tempo_medio << " microssegundos" << endl;
+             << " execucoes: " << tempo_medio << " nanossegundos" << endl;
     }
 }
