@@ -133,7 +133,7 @@ def get_middle_al(outpath, sizes):
 
 #Função que chama individualmente as funções de teste de inserção.
 def test_insertion_arraylist():
-    outpaths = ["out/arraylist/insertion_all.txt", "out/arraylist/insertion_first_one_element.txt", "out/arraylist/insertion_last_one_element.txt", "out/arraylist/insertion_mid_one_element.txt", "out/arraylist/insertion_first_n_elements.txt", "out/arraylist/insertion_last_n_elements.txt", "out/arraylist/insertion_mid_n_elements.txt"]
+    outpaths = ["out/arraylist/fill_arraylist.txt", "out/arraylist/insertion_first_one_element.txt", "out/arraylist/insertion_last_one_element.txt", "out/arraylist/insertion_mid_one_element.txt", "out/arraylist/insertion_first_n_elements.txt", "out/arraylist/insertion_last_n_elements.txt", "out/arraylist/insertion_mid_n_elements.txt"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     insertion_all_al(outpaths[0], sizes)
     insertion_onefirst_al(outpaths[1], sizes)
@@ -299,6 +299,7 @@ def test_remove_arraylist():
     remove_nlast_al(outpaths[4], sizes)
     remove_nmiddle_al(outpaths[5],sizes)
 
+#Teste de remoção de um elemento do início em um ArrayList
 def remove_onefirst_al(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -318,6 +319,7 @@ def remove_onefirst_al(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de um elemento do final em um Arraylist
 def remove_onelast_al(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -337,6 +339,7 @@ def remove_onelast_al(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de um elemento no meio de um ArrayList
 def remove_onemiddle_al(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -356,7 +359,7 @@ def remove_onemiddle_al(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
-
+#Teste de remoção de n elementos no início de um ArrayList
 def remove_nfirst_al(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -377,6 +380,7 @@ def remove_nfirst_al(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de n elementos no final de um Arraylist
 def remove_nlast_al(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -397,7 +401,7 @@ def remove_nlast_al(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
-
+#Teste de remoção de n elementos no meio de um ArrayList
 def remove_nmiddle_al(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -418,6 +422,7 @@ def remove_nmiddle_al(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Função que chama individualmente os testes de gets de LinkedList
 def test_gets_linkedlist():
     outpaths = ["out/linkedlist/get_first.txt", "out/linkedlist/get_last.txt", "out/linkedlist/get_mid.txt"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
@@ -425,6 +430,7 @@ def test_gets_linkedlist():
     get_last_ll(outpaths[1], sizes)
     get_middle_ll(outpaths[2], sizes)
 
+#Teste de get primeiro elemento da LinkedList
 def get_first_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -444,6 +450,7 @@ def get_first_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de get ultimo elemento da LinkedList
 def get_last_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -463,6 +470,7 @@ def get_last_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de get elemento do meio da LinkedList
 def get_middle_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -482,8 +490,9 @@ def get_middle_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Função que chama individualmente os testes de inserção de LinkedList
 def test_insertion_linkedlist():
-    outpaths = ["out/linkedlist/insertion_all.txt", "out/linkedlist/insertion_first_one_element.txt", "out/linkedlist/insertion_last_one_element.txt", "out/linkedlist/insertion_mid_one_element.txt", "out/linkedlist/insertion_first_n_elements.txt", "out/linkedlist/insertion_last_n_elements.txt", "out/linkedlist/insertion_mid_n_elements.txt"]
+    outpaths = ["out/linkedlist/fill_linkedlist.txt", "out/linkedlist/insertion_first_one_element.txt", "out/linkedlist/insertion_last_one_element.txt", "out/linkedlist/insertion_mid_one_element.txt", "out/linkedlist/insertion_first_n_elements.txt", "out/linkedlist/insertion_last_n_elements.txt", "out/linkedlist/insertion_mid_n_elements.txt"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     insertion_all_ll(outpaths[0], sizes)
     insertion_onefirst_ll(outpaths[1], sizes)
@@ -493,6 +502,7 @@ def test_insertion_linkedlist():
     insertion_nlast_ll(outpaths[5], sizes)
     insertion_nmiddle_ll(outpaths[6], sizes)
 
+#Teste de preenchimento de LinkedList
 def insertion_all_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -514,6 +524,7 @@ def insertion_all_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de inserção de um elemento no começo da LinkedList
 def insertion_onefirst_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -532,6 +543,7 @@ def insertion_onefirst_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de inserção de um elemento no final da LinkedList
 def insertion_onelast_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -550,7 +562,7 @@ def insertion_onelast_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
-
+#Teste de inserção de um elemento no meio da LinkedList
 def insertion_onemiddle_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -569,6 +581,7 @@ def insertion_onemiddle_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de inserção de n elementos no início da LinkedList
 def insertion_nfirst_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -590,6 +603,7 @@ def insertion_nfirst_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de inserção de n elementos no final da LinkedList
 def insertion_nlast_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -611,6 +625,7 @@ def insertion_nlast_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de inserção de n elementos no meio da LinkedList
 def insertion_nmiddle_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -632,6 +647,7 @@ def insertion_nmiddle_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Função que chama individualmente os testes de remoção de LinkedList
 def test_remove_linkedlist():
     outpaths = ["out/linkedlist/remove_first_one_element.txt", "out/linkedlist/remove_last_one_element.txt", "out/linkedlist/remove_mid_one_element.txt", "out/linkedlist/remove_first_n_elements.txt", "out/linkedlist/remove_last_n_elements.txt", "out/linkedlist/remove_mid_n_elements.txt"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
@@ -642,6 +658,7 @@ def test_remove_linkedlist():
     remove_nlast_ll(outpaths[4], sizes)
     remove_nmiddle_ll(outpaths[5], sizes)
 
+#Teste de remoção de um elemento no início da LinkedList
 def remove_onefirst_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -661,6 +678,7 @@ def remove_onefirst_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de um elemento no final da LinkedList
 def remove_onelast_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -680,6 +698,7 @@ def remove_onelast_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de um elemento no meio da LinkedList
 def remove_onemiddle_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -699,6 +718,7 @@ def remove_onemiddle_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de n elementos no início da LinkedList
 def remove_nfirst_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -719,6 +739,7 @@ def remove_nfirst_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de n elementos no final da LinkedList
 def remove_nlast_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -739,6 +760,7 @@ def remove_nlast_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de n elementos no meio da LinkedList
 def remove_nmiddle_ll(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -760,14 +782,16 @@ def remove_nmiddle_ll(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Função que chama individualmente todos os testes de HashMap
 def test_hashmap():
-    outpaths = ["out/hashmap/insertion_all.txt", "out/hashmap/acess_one_element.txt", "out/hashmap/remove_one_element.txt", "out/hashmap/search_innexistent.txt"]
+    outpaths = ["out/hashmap/fill_hashmap.txt", "out/hashmap/acess_one_element.txt", "out/hashmap/remove_one_element.txt", "out/hashmap/search_innexistent.txt"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     insertion_all_hash(outpaths[0], sizes)
     acess_one(outpaths[1], sizes)
     remove_one(outpaths[2], sizes)
     search_zero(outpaths[3], sizes)
 
+#Teste de preenchimento do HashMap
 def insertion_all_hash(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -791,6 +815,7 @@ def insertion_all_hash(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de acesso a um elemento do HashMap
 def acess_one(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -808,6 +833,7 @@ def acess_one(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de um elemento do HashMap
 def remove_one(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -826,6 +852,7 @@ def remove_one(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de busca de elemento inexistente no HashMap
 def search_zero(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -841,8 +868,9 @@ def search_zero(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Função que chama individualmente todas as funções de AVL Tree
 def test_avl():
-    outpaths = ["out/avltree/insertion_all.txt", "out/avltree/search.txt", "out/avltree/remove.txt", "out/avltree/max.txt", "out/avltree/min.txt", "out/avltree/sucessor.txt", "out/avltree/predecessor.txt"]
+    outpaths = ["out/avltree/fill_avltree.txt", "out/avltree/search.txt", "out/avltree/remove.txt", "out/avltree/max.txt", "out/avltree/min.txt", "out/avltree/sucessor.txt", "out/avltree/predecessor.txt"]
     sizes = [1000, 10000, 100000, 250000, 500000, 600000, 750000, 1000000, 1700000, 2500000, 3700000, 5000000, 6000000, 7500000, 9000000, 10000000]
     insertion_all_avl(outpaths[0], sizes)
     search_avl(outpaths[1], sizes)
@@ -852,6 +880,7 @@ def test_avl():
     sucessor_avl(outpaths[5], sizes)
     predecessor_avl(outpaths[6], sizes)
 
+#Teste de preenchimento da AVL Tree
 def insertion_all_avl(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -873,6 +902,7 @@ def insertion_all_avl(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de busca de elemento da AVL Tree
 def search_avl(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -891,6 +921,7 @@ def search_avl(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de remoção de elemento da AVL Tree
 def remove_avl(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -909,6 +940,7 @@ def remove_avl(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de busca do elemento máximo da AVL Tree
 def max_avl(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -927,6 +959,7 @@ def max_avl(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de busca do elemento mínimo da AVL Tree
 def min_avl(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -944,6 +977,7 @@ def min_avl(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de busca do sucessor de um target na AVL Tree
 def sucessor_avl(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -962,6 +996,7 @@ def sucessor_avl(outpath, sizes):
     with open(outpath, "w") as out:
         out.writelines(outputs)
 
+#Teste de busca do predecessor de um target na AVL Tree
 def predecessor_avl(outpath, sizes):
     outputs = []
     for size in sizes:
@@ -979,6 +1014,7 @@ def predecessor_avl(outpath, sizes):
 
     with open(outpath, "w") as out:
         out.writelines(outputs)
+
 
 test_gets_arraylist()
 test_insertion_arraylist()
