@@ -3,7 +3,7 @@
 
 ## _Introdutório_
 * De forma geral, foi implementado apenas métodos básicos de adição, remoção e get, sendo este em suma maioria recebendo um index como argumento e apenas no caso do HashMap recebendo um valor representando uma chave.
-* Apenas HashMap utiliza a estrutura já implementada da linguagem, que nesse caso é o dicionário.
+* Apenas HashMap e ArrayList utilizam de estruturas já implementadas da própria linguagem.
 
 # _ArrayList_
 * Utilizando a estrutura pronta de List, implementei uma classe que simula um ArrayList, a partir disso, as adições e remoções da estrutura são feitas manipulando os índices de acesso direto a lista interna, sem a utilização de appends ou pops.
