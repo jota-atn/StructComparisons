@@ -38,7 +38,7 @@ fun main() {
         // Operação 4: contains (verifica se contém o valor 0)
         medirTempoHash(carga, valores, "contains") { hash ->
             for (v in valores) hash.put(v)
-            hash.containsValue(10000000)
+            hash.containsValue(1000)
         }
     }
 
