@@ -884,7 +884,7 @@ public class Main {
 
                 hash.put(caminho);
                 long inicioH = System.nanoTime();
-                hash.contains(10000000);
+                hash.contains(1000);
                 long fimH = System.nanoTime();
 
                 somaTemposHash += (fimH-inicioH);
