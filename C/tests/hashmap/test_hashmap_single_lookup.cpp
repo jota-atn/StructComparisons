@@ -13,7 +13,7 @@ auto test_get(HashMap& hashmap, int chave, int num_execucoes) {
     auto inicio = high_resolution_clock::now();
 
     for (int i = 0; i < num_execucoes; ++i) {
-        hashmap.get(chave);
+        hashmap.contains(chave);
     }
 
     auto fim = high_resolution_clock::now();
@@ -34,12 +34,12 @@ void test_dataset_single_element_access(HashMap& hashmap, int num_execucoes) {
             hashmap.put(i, i * 10);
         }
 
-        int chave_alvo = valor / 2; 
-        double tempo_medio = test_get(hashmap, chave_alvo, num_execucoes);
+        int elemento_alvo = valor / 2; 
+        double tempo_medio = test_get(hashmap, elemento_alvo, num_execucoes);
 
         gerar_saida(tempo_medio, to_string(valor), saida);
 
-        cout << "Tempo medio de acesso à chave " << chave_alvo
+        cout << "Tempo medio de busca à chave " << elemento_alvo
              << " em um HashMap com " << valor << " elementos: "
              << tempo_medio << " nanossegundos" << endl;
     }
